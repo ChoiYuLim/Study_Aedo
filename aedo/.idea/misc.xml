@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/hopan/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_spinner_item.xml" value="0.271875" />
+        <entry key="..\:/Users/hopan/Desktop/aedo/aedo/app/src/main/res/layout/activity_login.xml" value="0.375" />
+        <entry key="..\:/Users/hopan/Desktop/aedo/aedo/app/src/main/res/layout/activity_make.xml" value="0.4125" />
+        <entry key="..\:/Users/hopan/Desktop/aedo/aedo/app/src/main/res/layout/activity_permission.xml" value="0.25" />
+        <entry key="..\:/Users/hopan/Desktop/aedo/aedo/app/src/main/res/layout/activity_send.xml" value="0.4125" />
+        <entry key="..\:/Users/hopan/Desktop/aedo/aedo/app/src/main/res/layout/activity_shop.xml" value="0.375" />
+        <entry key="..\:/Users/hopan/Desktop/aedo/aedo/app/src/main/res/layout/activity_splash.xml" value="0.4125" />
+        <entry key="..\:/Users/hopan/Desktop/aedo/aedo/app/src/main/res/layout/fragment_shop.xml" value="0.4125" />
+        <entry key="..\:/Users/hopan/Desktop/aedo/aedo/app/src/main/res/layout/toast_custom.xml" value="0.4125" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/drawable-v24/check_selector.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/drawable-v24/confirm_dialog_button_shape.xml" value="0.305" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/drawable-v24/loading_animation.xml" value="0.2705" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/drawable-v24/shape_box_check.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/drawable/bg_nocolor.xml" value="0.257" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/drawable/bg_nocolor_left_rounded.xml" value="0.257" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/drawable/bg_spinner.xml" value="0.2525" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/drawable/color_common_btn.xml" value="0.1" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/drawable/confirm_dialog_button_shape_second.xml" value="0.305" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/drawable/edit_box.xml" value="0.1425" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/drawable/ic_kalender.xml" value="0.257" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/drawable/selector_default_popup_negative.xml" value="0.1" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/drawable/selector_default_popup_positive.xml" value="0.1" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/drawable/shape_side_header.xml" value="0.1" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/font/s.xml" value="0.1" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/activity_card.xml" value="0.175" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/activity_center.xml" value="0.25" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/activity_find.xml" value="0.13125" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/activity_infor_mation.xml" value="0.13125" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/activity_infor_mation_action.xml" value="0.175" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/activity_list.xml" value="0.25" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/activity_listdetail.xml" value="0.271875" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/activity_login.xml" value="0.165" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/activity_main.xml" value="0.11" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/activity_main_drawer.xml" value="0.1" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/activity_make.xml" value="0.165" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/activity_modify.xml" value="0.271875" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/activity_notice.xml" value="0.271875" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/activity_permission.xml" value="0.25" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/activity_search.xml" value="0.271875" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/activity_send.xml" value="0.11" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/activity_setting.xml" value="0.335" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/activity_shop.xml" value="0.271875" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/activity_side_menu.xml" value="0.165" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/activity_splash.xml" value="0.25" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/activity_terms_reconsent.xml" value="0.165" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/android_main_drawer.xml" value="0.175" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/app_bar_main.xml" value="0.175" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/content_main.xml" value="0.1" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/custom_loading.xml" value="0.3625" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/custom_spinner_itm.xml" value="0.271875" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/dialog_loading.xml" value="0.271875" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/drawer_main.xml" value="0.1" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/item_mypage_ticket_image_test.xml" value="0.1" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/list_item.xml" value="0.25" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/list_item_detail.xml" value="0.25" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/notice_detail_item.xml" value="0.271875" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/notice_item.xml" value="0.271875" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/popup_custom_list.xml" value="0.335" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/popup_default.xml" value="0.175" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/popup_rent_guide.xml" value="0.175" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/popup_util.xml" value="0.175" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/side_menu_header.xml" value="0.175" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/toast_custom.xml" value="0.1" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/view_label_admin.xml" value="0.25" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/view_list_item.xml" value="0.25" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/view_main_side.xml" value="0.165" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/view_popup_button.xml" value="0.175" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/view_popup_button_devider.xml" value="0.1" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/view_popup_button_negative.xml" value="0.175" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/view_side_header.xml" value="0.175" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/view_side_menu.xml" value="0.165" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/layout/view_top.xml" value="0.165" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/menu/nav_side_menu.xml" value="0.175" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/mipmap-anydpi-v26/ic_loger_test.xml" value="0.1" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/mipmap-anydpi-v26/ic_loger_test_round.xml" value="0.1" />
+        <entry key="..\:/Users/hopan/Desktop/client/code/app/src/main/res/xml/d.xml" value="0.3625" />
+<<<<<<< HEAD
+        <entry key="..\:/Users/hopan/Documents/Aedo/aedo/app/src/main/res/drawable/color_common_btn.xml" value="0.238" />
+        <entry key="..\:/Users/hopan/Documents/Aedo/aedo/app/src/main/res/layout/activity_list.xml" value="0.45" />
+        <entry key="..\:/Users/hopan/Documents/Aedo/aedo/app/src/main/res/layout/activity_listdetail.xml" value="0.25" />
+        <entry key="..\:/Users/hopan/Documents/Aedo/aedo/app/src/main/res/layout/activity_login.xml" value="0.271875" />
+        <entry key="..\:/Users/hopan/Documents/Aedo/aedo/app/src/main/res/layout/activity_make.xml" value="0.271875" />
+        <entry key="..\:/Users/hopan/Documents/Aedo/aedo/app/src/main/res/layout/activity_shop.xml" value="0.26872586872586873" />
+        <entry key="..\:/Users/hopan/Documents/Aedo/aedo/app/src/main/res/layout/activity_sign_up.xml" value="0.271875" />
+        <entry key="..\:/Users/hopan/Documents/Aedo/aedo/app/src/main/res/layout/dialog_loading.xml" value="0.271875" />
+        <entry key="..\:/Users/hopan/Documents/Aedo/aedo/app/src/main/res/layout/list_item.xml" value="0.271875" />
+=======
+>>>>>>> 56f54a05f3c0d18ab3ec4b82670b8800737197b0
+        <entry key="..\:/Users/hopan/Downloads/code/app/src/main/res/layout/activity_login.xml" value="0.16530054644808742" />
+        <entry key="..\:/Users/hopan/Downloads/code/app/src/main/res/layout/activity_search.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable/bg_activity_report_edittext.xml" value="0.3140625" />
+        <entry key="app/src/main/res/drawable/bg_nocolor.xml" value="0.3140625" />
+        <entry key="app/src/main/res/drawable/bg_shopping_search_btn.xml" value="0.3140625" />
+        <entry key="app/src/main/res/layout/activity_center.xml" value="0.10941086457536343" />
+        <entry key="app/src/main/res/layout/activity_list.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_listdetail.xml" value="0.2526837324525186" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.11953125" />
+        <entry key="app/src/main/res/layout/activity_notice.xml" value="0.18840579710144928" />
+        <entry key="app/src/main/res/layout/activity_permission.xml" value="0.18840579710144928" />
+        <entry key="app/src/main/res/layout/activity_report.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_shop.xml" value="0.20295557571884407" />
+        <entry key="app/src/main/res/layout/activity_terms_reconsent.xml" value="0.14488348530901723" />
+        <entry key="app/src/main/res/layout/dialog_edit_obituary.xml" value="0.1816123188405797" />
+        <entry key="app/src/main/res/layout/dialog_loading.xml" value="0.1816123188405797" />
+        <entry key="app/src/main/res/layout/dialog_send_obituary.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/fragment_shop.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/item_activity_shop.xml" value="0.45" />
+        <entry key="app/src/main/res/layout/list_item.xml" value="0.1331521739130435" />
+        <entry key="app/src/main/res/layout/notice_detail_item.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/notice_item.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/popup_default.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/popup_util.xml" value="0.14488348530901723" />
+      </map>
+    </option>
+  </component>
+  <component name="EntryPointsManager">
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="com.google.gson.annotations.SerializedName" />
+    </list>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

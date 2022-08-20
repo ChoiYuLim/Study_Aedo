@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="activity"
+            type="com.aedo.my_heaven.view.intro.permission.PermissionActivity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.intro.PermissionActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_title"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/header_bg"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:textSize="16dp"
+                android:textColor="@color/white"
+                android:text="@string/permission_title"
+                android:fontFamily="@font/notosans_medium"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:id="@+id/sv_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            android:paddingBottom="10dp"
+            app:layout_constraintTop_toBottomOf="@id/cl_title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/cv_confirm">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_permission1"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <FrameLayout
+                        android:id="@+id/fl_guide1"
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_icon_permission1"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/intro_permission_icon_bg"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+                        <ImageView
+                            android:id="@+id/iv_icon_permission1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:background="@drawable/intro_permission_icon_location"
+                            app:layout_constraintDimensionRatio="81:73"
+                            app:layout_constraintWidth_percent="0.4"
+                            app:layout_constraintTop_toTopOf="@id/iv_icon_permission1"
+                            app:layout_constraintLeft_toLeftOf="@id/iv_icon_permission1"
+                            app:layout_constraintRight_toRightOf="@id/iv_icon_permission1"
+                            app:layout_constraintBottom_toBottomOf="@id/iv_icon_permission1"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="@font/notosans_medium"
+                        android:text="@string/permission_necessary"
+                        android:textColor="@color/gray6"
+                        android:textSize="14dp"
+                        android:gravity="center"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_name_permission1"
+                        app:layout_constraintLeft_toRightOf="@id/tv_name_permission1"
+                        app:layout_constraintTop_toTopOf="@id/tv_name_permission1" />
+
+                    <TextView
+                        android:id="@+id/tv_desc_permission1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/notosans_medium"
+                        android:text="@string/permission_location_desc"
+                        android:textColor="@color/gray6"
+                        android:textSize="14dp"
+                        android:layout_marginBottom="5dp"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        app:layout_constrainedWidth="true"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintLeft_toLeftOf="@id/tv_name_permission1"
+                        app:layout_constraintTop_toBottomOf="@id/fl_guide1"
+                        app:layout_constraintBottom_toBottomOf="@id/cl_icon_permission1"/>
+
+                    <TextView
+                        android:id="@+id/tv_name_permission1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:fontFamily="@font/notosans_medium"
+                        android:text="@string/permission_location"
+                        android:textColor="@color/semi_black"
+                        android:textSize="16dp"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/fl_guide1"
+                        app:layout_constraintLeft_toRightOf="@id/cl_icon_permission1"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_permission2"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cl_permission1">
+
+                    <FrameLayout
+                        android:id="@+id/fl_guide2"
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_icon_permission2"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/intro_permission_icon_bg"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+                        <ImageView
+                            android:id="@+id/iv_icon_permission2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:background="@drawable/intro_permission_icon_storage"
+                            app:layout_constraintDimensionRatio="75:85"
+                            app:layout_constraintWidth_percent="0.375"
+                            app:layout_constraintTop_toTopOf="@id/iv_icon_permission2"
+                            app:layout_constraintLeft_toLeftOf="@id/iv_icon_permission2"
+                            app:layout_constraintRight_toRightOf="@id/iv_icon_permission2"
+                            app:layout_constraintBottom_toBottomOf="@id/iv_icon_permission2"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="@font/notosans_medium"
+                        android:text="@string/permission_necessary"
+                        android:textColor="@color/gray6"
+                        android:textSize="14dp"
+                        android:gravity="center"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_name_permission2"
+                        app:layout_constraintLeft_toRightOf="@id/tv_name_permission2"
+                        app:layout_constraintTop_toTopOf="@id/tv_name_permission2" />
+
+                    <TextView
+                        android:id="@+id/tv_desc_permission2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/notosans_medium"
+                        android:text="@string/permission_storage_desc"
+                        android:textColor="@color/gray6"
+                        android:textSize="14dp"
+                        android:layout_marginBottom="5dp"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        app:layout_constrainedWidth="true"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintLeft_toLeftOf="@id/tv_name_permission2"
+                        app:layout_constraintTop_toBottomOf="@id/fl_guide2"
+                        app:layout_constraintBottom_toBottomOf="@id/cl_icon_permission2"/>
+
+                    <TextView
+                        android:id="@+id/tv_name_permission2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:fontFamily="@font/notosans_medium"
+                        android:text="@string/permission_storage"
+                        android:textColor="@color/semi_black"
+                        android:textSize="16dp"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/fl_guide2"
+                        app:layout_constraintLeft_toRightOf="@id/cl_icon_permission2"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_permission3"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cl_permission2">
+
+                    <FrameLayout
+                        android:id="@+id/fl_guide3"
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_icon_permission3"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/intro_permission_icon_bg"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+                        <ImageView
+                            android:id="@+id/iv_icon_permission3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:background="@drawable/intro_permission_icon_notification"
+                            app:layout_constraintDimensionRatio="69:82"
+                            app:layout_constraintWidth_percent="0.345"
+                            app:layout_constraintTop_toTopOf="@id/iv_icon_permission3"
+                            app:layout_constraintLeft_toLeftOf="@id/iv_icon_permission3"
+                            app:layout_constraintRight_toRightOf="@id/iv_icon_permission3"
+                            app:layout_constraintBottom_toBottomOf="@id/iv_icon_permission3"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="@font/notosans_medium"
+                        android:text="@string/permission_necessary"
+                        android:textColor="@color/gray6"
+                        android:textSize="14dp"
+                        android:gravity="center"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_name_permission3"
+                        app:layout_constraintLeft_toRightOf="@id/tv_name_permission3"
+                        app:layout_constraintTop_toTopOf="@id/tv_name_permission3" />
+
+                    <TextView
+                        android:id="@+id/tv_desc_permission3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/notosans_medium"
+                        android:text="@string/permission_alarm_desc"
+                        android:textColor="@color/gray6"
+                        android:textSize="14dp"
+                        android:layout_marginBottom="5dp"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        app:layout_constrainedWidth="true"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintLeft_toLeftOf="@id/tv_name_permission3"
+                        app:layout_constraintTop_toBottomOf="@id/fl_guide3"
+                        app:layout_constraintBottom_toBottomOf="@id/cl_icon_permission3"
+                        app:layout_constraintHorizontal_bias="0"/>
+
+                    <TextView
+                        android:id="@+id/tv_name_permission3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:fontFamily="@font/notosans_medium"
+                        android:text="@string/permission_alarm"
+                        android:textColor="@color/semi_black"
+                        android:textSize="16dp"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/fl_guide3"
+                        app:layout_constraintLeft_toRightOf="@id/cl_icon_permission3"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_confirm"
+            style="@style/CommonButtonCardStyle"
+            android:layout_width="0dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_permission_confrim"
+                style="@style/CommonButtonStyle"
+                android:text="@string/ok"
+                android:onClick="onConfirmClick"/>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

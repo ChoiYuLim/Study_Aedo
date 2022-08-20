@@ -1,0 +1,392 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">애도</string>
+    <string name="client_id">wdi9z6cfek</string>
+    <string name="ok">확인</string>
+    <string name="cancel">취소</string>
+    <string name="update">업데이트</string>
+    <string name="exit">종료</string>
+    <string name="not_show_again">다시보지않기</string>
+    <string name="kakao_key">fb6d89598fd7acc40272f792dfa0dc1e</string>
+    <string name="kakao_scheme">kakaofb6d89598fd7acc40272f792dfa0dc1e</string>
+    <string name="kakao_link">kakaolink</string>
+
+    <string name="backpress_exit">\'뒤로\' 버튼을 한 번 더 누르시면 앱이 종료됩니다.</string>
+
+    <string name="agree_service">서비스 이용약관</string>
+    <string name="agree_get">개인정보 수집 및 이용동의</string>
+    <string name="agree_three">제3자 제공 동의</string>
+    <string name="permission_1">[설정] > [권한] 에서 권한을 허용할 수 있습니다.</string>
+    <string name="permission_2">사진 및 파일을 저장하기 위하여 접근 권한이 필요합니다.</string>
+
+
+    <!-- 접근 권한 동의 -->
+    <string name="permission_title">앱 접근 권한 동의</string>
+    <string name="permission_camera">카메라</string>
+    <string name="permission_camera_desc">QR코드 스캔 및 반납 사진 촬영</string>
+    <string name="permission_location">위치정보</string>
+    <string name="permission_location_desc">위치기반 서비스 제공</string>
+    <string name="permission_storage">저장공간</string>
+    <string name="permission_storage_desc">첨부파일 저장</string>
+    <string name="permission_bluetooth">블루투스</string>
+    <string name="permission_bluetooth_desc">자전거 잠금장치 통신</string>
+    <string name="permission_alarm">알림</string>
+    <string name="permission_alarm_desc">공지 및 PUSH 알림</string>
+    <string name="permission_select">(선택)</string>
+    <string name="permission_necessary">(필수)</string>
+
+    <string name="permission_error_all_agree">권한동의를 하지 않으면 앱을 이용하실 수 없습니다.</string>
+    <string name="permission_error_all_agree_not_show">권한동의를 하지 않으면 앱을 이용하실 수 없습니다. \n[애플리케이션 설정] - [권한]에서 권한을 확인 해주세요.</string>
+
+    <string name="permission_push_title">마케팅정보(PUSH) 수신동의</string>
+    <string name="permission_push_agree">애도에서 제공하는 행사 및 이벤트, 할인 등의 정보와 다양한 혜택의 알림을 받으시겠습니까?</string>
+    <string name="permission_push_agree_sub">마케팅 정보 수신 동의는\n메뉴>설정에서 변경(동의/철회) 할 수 있습니다.</string>
+    <string name="permission_push_yes">동의</string>
+    <string name="permission_push_no">동의안함</string>
+    <string name="permission_push_sender">1. 전송자 : 애도</string>
+    <string name="permission_push_process_day">2. 처리일 :</string>
+    <string name="permission_push_process_result">3. 처리내용 :</string>
+    <string name="permission_push_process_agree">마케팅 정보 푸시 수신 동의</string>
+    <string name="permission_push_process_disagree">마케팅 정보 푸시 수신 거부</string>
+
+    <string name="error_network_connectivity">네트워크에 연결 할 수 없습니다.\n네트워크 연결상태를 확인해주세요.</string>
+    <string name="error_network">네트워크 에러가 발생했습니다.</string>
+    <string name="error_policy_data">정책정보를 불러오던 중 에러가 발생했습니다.</string>
+    <string name="error_policy_update_db">정책정보를 업데이트 하던중 에러가 발생했습니다.\n앱을 다시 실행해주세요.</string>
+    <string name="service_disable_error">서비스 점검중입니다.\n잠시 후에 다시 시도해 주세요.</string>
+    <string name="need_update_app">앱 업데이트가 필요합니다.\n업데이트를 진행해 주세요.</string>
+    <string name="auth_num_wrong_text">인증번호가 잘못되었습니다.</string>
+
+
+    <string name="warning_close_app">앱을 종료하시겠습니까?</string>
+    <string name="warning_rooting">안전한 앱 이용과 고객님의 정보보호를 위해 탈옥이나 루팅을 통한 비정상 단말은 지원되지 않습니다.</string>
+    <string name="warning_repackaging">정상적이지 않은 경로로 설치된 앱입니다.\n앱 제거 후 스토어에서 다시 다운로드 해주세요.</string>
+
+    <string name="update_cancle">종료</string>
+    <string name="update_start">업데이트</string>
+
+    <string name="login_authnum">인증번호</string>
+
+    <string name="login_desc1">휴대전화 번호를 입력해주세요.</string>
+    <string name="login_subtitle1">안녕하세요. 애도입니다.\n로그인을 위해 휴대전화 번호를 입력해주세요.</string>
+
+    <string name="login_desc2">인증번호를 입력해주세요.</string>
+    <string name="login_subtitle2">휴대전화로 전송된 6자리의\n인증번호를 입력해주세요.</string>
+
+    <string name="login_desc3">회원가입이 필요합니다.</string>
+    <string name="login_subtitle3">회원정보를 입력해주시고 약관 동의를 해주세요.</string>
+
+    <string name="login_title_phone_number">휴대전화 번호 입력</string>
+    <string name="login_title_phone_number_auth">휴대전화 번호</string>
+    <string name="login_hint_phone_number">\'-\' 없이 입력해주세요.</string>
+    <string name="login_hint_auth_number">인증번호를 입력해주세요</string>
+    <string name="login_btn_sms_send">인증번호 전송</string>
+    <string name="login_hint_birth">6자리 생년월일을 입력해주세요.</string>
+    <string name="login_hint_name">이름을 입력해 주세요.</string>
+
+    <string name="login_btn_phone_input_again">휴대전화 번호 재입력</string>
+    <string name="login_btn_auth_sms_request_again">인증코드 재전송</string>
+    <string name="login_confirm_auth_sms_request_again">인증코드를 재전송하시겠습니까?</string>
+
+    <string name="login_terms_all">이용약관 동의, 개인정보 이용동의, 제3자정보제공동의, 위치정보이용동의의 모든 약관을 확인 하였으며, 충분히 숙지 하였고 동의 합니다.</string>
+    <string name="login_terms_term">이용약관 동의</string>
+    <string name="login_terms_privit">개인정보 이용동의</string>
+    <string name="login_terms_third">제3자정보제공동의</string>
+    <string name="login_terms_location">위치정보이용동의</string>
+    <string name="login_terms_end">의 모든 약관을 확인 하였으며, 충분히 숙지 하였고 동의 합니다.</string>
+    <string name="login_terms_divider">, </string>
+
+    <string name="error_network_server_connect">서버 연결에 실패하였습니다.</string>
+
+    <string name="message_send">메시지가 전송되었습니다.</string>
+    <string name="login_subtitle_phone">휴대폰 본인인증</string>
+    <string name="login_subtitle_birtday">생년월일</string>
+    <string name="login_subtitle_gender">이름</string>
+    <string name="login_layout_hint">휴대폰 번호 입력</string>
+    <string name="login_join_age_error_15">만 15세 이상만\n가입 할 수 있습니다.</string>
+    <string name="longin_success">회원가입되었습니다.</string>
+    <string name="login_failed">회원가입에 실패했습니다.</string>
+    <string name="login_error_place">지역을 입력해 주세요.</string>
+    <string name="login_error_agree">이용약관에 동의해 주세요.</string>
+    <string name="login_error_bitrhday">생년월일 정보가 올바르지 않습니다.</string>
+    <string name="login_error_phone_num">휴대전화 번호 정보가 올바르지 않습니다.</string>
+    <string name="login_error_token">토큰 정보가 올바르지 않습니다.</string>
+    <string name="login_error_info">로그인 정보가 올바르지 않습니다.</string>
+    <string name="login_error_auth_num">인증번호 4자리를 모두 입력해 주세요.</string>
+    <string name="login_layout_hint_phone">휴대전화번호를 입력해 주세요.</string>
+    <string name="login_layout_auth_send">인증번호받기</string>
+    <string name="login_layout_auth_resend">인증번호재전송</string>
+    <string name="login_layout_auth_input">인증번호 입력</string>
+    <string name="login_layout_birthday">생년월일</string>
+    <string name="login_layout_hint_birthday">YYYYMMDD</string>
+    <string name="login_layout_gender">성별</string>
+    <string name="login_layout_gender_male">남</string>
+    <string name="login_layout_gender_female">여</string>
+    <string name="login_error_join_info">회원정보가 누락되었습니다.\n다시 로그인해 주세요.</string>
+    <string name="login_term_warning">※ 회원가입은 만 15세 이상만 가능합니다. 허위사항 기재 시\n불이익을 받을 수 있습니다.</string>
+
+    <string name="gender_male">남</string>
+    <string name="gender_female">여</string>
+    <string name="term_check">이용약관 동의를 체크해주세요.</string>
+    <string name="phone_check">핸드폰 번호를 정확하게 입력해주세요.</string>
+
+    <string name="login_picker_year">yyyy년</string>
+    <string name="login_picker_month">MM월</string>
+    <string name="login_picker_day">dd일</string>
+    <string name="login_picker_year_suffix">년</string>
+    <string name="login_picker_month_suffix">월</string>
+    <string name="login_picker_day_suffix">일</string>
+    <string name="detail_text">㈜애도 임직원 일동\n삼가 고인의 명복을 빕니다.</string>
+    <!-- 약관 -->
+    <string name="term_agree_again_popup">회원님은 약관 재동의 대상입니다.\n약관 재동의 화면으로 이동합니다.</string>
+    <string name="term_agree_again_title">이용약관 및 개인정보 수집 및\n이용 재동의 안내</string>
+    <string name="term_agree_again_content">회원 서비스를 이용하기 위해서는 아래의 이용약관 및 \n개인정보 수집·이용에 재동의하셔야 합니다.</string>
+    <string name="term_agree_again_success">약관 재동의가 완료되었습니다.</string>
+    <string name="term_agree_again_msg">약관에 동의해 주시기 바랍니다.</string>
+
+    <string name="error_terms_version_no_availavle">약관 버전이 유효하지 않습니다.</string>
+    <string name="menu_infor">이용안내</string>
+    <string name="menu_card">결제수단</string>
+    <string name="menu_list">부고목록</string>
+    <string name="menu_find">장례식장 찾기</string>
+    <string name="menu_center">고객센터</string>
+    <string name="menu_setting">설정</string>
+
+    <string name="server_check">서버 점검중입니다.\n잠시 후에 이용해 주세요.</string>
+    <string name="update_check">앱 업데이트가 필요합니다.\n업데이트를 진행해주세요.</string>
+    <string name="network_check">네트워크 연결이 원활하지 않습니다.\n다시 시도해 주세요.</string>
+    <string name="list_delete">부고 관리</string>
+
+    <string name="btn_delete">삭제</string>
+    <string name="btn_modify">수정</string>
+
+
+    <string name="setting_section_setting">기능설정</string>
+    <string name="setting_section_terms">약관상세</string>
+    <string name="setting_section_account">계정</string>
+    <string name="setting_section_version">버전</string>
+
+    <string name="setting_item_auto_login">자동 로그인</string>
+    <string name="setting_item_receive_push">푸시 수신</string>
+    <string name="setting_item_receive_admin_push">관리자 푸시 수신</string>
+    <string name="setting_item_app_language">언어설정</string>
+
+    <string name="setting_item_terms_user">이용약관</string>
+    <string name="setting_item_terms_private">개인정보이용동의</string>
+    <string name="setting_item_terms_third">제3자정보제공이용동의</string>
+    <string name="setting_item_terms_location">위치정보활용동의</string>
+
+    <string name="setting_item_logout">로그아웃</string>
+    <string name="setting_item_member_resign">회원탈퇴</string>
+    <string name="setting_item_version">버전</string>
+
+    <string name="setting_item_logout_complete">로그아웃이 완료되었습니다.</string>
+
+    <string-array name="spinner_relationship">
+        <item>관계 선택</item>
+        <item>배우자</item>
+        <item>아들</item>
+        <item>딸</item>
+        <item>며느리</item>
+        <item>사위</item>
+        <item>손</item>
+        <item>손자</item>
+        <item>손녀</item>
+        <item>외손</item>
+        <item>외손자</item>
+        <item>외손녀</item>
+        <item>손부</item>
+        <item>손서</item>
+        <item>외손부</item>
+        <item>외손서</item>
+        <item>상주</item>
+        <item>조카</item>
+        <item>형제</item>
+        <item>자매</item>
+        <item>부</item>
+        <item>모</item>
+        <item>형</item>
+        <item>동생</item>
+        <item>형수</item>
+        <item>제수</item>
+        <item>처남</item>
+        <item>매제</item>
+        <item>매형</item>
+        <item>누나</item>
+        <item>언니</item>
+        <item>남매</item>
+    </string-array>
+
+    <string-array name="spinner_place">
+        <item>장례식장 선택</item>
+        <item>구례산림조합장례식장</item>
+        <item>구례병원장례식장</item>
+        <item>구례효사랑요양병원장례식장</item>
+        <item>새미소요양병원장례식장</item>
+    </string-array>
+
+    <string-array name="spinner_text">
+        <item>리본 문구를 입력해 주세요</item>
+        <item>삼가 故人의 冥福을 빕니다</item>
+        <item>삼가 고인의 명복을 빕니다</item>
+        <item>謹 弔</item>
+        <item>極樂往生發源</item>
+        <item>극락왕생발원</item>
+        <item>천국에서 편히 쉬소서</item>
+        <item>하나님의 위로가 함께 하시길 빕니다</item>
+    </string-array>
+
+    <string-array name="spinner_hour">
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+    </string-array>
+
+    <string-array name="spinner_min">
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+        <item>48</item>
+        <item>49</item>
+        <item>50</item>
+        <item>51</item>
+        <item>52</item>
+        <item>53</item>
+        <item>54</item>
+        <item>55</item>
+        <item>56</item>
+        <item>57</item>
+        <item>58</item>
+        <item>59</item>
+
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="activity_shop_tab_1">근조화환</string>
+    <string name="activity_shop_tab_2">바구니/오브제</string>
+    <string name="activity_shop_tab_3">리본교체</string>
+    <string name="item_activity_shop_won">원</string>
+    <string name="text_dialog_send_obituary">문자 메세지</string>
+    <string name="text_dialog_send_obituary_kakao">카카오톡</string>
+    <string name="text_dialog_send_obituary_title">부고 보내기</string>
+    <string name="text_dialog_edit_obituary_title">부고관리</string>
+    <string name="text_dialog_edit_obituary_remove">삭제</string>
+    <string name="text_dialog_edit_obituary_edit">수정</string>
+    <string name="text_activity_report_button">제출하기</string>
+    <string name="hint_activity_report_edittext">신고 사유를 입력해주세요.</string>
+    <string name="hint_activity_report_edittext_name">대표상주 이름을 입력해 주세요.</string>
+
+    <string name="thanks_first">1. 조문감사</string>
+    <string name="thanks_first_detail">바쁘신 중에도 장례에 오셔서 위로해주셔서 정말 감사드립니다\n건강 하시길 기도 드리며 다시 한번 더 감사의 인사를 드립니다.</string>
+    <string name="thanks_second">2. 조문감사</string>
+    <string name="thanks_second_detail">기도와 위로 주시고 슬픔을 함께 해주셔서 장례를 잘 마칠 수 있었습니다.\n고마운 마음 잊지 않고 오래도록 기억 하겠습니다.\n다시 한번 감사의 인사드립니다.</string>
+    <string name="thanks_third">3. 조문감사</string>
+    <string name="thanks_third_detail">바쁘신 와중에도 참석하여 따뜻한 위로의 말씀을 해주신 점 깊이 감사드립니다.\n덕분에 장례는 무사히 마치게 되었습니다.\n정말 큰 위로와 힘이 되었으며 감사한 마음을 오래토록 잊지 않고 간직 하겠습니다.</string>
+    <string name="thanks_four">4. 조문감사</string>
+    <string name="thanks_four_detail">먼곳에서 조문을 와주시고 따뜻한 조위와 후의를 베풀어 주시어 무사히 장례를 마칠 수 있었습니다.\n깊은 감사드립니다.</string>
+    <string name="thanks_five">5. 조문감사</string>
+    <string name="thanks_five_detail">직접 찾아뵙지 않고 문자를 통해서 감사의 인사를 드리는 부분 양해 부탁드립니다.\n다시 한번 감사 드리고 가정의 평안과 행운이 가득 하시길 기원 하겠습니다.</string>
+
+    <string name="FAQ_first">1. 화한 주문 결제</string>
+    <string name="FAQ_first_detail">화한주문 페이지를 클릭한 뒤\n원하시는 화한을 선택 후 결제해주시면 됩니다.</string>
+    <string name="FAQ_second">2. 화한 주문 환불</string>
+    <string name="FAQ_second_detail">고객센터로 문의해주세요</string>
+    <string name="FAQ_third">3. 부고 공유가 되지 않아요</string>
+    <string name="FAQ_third_detail">고객센터로 문의해주세요</string>
+    <string name="FAQ_four">4. 길찾기</string>
+    <string name="FAQ_four_detail">고객센터로 문의해주세요</string>
+    <string name="FAQ_five">5. 부고 작성</string>
+    <string name="FAQ_five_detail">고객센터로 문의해주세요</string>
+
+    <string name="shop_first_first">[근조] 3단화환 1호</string>
+    <string name="shop_first_second">[근조] 3단화환 2호</string>
+    <string name="shop_first_third">[근조] 3단화환 3호</string>
+    <string name="shop_first_four">[근조] 4단화환 1호</string>
+
+    <string name="shop_second_first">영정 바구니</string>
+    <string name="shop_second_second">오브제, 장구 1단</string>
+    <string name="shop_second_third">오브제 2단, 장구 2단</string>
+    <string name="change_flower_first">1줄 리본 교체</string>
+    <string name="change_flower_second">2줄 리본 교체</string>
+
+    <string name="naver_key">wdi9z6cfek</string>
+    <string name="naver_pass_key">p1N78g4eR7SRlGMxlHGp6yVFYNwdqXOHNnJKUVlv</string>
+
+    <string name="flower_first">국화, 글라디올러스, 거베라, 백합, 아이리스, 안개꽃,\n장미, 튤립, 프리지아, 카네이션, 칼라 : \n기타-국내산 또는 수입산</string>
+    <string name="flower_second">원칙적으로는 이미지를 기준으로 제작되나 \n지역 및 계절에 따라 (화환의 모양. 크기, 꽃의 수량 \n및 종류가) 다를 수 있습니다</string>
+    <string name="flower_third">지역 및 꽃 수급에 따라 생화와 조화가 섞여서 \n제작될 수 있으며 지역별로 꽃을 제작하는 화원사는 \n각각의 스타일로 상품을 제작하여 서비스 상의 \n대표 이미지와 동일하게 제작되지 \n않을 수 있음을 안내 드립니다.</string>
+    <string name="flower_four" tools:ignore="TypographyDashes">온라인 : 24시간 자동주문\n전화주문 : 08시 ~ 20시 00분\n수정사항이 있으신 경우 결제완료 후 30분이내 \n고객센터로 접수하여 주시기 바랍니다.</string>
+    <string name="flower_five">국내 전 지역 3시간 안에 배송이 가능하나 \n도서 산간지역이나 시군 소재지에서 떨어진 \n일부 지역의 경우 배송이 지연될 수 있습니다\n당일 : 당일 19시 이전 결제완료 상품은 당일 배송완료\n(당일 3시간이내 배송이 가능하나 \n도로 교통상황등에 따라 지연될 수 있습니다.)\n익일 : 당일 19시 이후 결제완료 상품은 \n익일 오전 9시부터 순차배송 •\n일부지역은 상기 시간 이전에 배송이 마감될 수 있습니다.\n(이 경우 익일 오전에 배송이 진행되며, \n고객센터에서 별도 안내 드립니다.)</string>
+    <string name="flower_six">교환 안내 : 배송완료 후 불량, 파손된 상품이 \n배송되었을 경우 교환 또는 \n상품회수 후 환불이 가능합니다.\n(회수될 상품의 훼손 또는 부자재 누락의 경우 환불 불가)\n교환이나 주문취소 요청 시 \n반드시 고객센터로 전화해 주셔야 합니다.</string>
+    <string name="flower_seven">환불 안내 : 결제완료 후 30분이내 요청 시 배송시작 \n전인 경우 결제취소 또는 환불이 가능합니다.\n상품이 품절되었거나 기타 사유로 인해 \n배송이 불가능한 경우(지정하신 환불계좌 확인 후 익일) \n환불해 드립니다.</string>
+    <string name="flower_eight">환불 불가 안내 :고객님의 실수로 배송정보 기재 \n및 리본문구 오류, 부재 등으로 인한 \n반품 및 환불은 불가능합니다.\n고객님의 배송지 정보기재 오류 인해 배송지 변경 시 \n제작비 및 배송비가 추가될 수 있으며 \n수취인의 수취거부시는 교환 및 취소가 불가능합니다.\n배송된 화환은 따로 수거해드리지 않습니다.</string>
+    <string name="flower_nine">결제 후 20분 이내 리본 문구와 정보 수정이 \n필요하신 경우 고객센터에서 즉시 변경해 드립니다</string>
+    <string name="flower_ten">결제 후 20분이 경과 된 이 후, 정보 변경을 요청하신 경우 \n리본 문구 출력 등이 완료 되어 수정 및 변경이 불가 합니다. \n(재 수정 요청 시 별도 비용 발생됩니다)</string>
+
+
+</resources>

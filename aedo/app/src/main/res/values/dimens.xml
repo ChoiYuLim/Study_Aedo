@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="logo_margin">12dp</dimen>
+    <dimen name="marker_size">60dp</dimen>
+    <dimen name="custom_info_window_offset_x">-27dp</dimen>
+    <dimen name="custom_info_window_offset_y">-9dp</dimen>
+    <dimen name="overlay_line_width">3dp</dimen>
+    <dimen name="overlay_pattern_interval">10dp</dimen>
+    <dimen name="location_overlay_circle_raduis">100dp</dimen>
+    <dimen name="path_overlay_width">8dp</dimen>
+    <dimen name="path_overlay_outline_width">2dp</dimen>
+    <dimen name="arrowhead_path_overlay_width">10dp</dimen>
+    <dimen name="arrowhead_path_overlay_outline_width">2dp</dimen>
+    <dimen name="arrowhead_path_overlay_elevation">5dp</dimen>
+    <dimen name="fit_bounds_padding">24dp</dimen>
+    <dimen name="map_padding_left">40dp</dimen>
+    <dimen name="map_padding_top">20dp</dimen>
+    <dimen name="map_padding_right">60dp</dimen>
+    <dimen name="map_padding_bottom">100dp</dimen>
+    <dimen name="scroll_by_x">200dp</dimen>
+    <dimen name="scroll_by_y">-100dp</dimen>
+    <dimen name="pick_radius">30dp</dimen>
+    <dimen name="bike_width">40dp</dimen>
+    <dimen name="bike_height">50dp</dimen>
+    <dimen name="main_font_extra">11dp</dimen>
+    <dimen name="station_width"> 40dp</dimen>
+    <dimen name="station_height"> 52dp</dimen>
+    <dimen name="main_location_width">50dp</dimen>
+    <dimen name="main_location_height">44dp</dimen>
+    <dimen name="common_font_big">19dp</dimen>
+    <dimen name="common_font_top_title">18dp</dimen>
+    <dimen name="common_font_top_title_big">25dp</dimen>
+    <dimen name="common_font_title">16dp</dimen>
+    <dimen name="common_font_text">14dp</dimen>
+    <dimen name="common_font_small">12dp</dimen>
+    <dimen name="common_font_small2">11dp</dimen>
+    <dimen name="common_font_micro">10dp</dimen>
+    <dimen name="common_view_title_height">56dp</dimen>
+    <dimen name="common_toast_bottom_margin">100dp</dimen>
+    <dimen name="location_overlay_width">51dp</dimen>
+    <dimen name="location_overlay_height">45dp</dimen>
+    <dimen name="overlay_padding_vertical">25dp</dimen>
+    <dimen name="overlay_padding_bottom">4dp</dimen>
+    <dimen name="overlay_padding_horizontal">20dp</dimen>
+    <dimen name="font_overlay_title">17dp</dimen>
+    <dimen name="font_overlay_ticket_date">16dp</dimen>
+    <dimen name="font_overlay_text">13dp</dimen>
+    <dimen name="font_overlay_button_text">12dp</dimen>
+    <dimen name="font_overlay_subtitle">11dp</dimen>
+    <dimen name="font_overlay_date_small_text">13dp</dimen>
+    <dimen name="overlay_margin_title_bottom">10dp</dimen>
+    <dimen name="overlay_margin_interval">8dp</dimen>
+    <dimen name="overlay_margin_icon_margin">6dp</dimen>
+    <dimen name="overlay_margin_button_margin_extra">18dp</dimen>
+    <dimen name="overlay_margin_button_margin">15dp</dimen>
+    <dimen name="overlay_margin_icon_right">10dp</dimen>
+    <dimen name="overlay_margin_icon_right2">5dp</dimen>
+    <dimen name="overlay_margin_text_right">15dp</dimen>
+    <dimen name="overlay_button_height">30dp</dimen>
+    <dimen name="overlay_button_radius">15dp</dimen>
+    <dimen name="font_overlay_text_big">18dp</dimen>
+
+    <!-- 메인 -->
+    <dimen name="main_btn_menu">60dp</dimen>
+    <dimen name="main_btn_notice">50dp</dimen>
+    <dimen name="main_btn_notice_badge">4dp</dimen>
+    <dimen name="main_btn_notice_radius">25dp</dimen>
+    <dimen name="main_btn">40dp</dimen>
+    <dimen name="main_btn_extra">54dp</dimen>
+
+    <!-- 마커 -->
+    <dimen name="marker_bike_size">34dp</dimen>
+    <dimen name="marker_station_size">40dp</dimen>
+    <dimen name="marker_font_size">16dp</dimen>
+    <dimen name="marker_font_size_extra">15dp</dimen>
+
+    <!-- 사이드 메뉴 -->
+    <dimen name="mypage_profile_icon">45dp</dimen>
+    <dimen name="mypage_menu_icon">24dp</dimen>
+
+    <dimen name="mypage_tiket_height">82dp</dimen>
+    <dimen name="mypage_tiket_padding_horizontal">20dp</dimen>
+    <dimen name="mypage_tiket_text_margin">3dp</dimen>
+    <dimen name="mypage_tiket_label_margin">10dp</dimen>
+    <dimen name="mypage_tiket_label_height">15dp</dimen>
+    <dimen name="mypage_tiket_label_radius">7dp</dimen>
+    <dimen name="mypage_tiket_label_padding">5dp</dimen>
+
+    <!-- 설정 -->
+    <dimen name="setting_margin_horizontal">20dp</dimen>
+    <dimen name="setting_margin_title_bottom">7dp</dimen>
+    <dimen name="setting_margin_text_vertical">10dp</dimen>
+
+    <dimen name="main_rent_padding_vertical">10dp</dimen>
+    <dimen name="main_rent_padding_horizontal">25dp</dimen>
+    <dimen name="main_rent_qr_size_width">23dp</dimen>
+    <dimen name="main_rent_qr_size_height">21dp</dimen>
+    <dimen name="main_rent_padding_qr_right">15dp</dimen>
+
+    <dimen name="main_contorl_button_icon">30dp</dimen>
+    <dimen name="main_contorl_button_icon_padding_right">15dp</dimen>
+    <dimen name="main_contorl_button_padding">5dp</dimen>
+    <dimen name="main_contorl_padding_vertical">5dp</dimen>
+    <dimen name="main_contorl_padding_horizontal">15dp</dimen>
+
+    <!-- QR코드 -->
+    <dimen name="qr_code_input_margin_vertical">50dp</dimen>
+    <dimen name="qr_code_input_margin_horizontal">20dp</dimen>
+    <dimen name="qr_flash_button_margin_vertical">10dp</dimen>
+    <dimen name="qr_flash_button_margin_horizontal">50dp</dimen>
+    <dimen name="qr_flash_button_text">17dp</dimen>
+    <dimen name="qr_admin_battery_margin">15dp</dimen>
+    <dimen name="qr_admin_battery_padding_horizontal">10dp</dimen>
+    <dimen name="qr_admin_battery_padding_top">3dp</dimen>
+    <dimen name="qr_admin_battery_padding_bottom">7dp</dimen>
+
+    <!-- 위치 선택 -->
+    <dimen name="overlay_select_location_title">20dp</dimen>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+
+
+</resources>

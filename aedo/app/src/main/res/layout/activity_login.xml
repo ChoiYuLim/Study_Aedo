@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="activity"
+            type="com.aedo.my_heaven.view.login.LoginActivity" />
+        <variable
+            name="viewModel"
+            type="com.aedo.my_heaven.util.observable.LoginObservable" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".view.member.LoginActivity">
+
+        <!-- 뒤로가기 버튼 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_title"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:visibility="visible"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_button_left"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/iv_title_left"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintHeight_percent="0.29"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="70:60"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_back"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@android:color/transparent"
+                    android:onClick="onTitleLeftClick"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/cl_title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/cl_ok"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp">
+
+                    <androidx.legacy.widget.Space
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"/>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_header"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/tv_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="71dp"
+                            android:textColor="@color/semi_black"
+                            android:textSize="24dp"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="휴대전화 번호를\n입력해주세요" />
+
+                        <TextView
+                            android:id="@+id/tv_title_sub"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            tools:text="@string/login_subtitle1"
+                            android:textSize="@dimen/common_font_text"
+                            android:textColor="@color/semi_black"
+                            android:layout_marginTop="13dp"
+                            app:layout_constraintTop_toBottomOf="@id/tv_title"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_phone_num_parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility='@{viewModel.loginProcess == 0 ? View.VISIBLE : View.GONE, default = gone}'
+                        tools:visibility="visible">
+
+                        <!-- 휴대폰 번호 입력 -->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_phone_num"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="44dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent">
+
+                            <TextView
+                                android:id="@+id/tv_phonenum_input"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                android:textColor="@color/gray6"
+                                android:textSize="14dp"
+                                android:text="@string/login_title_phone_number"
+                                android:fontFamily="@font/notosans_medium"/>
+                            <EditText
+                                android:id="@+id/et_phonenum"
+                                android:layout_width="0dp"
+                                android:layout_height="43dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:background="@android:color/transparent"
+                                android:hint="@string/login_hint_phone_number"
+                                android:textSize="@dimen/common_font_title"
+                                android:textColor="@color/colorOverlayAccent"
+                                android:text='@={viewModel.phoneNum}'
+                                android:maxLength="11"
+                                android:fontFamily="@font/notosans_medium"
+                                tools:text="01055757365"
+                                app:layout_constraintHorizontal_weight="1"
+                                app:layout_constraintTop_toBottomOf="@id/tv_phonenum_input"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toLeftOf="@id/cl_phonenum_delete"
+                                android:inputType="number" />
+
+                            <!-- 클리어 버튼 -->
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/cl_phonenum_delete"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:visibility="gone"
+                                app:layout_constraintDimensionRatio="1:1"
+                                app:layout_constraintTop_toTopOf="@id/et_phonenum"
+                                app:layout_constraintBottom_toBottomOf="@id/et_phonenum"
+                                app:layout_constraintLeft_toRightOf="@id/et_phonenum"
+                                app:layout_constraintRight_toRightOf="parent">
+
+                                <ImageView
+                                    android:id="@+id/iv_phonenum_delete"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:layout_marginTop="15dp"
+                                    android:layout_marginBottom="15dp"
+                                    android:background="@drawable/clear"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintDimensionRatio="1:1"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+                                <androidx.appcompat.widget.AppCompatButton
+                                    android:id="@+id/btn_phonenum_delete"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:background="@android:color/transparent"
+                                    android:onClick='@{activity::onClearPhoneClick}'
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintLeft_toLeftOf="parent"/>
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="2dp"
+                                android:background="@color/gray1"
+                                app:layout_constraintTop_toBottomOf="@id/et_phonenum"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"/>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_auth_num_parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_auth_num"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent">
+
+                            <TextView
+                                android:id="@+id/tv_phonenum_auth_title"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                android:textColor="@color/gray6"
+                                android:textSize="@dimen/common_font_text"
+                                android:text="@string/login_title_phone_number_auth"
+                                android:visibility="visible"
+                                android:fontFamily="@font/notosans_medium"/>
+                            <TextView
+                                android:id="@+id/tv_phonenum_auth"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintTop_toBottomOf="@id/tv_phonenum_auth_title"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                android:textColor="@color/colorOverlayAccent"
+                                android:visibility="visible"
+                                android:textSize="@dimen/common_font_title"
+                                android:text='@{viewModel.phoneNum}'
+                                tools:text="01012341234"
+                                android:fontFamily="@font/notosans_medium"/>
+
+
+                            <TextView
+                                android:id="@+id/tv_phonenum_authnum_title"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="36dp"
+                                app:layout_constraintTop_toBottomOf="@id/tv_phonenum_auth"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                android:textColor="@color/gray6"
+                                android:textSize="@dimen/common_font_text"
+                                android:text="@string/login_authnum"
+                                android:fontFamily="@font/notosans_medium"/>
+
+                            <EditText
+                                android:id="@+id/et_authnum"
+                                android:layout_width="0dp"
+                                android:layout_height="43dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:background="@android:color/transparent"
+                                android:hint="@string/login_hint_auth_number"
+                                android:textSize="@dimen/common_font_title"
+                                android:textColor="@color/semi_black"
+                                android:text='@={viewModel.authNum}'
+                                android:maxLength="4"
+                                android:digits="0123456789"
+                                android:imeOptions="actionDone"
+                                app:layout_constraintHorizontal_weight="1"
+                                app:layout_constraintTop_toBottomOf="@id/tv_phonenum_authnum_title"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toLeftOf="@id/tv_authnum_count"
+                                android:inputType="number" />
+
+                            <!-- 문자 출력 시간 -->
+                            <Button
+                                android:id="@+id/tv_authnum_count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:textSize="13dp"
+                                android:background="@color/transparent"
+                                android:textColor="@color/semi_black"
+                                android:gravity="center"
+                                android:text="@string/ok"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:visibility="visible"
+                                tools:visibility="visible"
+                                android:onClick='@{activity::onCheckClick}'
+                                app:layout_constraintTop_toTopOf="@id/et_authnum"
+                                app:layout_constraintBottom_toBottomOf="@id/et_authnum"
+                                app:layout_constraintLeft_toRightOf="@id/et_authnum"
+                                app:layout_constraintRight_toLeftOf="@id/cl_authnum_delete"/>
+
+                            <!-- 클리어 버튼 -->
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/cl_authnum_delete"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:visibility="gone"
+                                app:layout_constraintDimensionRatio="1:1"
+                                app:layout_constraintTop_toTopOf="@id/et_authnum"
+                                app:layout_constraintBottom_toBottomOf="@id/et_authnum"
+                                app:layout_constraintLeft_toRightOf="@id/tv_authnum_count"
+                                app:layout_constraintRight_toRightOf="parent">
+
+                                <ImageView
+                                    android:id="@+id/iv_authnum_delete"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:layout_marginTop="15dp"
+                                    android:layout_marginBottom="15dp"
+                                    android:background="@drawable/clear"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintDimensionRatio="1:1"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+                                <androidx.appcompat.widget.AppCompatButton
+                                    android:id="@+id/btn_authnum_delete"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:background="@android:color/transparent"
+                                    android:onClick='@{activity::onClearAuthClick}'
+                                    android:visibility='@{viewModel.authNum != null &amp;&amp; viewModel.authNum.length() > 0 ? View.VISIBLE : View.GONE, default = gone}'
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintLeft_toLeftOf="parent"/>
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="2dp"
+                                android:background="@color/gray1"
+                                app:layout_constraintTop_toBottomOf="@id/et_authnum"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"/>
+
+                            <TextView
+                                android:id="@+id/tv_phonenum_input_again"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:textSize="12dp"
+                                android:textColor="@color/gray2"
+                                android:text="@string/login_btn_phone_input_again"
+                                android:fontFamily="@font/notosans_medium"
+                                app:layout_constraintTop_toBottomOf="@id/et_authnum"
+                                app:layout_constraintLeft_toLeftOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_again_btn_devider"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:textSize="12dp"
+                                android:textColor="@color/gray2"
+                                android:text="|"
+                                android:fontFamily="@font/notosans_medium"
+                                app:layout_constraintTop_toTopOf="@id/tv_phonenum_input_again"
+                                app:layout_constraintLeft_toRightOf="@id/tv_phonenum_input_again"/>
+
+                            <TextView
+                                android:id="@+id/tv_authnum_request_again"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:textSize="12dp"
+                                android:textColor="@color/gray2"
+                                android:text="@string/login_btn_auth_sms_request_again"
+                                android:fontFamily="@font/notosans_medium"
+                                app:layout_constraintTop_toTopOf="@id/tv_phonenum_input_again"
+                                app:layout_constraintLeft_toRightOf="@id/tv_again_btn_devider" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_join_parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:visibility="visible"
+                        android:visibility="gone"
+                        android:layout_marginTop="44dp">
+
+                        <TextView
+                            android:id="@+id/tv_phonenum_join_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            android:textColor="@color/gray6"
+                            android:textSize="@dimen/common_font_text"
+                            android:text="@string/login_title_phone_number_auth"
+                            android:fontFamily="@font/notosans_medium"/>
+                        <TextView
+                            android:id="@+id/tv_phonenum_join"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/tv_phonenum_join_title"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            android:textColor="@color/colorOverlayAccent"
+                            android:textSize="@dimen/common_font_title"
+                            android:text='@{viewModel.phoneNum}'
+                            tools:text="01012341234"
+                            android:fontFamily="@font/notosans_medium"/>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_join"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="30dp"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintTop_toBottomOf="@id/tv_phonenum_join"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            tools:layout_editor_absoluteY="0dp">
+
+                            <TextView
+                                android:id="@+id/tv_subtitle_birthday"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/login_subtitle_birtday"
+                                android:textColor="@color/black"
+                                android:textSize="15dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"/>
+
+                            <EditText
+                                android:id="@+id/et_bitrhday"
+                                android:layout_width="0dp"
+                                android:layout_height="43dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:background="@android:color/transparent"
+                                android:hint="@string/login_hint_birth"
+                                android:textSize="@dimen/common_font_title"
+                                android:textColor="@color/colorOverlayAccent"
+                                android:maxLength="6"
+                                android:fontFamily="@font/notosans_medium"
+                                app:layout_constraintHorizontal_weight="1"
+                                app:layout_constraintTop_toBottomOf="@id/tv_subtitle_birthday"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                android:inputType="number" />
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="2dp"
+                                android:background="@color/gray1"
+                                app:layout_constraintTop_toBottomOf="@id/et_bitrhday"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"/>
+
+                            <TextView
+                                android:id="@+id/tv_subtitle_name"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:text="@string/login_subtitle_gender"
+                                android:textColor="@color/black"
+                                android:textSize="15dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/et_bitrhday" />
+
+                            <EditText
+                                android:id="@+id/et_name"
+                                android:layout_width="0dp"
+                                android:layout_height="43dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:background="@android:color/transparent"
+                                android:hint="@string/login_hint_name"
+                                android:textSize="@dimen/common_font_title"
+                                android:textColor="@color/colorOverlayAccent"
+                                android:maxLength="10"
+                                android:fontFamily="@font/notosans_medium"
+                                app:layout_constraintHorizontal_weight="1"
+                                app:layout_constraintTop_toBottomOf="@id/tv_subtitle_name"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                android:inputType="text" />
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="2dp"
+                                android:background="@color/gray1"
+                                app:layout_constraintTop_toBottomOf="@id/et_name"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"/>
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_check"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    tools:visibility="visible"
+                    android:visibility="gone"
+                    android:background="@color/gray4">
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_agree"
+                        android:layout_width="21dp"
+                        android:layout_height="21dp"
+                        android:background="@drawable/check_selector"
+                        android:onClick='@{activity::onCheckButtonClick}'
+                        android:layout_marginLeft="21dp"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_terms"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tv_terms"
+                        app:layout_constraintVertical_bias="0.08"/>
+                    <TextView
+                        android:id="@+id/tv_terms"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginRight="30dp"
+                        android:lineSpacingMultiplier="1.2"
+                        android:text="@string/login_terms_all"
+                        android:textColor="@color/gray6"
+                        android:textSize="13dp"
+                        android:fontFamily="@font/notosans_medium"
+                        app:layout_constraintLeft_toRightOf="@id/btn_agree"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/tv_agree_desc"/>
+
+                    <TextView
+                        android:id="@+id/tv_agree_desc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textSize="@dimen/main_font_extra"
+                        android:text="@string/login_term_warning"
+                        android:textColor="@color/gray2"
+                        android:fontFamily="@font/notosans_medium"
+                        app:layout_constraintTop_toBottomOf="@id/tv_terms"
+                        app:layout_constraintLeft_toLeftOf="@id/tv_terms"
+                        app:layout_constraintRight_toRightOf="@id/tv_terms" />
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cl_ok2"
+                        style="@style/CommonButtonCardStyle"
+                        android:layout_width="0dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginBottom="20dp"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/tv_agree_desc"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent">
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btn_ok2"
+                            android:visibility="gone"
+                            style="@style/CommonButtonStyle"
+                            android:onClick='@{activity::onOkClick}'
+                            android:text="@string/ok" />
+
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+        </ScrollView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cl_ok"
+            style="@style/CommonButtonCardStyle"
+            android:layout_width="0dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <androidx.appcompat.widget.AppCompatButton
+                style="@style/CommonButtonStyle"
+                android:id="@+id/btn_ok"
+                android:text="@string/login_btn_sms_send"
+                android:onClick='@{activity::onSendClick}'/>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

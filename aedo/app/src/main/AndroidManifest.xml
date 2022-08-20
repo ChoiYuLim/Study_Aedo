@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.aedo.my_heaven">
+
+    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
+
+    <queries>
+        <package android:name="com.kakao.talk" />
+    </queries>
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
+
+    <application
+        android:name=".util.base.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_app_logo"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_config"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_app_logo_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.My_Heaven"
+        android:usesCleartextTraffic="false"
+        android:resizeableActivity="true"
+        android:exported ="true"
+        tools:replace="android:usesCleartextTraffic"
+        tools:targetApi="n">
+        <activity
+            android:name=".view.main.detail.shop.MyOrderDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.detail.shop.MyOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.detail.shop.fragment.order.NineOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.detail.shop.fragment.order.EightOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.detail.shop.fragment.order.SevenOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.detail.shop.fragment.order.SixOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.detail.shop.fragment.order.FiveOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.detail.shop.fragment.order.FourOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.detail.shop.fragment.order.ThreeOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.detail.shop.fragment.order.TwoOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.detail.shop.fragment.order.OneOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.side.guide.GuideActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.detail.shop.ShopTermActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.term.TermActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.detail.search.SearchDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.side.coun.CounSelingDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.faq.FAQActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.notice.NoticeDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.PushActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.side.coun.UploadCounselingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.side.coun.CounselingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.side.ThanksActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.side.list.detail.MessageUploadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.side.list.detail.MessageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.side.list.detail.WaringActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.side.list.ListDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.notice.NoticeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.detail.center.CenterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.detail.shop.ShopActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.detail.search.SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.detail.modify.ModifyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.detail.send.SendActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.detail.make.MakeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.side.setting.SettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.side.FindActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.side.list.ListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.side.information.InforMationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.SideMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.login.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.intro.SplashActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.intro.permission.PermissionActivity"
+            android:exported="false" />
+        <activity android:name=".view.main.MainActivity" />
+        <activity android:name=".util.base.BaseActivity" />
+        <activity
+            android:name=".util.activity.ActivityController"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="@string/kakao_link"
+                    android:scheme="@string/kakao_scheme" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="@string/client_id" />
+
+        <meta-data
+            android:name="android.allow_multiple_resumed_activities" android:value="true" />
+    </application>
+
+</manifest>

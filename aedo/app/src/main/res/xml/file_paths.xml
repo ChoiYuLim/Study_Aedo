@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <root-path name="root" path="."/>
+    <external-path
+        name="capture_image"
+        path="Android/data/kr.go.baekje.buyeo/files/Pictures" />
+</paths>
