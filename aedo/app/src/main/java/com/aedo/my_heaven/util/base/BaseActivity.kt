@@ -4,11 +4,8 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import android.app.Dialog
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -53,6 +50,7 @@ import com.aedo.my_heaven.view.side.list.detail.MessageUploadActivity
 import com.aedo.my_heaven.view.side.list.detail.WaringActivity
 import com.aedo.my_heaven.view.side.setting.SettingActivity
 import com.aedo.my_heaven.view.term.TermActivity
+import com.iamport.sdk.domain.utils.Util
 import io.realm.Realm
 import kotlinx.android.synthetic.main.one_button_dialog.view.*
 import kotlinx.android.synthetic.main.two_button_dialog.view.*
@@ -84,6 +82,7 @@ open class BaseActivity : AppCompatActivity() {
         )
     }
 
+    // StatusBar 색상 조정
     internal fun inStatusBar() {
         setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false)
         window.statusBarColor = getColor(R.color.progress)
@@ -96,7 +95,7 @@ open class BaseActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        if (isInternetAvailable(this)) {
+        if (Util.isInternetAvailable(this)) {
             Log.d(TAG, "네트워크 연결중")
         } else {
             networkDialog()
@@ -132,36 +131,6 @@ open class BaseActivity : AppCompatActivity() {
             val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             inputMethodManager.hideSoftInputFromWindow(v.windowToken, 0)
         }
-    }
-
-    @SuppressLint("ObsoleteSdkInt")
-    @Suppress("DEPRECATION")
-    fun isInternetAvailable(context: Context): Boolean {
-        var result = false
-        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            cm?.run {
-                cm.getNetworkCapabilities(cm.activeNetwork)?.run {
-                    result = when {
-                        hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
-                        hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
-                        hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
-                        else -> false
-                    }
-                }
-            }
-        } else {
-            cm?.run {
-                cm.activeNetworkInfo?.run {
-                    if (type == ConnectivityManager.TYPE_WIFI) {
-                        result = true
-                    } else if (type == ConnectivityManager.TYPE_MOBILE) {
-                        result = true
-                    }
-                }
-            }
-        }
-        return result
     }
 
     val hash: String?
@@ -205,19 +174,6 @@ open class BaseActivity : AppCompatActivity() {
             }
             return cert
         }
-
-    companion object {
-        fun setWindowFlag(activity: Activity, bits: Int, on: Boolean) {
-            val win = activity.window
-            val winParams = win.attributes
-            if (on) {
-                winParams.flags = winParams.flags or bits
-            } else {
-                winParams.flags = winParams.flags and bits.inv()
-            }
-            win.attributes = winParams
-        }
-    }
 
     @SuppressLint("ResourceType")
     internal fun serverDialog() {

@@ -19,7 +19,7 @@ import com.aedo.my_heaven.util.network.ResultListener
 import com.aedo.my_heaven.util.root.RootUtil
 import com.aedo.my_heaven.view.login.LoginActivity
 import com.getkeepsafe.relinker.BuildConfig
-import com.google.android.play.core.appupdate.AppUpdateManager
+import com.iamport.sdk.domain.utils.Util
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,7 +29,6 @@ class SplashActivity : BaseActivity() {
     private lateinit var apiServices: APIService
     private var devpolicyversion: String? = null
     private var prefs = MyApplication.prefs
-    private var appUpdate: AppUpdateManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,13 +39,12 @@ class SplashActivity : BaseActivity() {
 
         inStatusBar()
         checkNetwork()
-//        moveActivity()
     }
 
     // 네트워크 체크
     private fun checkNetwork() {
         LLog.e("1. 네트워크 확인")
-        if (isInternetAvailable(this)) {
+        if (Util.isInternetAvailable(this)) {
             checkVerification()
         } else {
             networkDialog()
@@ -90,12 +88,6 @@ class SplashActivity : BaseActivity() {
             override fun onResponse(call: Call<Verification>, response: Response<Verification>) {
                 val result = response.body()
                 if (response.isSuccessful && result != null) {
-                    val encrypt = Encrypt()
-                    encrypt.key.toString()
-                    encrypt.iv.toString()
-                    result.result
-                    result.encrypt
-                    result.policy_ver
                     Log.d(TAG, "Vertification result SUCESS -> $result")
                     if (result.result == RESULT_TRUE) {
                         devpolicyversion = result.policy_ver.toString()
@@ -194,8 +186,6 @@ class SplashActivity : BaseActivity() {
 
     private fun enablecheck() {
         val useYn = realm.where(Policy::class.java).equalTo("id", "APP_ENABLE_YN").findFirst()
-        val popupText =
-            realm.where(Policy::class.java).equalTo("id", "APP_ENABLE_CONTENT").findFirst()
         if (useYn != null) {
             if (useYn.value.equals("Y")) {
                 serverDialog()
@@ -205,86 +195,7 @@ class SplashActivity : BaseActivity() {
             serverDialog()
             return
         }
-//        emergencyPopup()
-//        checkAppVersion()
     }
-
-//    // App 버전 체크
-//    private fun checkAppVersion() {
-//        LLog.e("앱 버전체크")
-//        val versionCode: Policy? =
-//            realm.where(Policy::class.java).equalTo("id", "APP_VERSION").findFirst()
-//        val androidVersion = com.aedo.my_heaven.BuildConfig.VERSION_NAME
-//        if (versionCode != null) {
-//            if (versionCode.equals(androidVersion)) {
-//                Log.d(TAG,"Android Version SAME")
-//        } else {
-//                showAppUpdate()
-//                return
-//            }
-//        }
-//        else {
-//            serverDialog()
-//        }
-//    }
-//
-//    //앱 업데이트
-//    private fun showAppUpdate() {
-//        LLog.e("앱 업데이트")
-//        appUpdate = AppUpdateManagerFactory.create(this)
-//        val appupdateInfoTask = appUpdate!!.appUpdateInfo
-//        appupdateInfoTask.addOnSuccessListener { appUpdateInfo ->
-//            if(appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE) {
-//                appUpdate!!.startUpdateFlowForResult(appUpdateInfo,IMMEDIATE,this,Constant.APP_UPDATE)
-//            }
-//            else {
-//                emergencyPopup()
-//            }
-//        }
-//    }
-
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        if (requestCode == Constant.APP_UPDATE) {
-//            MaterialAlertDialogBuilder(this).setPositiveButton("OK") {
-//                _,_ ->
-//            }
-//                .setMessage(getString(R.string.need_update_app))
-//                .show()
-//        }
-//    }
-
-//    // 긴급공지 체크
-//    private fun emergencyPopup() {
-//        LLog.e("긴급공지 체크")
-//        val popupTime: Policy? =
-//            realm.where(Policy::class.java).equalTo("id","POPUP_TIME_END").findFirst()
-//        val popupContent: Policy? =
-//            realm.where(Policy::class.java).equalTo("id", "POPUP_CONTENT").findFirst()
-//        val popupEnable: Policy? =
-//            realm.where(Policy::class.java).equalTo("id", "POPUP_ENABLE_YN").findFirst()
-//
-//        if (popupEnable != null) {
-//            if ("Y" == popupEnable.value && TextStyle.compareDateAvailable(
-//                    popupTime!!.value!!,
-//                    "yyyyMMddHHmmss"
-//                ) && !prefs.getStr(Constant.PREF_EMERGENCY_NOTICE_NOT_SHOW, "").equals(popupTime.value)
-//            ) {
-//                val dialog = CustomDialog(this)
-//                if (popupContent != null) {
-//                    dialog.text(popupContent.value)
-//                        ?.positive(getString(R.string.ok)) {
-//                            dialog.dismiss()
-//                        }
-//                        ?.negative(getString(R.string.not_show_again)) {
-//                            dialog.dismiss()
-//                            prefs.setStr(Constant.PREF_EMERGENCY_NOTICE_NOT_SHOW, popupTime.value)
-//                        }!!.cancelable(false).show()
-//                }
-//                return
-//            }
-//        }
-//    }
 
     private fun moveLogin() {
         ActivityControlManager.delayRun(
@@ -295,15 +206,4 @@ class SplashActivity : BaseActivity() {
         )
     }
 
-//    override fun onResume() {
-//        super.onResume()
-//        appUpdate?.appUpdateInfo?.addOnSuccessListener {
-//                appUpdateInfo ->
-//            if(appUpdateInfo.updateAvailability() == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) {
-//                appUpdate?.startUpdateFlowForResult(
-//                    appUpdateInfo, IMMEDIATE,this,Constant.APP_UPDATE
-//                )
-//            }
-//        }
-//    }
 }
