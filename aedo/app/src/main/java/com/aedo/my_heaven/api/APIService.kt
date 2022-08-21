@@ -23,7 +23,7 @@ import retrofit2.http.*
 interface APIService {
     // 검증 API
     @GET("v1/app/verification")
-    fun getVerification(@Header("abcd-ef")abcdef: String?): Call<Verification>
+    fun getVerification(@Header("abcd-ef") abcdef: String?): Call<Verification>
 
     // 정책 API
     @GET("v1/app/policy")
@@ -31,15 +31,15 @@ interface APIService {
 
     // 자동로그인 API
     @PUT("v1/user/auto")
-    fun getautoLogin(@Header("Accesstoken")accesstoken: String?): Call<AutoLogin>
+    fun getautoLogin(@Header("Accesstoken") accesstoken: String?): Call<AutoLogin>
 
     // 로그인 API
     @PUT("v1/user")
-    fun getLogin(@Body loginSend: LoginSend):Call<LoginSend>
+    fun getLogin(@Body loginSend: LoginSend): Call<LoginSend>
 
     // 회원가입 API
     @POST("v1/user")
-    fun getSignUp(@Body loginResult:LoginResult):Call<LoginResult>
+    fun getSignUp(@Body loginResult: LoginResult): Call<LoginResult>
 
     // 문자인증 API
     @POST("v1/user/sms")
@@ -47,7 +47,7 @@ interface APIService {
 
     // 회원정보 API
     @GET("v1/user")
-    fun getUser(@Header("Accesstoken")accesstoken: String?,): Call<GetUser>
+    fun getUser(@Header("Accesstoken") accesstoken: String?): Call<GetUser>
 
     // 약관보기 API
     @GET("v1/user/terms")
@@ -55,66 +55,82 @@ interface APIService {
 
     // 로그아웃 API
     @DELETE
-    fun getLogOut(@Header("Accesstoken")accesstoken: String?): Call<LogOut>
+    fun getLogOut(@Header("Accesstoken") accesstoken: String?): Call<LogOut>
 
     // 부고작성 API
     @Multipart
     @POST("v1/obituary")
-    fun getImgCreate(@Header("Accesstoken") accesstoken: String?,
-                     @Part img: MutableList<MultipartBody.Part?>,
-                     @PartMap data: HashMap<String, RequestBody>): Call<CreateModel>
+    fun getImgCreate(
+        @Header("Accesstoken") accesstoken: String?,
+        @Part img: MutableList<MultipartBody.Part?>,
+        @PartMap data: HashMap<String, RequestBody>
+    ): Call<CreateModel>
 
     // 부고조회 API
     @GET("v1/obituary")
-    fun getCreateName(@Query("name")name: String?,
-                      @Header("Accesstoken")accesstoken: String?) : Call<CreateName>
+    fun getCreateName(
+        @Query("name") name: String?,
+        @Header("Accesstoken") accesstoken: String?
+    ): Call<CreateName>
 
     //부고 이미지 받기API
     @GET("v1/obituary/image")
     @Streaming
-    fun getImg(@Query("imgname") imgname: String?,
-               @Header("Accesstoken") accesstoken: String?) : Call<ResponseBody>
+    fun getImg(
+        @Query("imgname") imgname: String?,
+        @Header("Accesstoken") accesstoken: String?
+    ): Call<ResponseBody>
 
     // 나의부고 API
     @GET("v1/obituary/my")
-    fun getCreateGet(@Header("Accesstoken")accesstoken: String?): Call<RecyclerList>
+    fun getCreateGet(@Header("Accesstoken") accesstoken: String?): Call<RecyclerList>
 
     // 부고삭제
     @DELETE("v1/obituary/:id")
-    fun getCreateDelete(@Header("Accesstoken")accesstoken: String?,
-                        @Query("id")id: String?) : Call<ListDelete>
+    fun getCreateDelete(
+        @Header("Accesstoken") accesstoken: String?,
+        @Query("id") id: String?
+    ): Call<ListDelete>
 
     // 조문메세지 API
     @POST("v1/condole")
-    fun getCondole(@Header("Accesstoken")accesstoken: String?,
-                   @Body createMessage: CreateMessage): Call<CreateMessage>
+    fun getCondole(
+        @Header("Accesstoken") accesstoken: String?,
+        @Body createMessage: CreateMessage
+    ): Call<CreateMessage>
 
     // 조문메세지 조회 API
     @GET("v1/condole")
-    fun getConID(@Query("id")id: String? ,
-                 @Header("Accesstoken")accesstoken: String?) : Call<Condole>
+    fun getConID(
+        @Query("id") id: String?,
+        @Header("Accesstoken") accesstoken: String?
+    ): Call<Condole>
 
     // 공지사항 모두조회 API
     @GET("v1/center/announcement")
-    fun getNoti(@Header("Accesstoken")accesstoken: String?) : Call<NoticeModel>
+    fun getNoti(@Header("Accesstoken") accesstoken: String?): Call<NoticeModel>
 
     // 1:1문의 조회
     @GET("v1/center/request")
-    fun getCounRequest(@Header("Accesstoken")accesstoken: String?) : Call<CounGet>
+    fun getCounRequest(@Header("Accesstoken") accesstoken: String?): Call<CounGet>
 
     // 1:1문의 작성
     @POST("v1/center/request")
-    fun getCounPost(@Header("Accesstoken")accesstoken: String?,
-                    @Body counPost: CounPost) : Call<CounPost>
+    fun getCounPost(
+        @Header("Accesstoken") accesstoken: String?,
+        @Body counPost: CounPost
+    ): Call<CounPost>
 
     //화환 주문 API
     @POST("v1/order")
-    fun getOrder(@Header("Accesstoken")accesstoken:String?,
-                 @Body orders: Orders) : Call<ShopModel>
+    fun getOrder(
+        @Header("Accesstoken") accesstoken: String?,
+        @Body orders: Orders
+    ): Call<ShopModel>
 
     //내 주문 조회 API
     @GET("v1/order/my")
-    fun getMyOrder(@Header("Accesstoken")accesstoken:String?) : Call<MyOrder>
+    fun getMyOrder(@Header("Accesstoken") accesstoken: String?): Call<MyOrder>
 
     @GET("v1/driving")
     fun getPath(
@@ -127,18 +143,20 @@ interface APIService {
 
     // 공지사항 세부조회 API
     @GET("v1/center/announcement/:id")
-    fun getNotiDetail(@Header("Accesstoken")accesstoken: String?,
-                      @Query("id")id: String?) : Call<NoticeDetailModel>
+    fun getNotiDetail(
+        @Header("Accesstoken") accesstoken: String?,
+        @Query("id") id: String?
+    ): Call<NoticeDetailModel>
 
     // 조문메세지 수정 API
     @PUT("v1/condole/:id")
-    fun getConPut(@Header("Accesstoken")accesstoken: String?)
+    fun getConPut(@Header("Accesstoken") accesstoken: String?)
 
     // 조문메세지 삭제 API
     @DELETE("v1/condole/:id")
-    fun getConDelete(@Header("Accesstoken")accesstoken: String?)
+    fun getConDelete(@Header("Accesstoken") accesstoken: String?)
 
     // 부고수정 API
     @PUT("v1/obituary/:id")
-    fun getCreatePut(@Header("Accesstoken")accesstoken: String?)
+    fun getCreatePut(@Header("Accesstoken") accesstoken: String?)
 }

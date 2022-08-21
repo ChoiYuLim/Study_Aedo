@@ -61,6 +61,7 @@ class MyApplication : Application() {
                     commonData.isForeground = false
                 }
             }
+
             override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {}
             override fun onActivityDestroyed(activity: Activity) {}
         })

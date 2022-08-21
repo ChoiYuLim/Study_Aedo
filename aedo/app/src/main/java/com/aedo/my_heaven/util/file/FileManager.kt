@@ -200,7 +200,8 @@ object FileManager {
                 ExifInterface.ORIENTATION_ROTATE_90 -> angle = 90
                 ExifInterface.ORIENTATION_ROTATE_180 -> angle = 180
                 ExifInterface.ORIENTATION_ROTATE_270 -> angle = 270
-                else -> {}
+                else -> {
+                }
             }
             val mat = Matrix()
             if (angle == 0 && bm.width > bm.height) {
@@ -229,7 +230,8 @@ object FileManager {
                 ExifInterface.ORIENTATION_ROTATE_90 -> angle = 90
                 ExifInterface.ORIENTATION_ROTATE_180 -> angle = 180
                 ExifInterface.ORIENTATION_ROTATE_270 -> angle = 270
-                else -> {}
+                else -> {
+                }
             }
             val mat = Matrix()
             if (angle == 0 && bm.width > bm.height) {

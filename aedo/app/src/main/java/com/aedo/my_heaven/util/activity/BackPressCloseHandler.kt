@@ -1,11 +1,11 @@
 package com.aedo.my_heaven.util.activity
 
 import android.app.Activity
-import androidx.databinding.DataBindingUtil
-import android.view.LayoutInflater
-import androidx.core.app.ActivityCompat
-import android.widget.Toast
 import android.view.Gravity
+import android.view.LayoutInflater
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.databinding.DataBindingUtil
 import com.aedo.my_heaven.R
 import com.aedo.my_heaven.databinding.ToastCustomBinding
 import com.aedo.my_heaven.util.`object`.Constant

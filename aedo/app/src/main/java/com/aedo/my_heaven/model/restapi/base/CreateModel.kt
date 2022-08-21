@@ -1,9 +1,7 @@
 package com.aedo.my_heaven.model.restapi.base
 
-import android.net.Uri
-
 data class CreateModel(
-    var img : String? = null,
+    var img: String? = null,
     var resident: Resident? = null,
     var place: String? = null,
     var deceased: Deceased? = null,
@@ -15,10 +13,10 @@ data class CreateModel(
     var created: String? = null,
 )
 
-data class Resident (
-    var relation : String? = null,
-    var name : String? = null,
-    var phone : String? = null
+data class Resident(
+    var relation: String? = null,
+    var name: String? = null,
+    var phone: String? = null
 )
 
 data class Deceased(

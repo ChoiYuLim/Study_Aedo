@@ -1,19 +1,20 @@
 package com.aedo.my_heaven.model.naverMap
 
-import com.squareup.okhttp.Route
+data class ResultPath(
+    val route: Result_trackoption,
+    val message: String,
+    val code: Int
+)
 
-data class ResultPath (
-    val route : Result_trackoption,
-    val message : String,
-    val code : Int
-)
 data class Result_trackoption(
-    val traoptimal : List<Result_path>
+    val traoptimal: List<Result_path>
 )
+
 data class Result_path(
-    val summary : Result_distance,
-    val path : List<List<Double>>
+    val summary: Result_distance,
+    val path: List<List<Double>>
 )
+
 data class Result_distance(
-    val distance : Int
+    val distance: Int
 )

@@ -19,13 +19,13 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class SideMenuActivity : BaseActivity() {
-    private lateinit var mBinding : ActivitySideMenuBinding
+    private lateinit var mBinding: ActivitySideMenuBinding
     private lateinit var apiServices: APIService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_side_menu)
-        mBinding.activity=this@SideMenuActivity
+        mBinding.activity = this@SideMenuActivity
         apiServices = ApiUtils.apiService
         mBinding.lifecycleOwner = this
         inStatusBar()
@@ -38,18 +38,17 @@ class SideMenuActivity : BaseActivity() {
             Callback<GetUser> {
             override fun onResponse(call: Call<GetUser>, response: Response<GetUser>) {
                 val result = response.body()
-                if(response.isSuccessful&& result!= null) {
-                    Log.d(LLog.TAG,"GetUser API SUCCESS -> $result")
+                if (response.isSuccessful && result != null) {
+                    Log.d(LLog.TAG, "GetUser API SUCCESS -> $result")
                     mBinding.sideTxName.text = result.user?.name.toString()
-                }
-                else {
-                    Log.d(LLog.TAG,"GetUser API ERROR -> ${response.errorBody()}")
+                } else {
+                    Log.d(LLog.TAG, "GetUser API ERROR -> ${response.errorBody()}")
                     otherAPI()
                 }
             }
 
             override fun onFailure(call: Call<GetUser>, t: Throwable) {
-                Log.d(LLog.TAG,"GetUser ERROR -> $t")
+                Log.d(LLog.TAG, "GetUser ERROR -> $t")
 
             }
         })
@@ -61,17 +60,16 @@ class SideMenuActivity : BaseActivity() {
             Callback<GetUser> {
             override fun onResponse(call: Call<GetUser>, response: Response<GetUser>) {
                 val result = response.body()
-                if(response.isSuccessful&& result!= null) {
-                    Log.d(LLog.TAG,"GetUser Second API SUCCESS -> $result")
+                if (response.isSuccessful && result != null) {
+                    Log.d(LLog.TAG, "GetUser Second API SUCCESS -> $result")
                     mBinding.sideTxName.text = result.user?.name.toString()
-                }
-                else {
-                    Log.d(LLog.TAG,"GetUser Second API ERROR -> ${response.errorBody()}")
+                } else {
+                    Log.d(LLog.TAG, "GetUser Second API ERROR -> ${response.errorBody()}")
                 }
             }
 
             override fun onFailure(call: Call<GetUser>, t: Throwable) {
-                Log.d(LLog.TAG,"GetUser Second ERROR -> $t")
+                Log.d(LLog.TAG, "GetUser Second ERROR -> $t")
 
             }
         })
@@ -81,11 +79,11 @@ class SideMenuActivity : BaseActivity() {
         moveMain()
     }
 
-    fun onInfoClick(v:View) {
+    fun onInfoClick(v: View) {
         moveGuide()
     }
 
-    fun onListClick(v:View) {
+    fun onListClick(v: View) {
         moveList()
     }
 

@@ -5,10 +5,10 @@ import android.os.Bundle
 import com.aedo.my_heaven.util.`object`.Constant
 import com.aedo.my_heaven.util.base.BaseActivity
 import com.aedo.my_heaven.util.base.MyApplication.Companion.prefs
-import com.aedo.my_heaven.view.intro.permission.PermissionActivity
 import com.aedo.my_heaven.view.intro.SplashActivity
+import com.aedo.my_heaven.view.intro.permission.PermissionActivity
 
-class ActivityController : BaseActivity(){
+class ActivityController : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val intent = intent

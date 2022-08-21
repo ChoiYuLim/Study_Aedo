@@ -9,10 +9,13 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.os.*
+import android.os.Build
+import android.os.Bundle
+import android.os.PersistableBundle
 import android.util.Base64
 import android.util.Log
-import android.view.*
+import android.view.View
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
@@ -58,12 +61,12 @@ import java.security.NoSuchAlgorithmException
 import java.util.*
 
 open class BaseActivity : AppCompatActivity() {
-    internal open var instance: BaseActivity?=null
+    internal open var instance: BaseActivity? = null
     var ResultView: ActivityResultLauncher<Intent>? = null
     var comm: CommonData? = CommonData().getInstance()
     var alert: AlertDialogManager? = null
 
-    internal var dialog : Dialog ?= null
+    internal var dialog: Dialog? = null
 
     internal val realm by lazy {
         Realm.getDefaultInstance()
@@ -75,7 +78,10 @@ open class BaseActivity : AppCompatActivity() {
         alert = AlertDialogManager(this)
         dialog = LoadingDialog(this)
         val window = window
-        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
     }
 
     internal fun inStatusBar() {
@@ -90,8 +96,8 @@ open class BaseActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        if(isInternetAvailable(this)) {
-            Log.d(TAG,"네트워크 연결중")
+        if (isInternetAvailable(this)) {
+            Log.d(TAG, "네트워크 연결중")
         } else {
             networkDialog()
             return
@@ -219,7 +225,7 @@ open class BaseActivity : AppCompatActivity() {
         val build = AlertDialog.Builder(this).apply {
             setView(myLayout)
         }
-        val textView : TextView = myLayout.findViewById(R.id.popTv_one)
+        val textView: TextView = myLayout.findViewById(R.id.popTv_one)
         textView.text = getString(R.string.server_check)
         val dialog = build.create()
         dialog.show()
@@ -236,7 +242,7 @@ open class BaseActivity : AppCompatActivity() {
         val build = AlertDialog.Builder(this).apply {
             setView(myLayout)
         }
-        val textView : TextView = myLayout.findViewById(R.id.popTv_one)
+        val textView: TextView = myLayout.findViewById(R.id.popTv_one)
         textView.text = getString(R.string.network_check)
         val dialog = build.create()
         dialog.show()
@@ -252,7 +258,7 @@ open class BaseActivity : AppCompatActivity() {
         val build = AlertDialog.Builder(this).apply {
             setView(myLayout)
         }
-        val textView : TextView = myLayout.findViewById(R.id.popTv_one)
+        val textView: TextView = myLayout.findViewById(R.id.popTv_one)
         textView.text = getString(R.string.warning_rooting)
         val dialog = build.create()
         dialog.show()
@@ -268,7 +274,7 @@ open class BaseActivity : AppCompatActivity() {
         val build = AlertDialog.Builder(this).apply {
             setView(myLayout)
         }
-        val textView : TextView = myLayout.findViewById(R.id.popTv_one)
+        val textView: TextView = myLayout.findViewById(R.id.popTv_one)
         textView.text = getString(R.string.auth_num_wrong_text)
         val dialog = build.create()
         dialog.show()
@@ -283,7 +289,7 @@ open class BaseActivity : AppCompatActivity() {
         val build = AlertDialog.Builder(this).apply {
             setView(myLayout)
         }
-        val textView : TextView = myLayout.findViewById(R.id.popTv_one)
+        val textView: TextView = myLayout.findViewById(R.id.popTv_one)
         textView.text = getString(R.string.term_check)
         val dialog = build.create()
         dialog.show()
@@ -298,7 +304,7 @@ open class BaseActivity : AppCompatActivity() {
         val build = AlertDialog.Builder(this).apply {
             setView(myLayout)
         }
-        val textView : TextView = myLayout.findViewById(R.id.popTv_one)
+        val textView: TextView = myLayout.findViewById(R.id.popTv_one)
         textView.text = getString(R.string.phone_check)
         val dialog = build.create()
         dialog.show()
@@ -313,7 +319,7 @@ open class BaseActivity : AppCompatActivity() {
         val build = AlertDialog.Builder(this).apply {
             setView(myLayout)
         }
-        val textView : TextView = myLayout.findViewById(R.id.popTv_second)
+        val textView: TextView = myLayout.findViewById(R.id.popTv_second)
         textView.text = getString(R.string.update_check)
         val dialog = build.create()
         dialog.show()
@@ -333,7 +339,7 @@ open class BaseActivity : AppCompatActivity() {
         val build = AlertDialog.Builder(this).apply {
             setView(myLayout)
         }
-        val textView : TextView = myLayout.findViewById(R.id.popTv_second)
+        val textView: TextView = myLayout.findViewById(R.id.popTv_second)
         textView.text = getString(R.string.list_delete)
         val dialog = build.create()
         dialog.show()

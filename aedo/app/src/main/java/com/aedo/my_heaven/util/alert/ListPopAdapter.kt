@@ -8,7 +8,8 @@ import com.aedo.my_heaven.model.list.ListPopup
 import com.aedo.my_heaven.model.list.ListPopupItem
 import com.google.gson.Gson
 
-internal class ListPopAdapter(listPopup: ListPopup?, param: OnListPopupListener) : RecyclerView.Adapter<ListPopAdapter.ListPopViewHolder?>() {
+internal class ListPopAdapter(listPopup: ListPopup?, param: OnListPopupListener) :
+    RecyclerView.Adapter<ListPopAdapter.ListPopViewHolder?>() {
 
     private var listPopup: ListPopup? = null
     private var listener: OnListPopupListener? = null

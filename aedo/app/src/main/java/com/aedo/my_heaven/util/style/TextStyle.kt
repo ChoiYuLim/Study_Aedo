@@ -2,7 +2,6 @@ package com.aedo.my_heaven.util.style
 
 import android.annotation.SuppressLint
 import android.telephony.PhoneNumberUtils
-import java.lang.StringBuilder
 import java.nio.charset.StandardCharsets
 import java.text.ParseException
 import java.text.SimpleDateFormat

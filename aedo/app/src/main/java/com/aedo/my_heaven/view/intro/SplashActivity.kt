@@ -1,6 +1,5 @@
 package com.aedo.my_heaven.view.intro
 
-import android.content.Intent
 import android.os.*
 import android.util.Log
 import android.widget.Toast
@@ -12,21 +11,15 @@ import com.aedo.my_heaven.model.restapi.base.*
 import com.aedo.my_heaven.util.`object`.ActivityControlManager
 import com.aedo.my_heaven.util.`object`.Constant
 import com.aedo.my_heaven.util.`object`.Constant.RESULT_TRUE
-import com.aedo.my_heaven.util.alert.CustomDialog
 import com.aedo.my_heaven.util.base.BaseActivity
 import com.aedo.my_heaven.util.base.MyApplication
 import com.aedo.my_heaven.util.log.LLog
 import com.aedo.my_heaven.util.log.LLog.TAG
 import com.aedo.my_heaven.util.network.ResultListener
 import com.aedo.my_heaven.util.root.RootUtil
-import com.aedo.my_heaven.util.style.TextStyle
 import com.aedo.my_heaven.view.login.LoginActivity
 import com.getkeepsafe.relinker.BuildConfig
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.play.core.appupdate.AppUpdateManager
-import com.google.android.play.core.appupdate.AppUpdateManagerFactory
-import com.google.android.play.core.install.model.AppUpdateType.IMMEDIATE
-import com.google.android.play.core.install.model.UpdateAvailability
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -36,7 +29,7 @@ class SplashActivity : BaseActivity() {
     private lateinit var apiServices: APIService
     private var devpolicyversion: String? = null
     private var prefs = MyApplication.prefs
-    private var appUpdate : AppUpdateManager?=null
+    private var appUpdate: AppUpdateManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +46,7 @@ class SplashActivity : BaseActivity() {
     // 네트워크 체크
     private fun checkNetwork() {
         LLog.e("1. 네트워크 확인")
-        if(isInternetAvailable(this)) {
+        if (isInternetAvailable(this)) {
             checkVerification()
         } else {
             networkDialog()
@@ -103,22 +96,22 @@ class SplashActivity : BaseActivity() {
                     result.result
                     result.encrypt
                     result.policy_ver
-                    Log.d(TAG,"Vertification result SUCESS -> $result")
+                    Log.d(TAG, "Vertification result SUCESS -> $result")
                     if (result.result == RESULT_TRUE) {
                         devpolicyversion = result.policy_ver.toString()
                         getinformation(result, listener)
-                    }
-                    else {
+                    } else {
                         alert?.showDialog(
-                            getString(R.string.warning_repackaging)) {
+                            getString(R.string.warning_repackaging)
+                        ) {
                             finishAffinity()
                         }?.cancelable(false)
                     }
-                }
-                else {
+                } else {
                     serverDialog()
                 }
             }
+
             override fun onFailure(call: Call<Verification>, t: Throwable) {
                 Log.d(TAG, "loadVerAPI error -> $t")
                 serverDialog()
@@ -144,15 +137,15 @@ class SplashActivity : BaseActivity() {
             override fun onResponse(call: Call<AppPolicy>, response: Response<AppPolicy>) {
                 val result = response.body()
                 if (response.isSuccessful && result != null) {
-                    Log.d(TAG,"Policy response SUCCESS -> $result")
-                    realmPolicy(result,listener)
+                    Log.d(TAG, "Policy response SUCCESS -> $result")
+                    realmPolicy(result, listener)
                     requestLogin()
-                }
-                else {
-                    Log.d(TAG,"Policy response ERROR -> $result")
+                } else {
+                    Log.d(TAG, "Policy response ERROR -> $result")
                     serverDialog()
                 }
             }
+
             override fun onFailure(call: Call<AppPolicy>, t: Throwable) {
                 Log.d(TAG, "Policy error -> $t")
                 serverDialog()
@@ -182,16 +175,16 @@ class SplashActivity : BaseActivity() {
             override fun onResponse(call: Call<AutoLogin>, response: Response<AutoLogin>) {
                 val result = response.body()
                 if (response.code() == 404 || response.code() == 401) {
-                    prefs.newaccesstoken=result?.accesstoken
+                    prefs.newaccesstoken = result?.accesstoken
                     moveLogin()
-                }
-                else if(response.code() == 200){
+                } else if (response.code() == 200) {
                     getPreferences(0).edit().remove("PREF_ACCESS_TOKEN").apply()
-                    prefs.newaccesstoken=result?.accesstoken
+                    prefs.newaccesstoken = result?.accesstoken
                     moveMain()
-                    Toast.makeText(this@SplashActivity,"자동로그인이 되었습니다.",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@SplashActivity, "자동로그인이 되었습니다.", Toast.LENGTH_SHORT).show()
                 }
             }
+
             override fun onFailure(call: Call<AutoLogin>, t: Throwable) {
                 Log.d(TAG, "requestLogin error -> $t")
                 serverDialog()
@@ -200,8 +193,9 @@ class SplashActivity : BaseActivity() {
     }
 
     private fun enablecheck() {
-        val useYn = realm.where(Policy::class.java).equalTo("id","APP_ENABLE_YN").findFirst()
-        val popupText = realm.where(Policy::class.java).equalTo("id","APP_ENABLE_CONTENT").findFirst()
+        val useYn = realm.where(Policy::class.java).equalTo("id", "APP_ENABLE_YN").findFirst()
+        val popupText =
+            realm.where(Policy::class.java).equalTo("id", "APP_ENABLE_CONTENT").findFirst()
         if (useYn != null) {
             if (useYn.value.equals("Y")) {
                 serverDialog()
@@ -293,8 +287,10 @@ class SplashActivity : BaseActivity() {
 //    }
 
     private fun moveLogin() {
-        ActivityControlManager.delayRun({
-            moveAndFinishActivity(LoginActivity::class.java) },
+        ActivityControlManager.delayRun(
+            {
+                moveAndFinishActivity(LoginActivity::class.java)
+            },
             Constant.SPLASH_WAIT
         )
     }

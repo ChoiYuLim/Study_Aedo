@@ -44,7 +44,8 @@ class AlertDialogManager(baseActivity: BaseActivity) {
             return null
         }
         currentDialog = CustomDialog(context)
-        currentDialog.text(text)?.positive(positive!!)?.negative(negative!!)?.cancelable(false)?.show()
+        currentDialog.text(text)?.positive(positive!!)?.negative(negative!!)?.cancelable(false)
+            ?.show()
         return currentDialog
     }
 

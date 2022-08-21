@@ -37,8 +37,8 @@ import com.kakao.sdk.template.model.Link
 import kotlinx.android.synthetic.main.two_button_dialog.view.*
 
 
-class RecyclerAdapter(private val postList: List<Obituaray>, val context: Context)
-    : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
+class RecyclerAdapter(private val postList: List<Obituaray>, val context: Context) :
+    RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -47,17 +47,17 @@ class RecyclerAdapter(private val postList: List<Obituaray>, val context: Contex
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(postList[position],context)
+        holder.bind(postList[position], context)
         holder.itemView.setOnClickListener {
-            itemClickListener?.onClick(it,position)
+            itemClickListener?.onClick(it, position)
         }
     }
 
-    interface OnItemClickListener{
-        fun onClick(v:View,position: Int)
+    interface OnItemClickListener {
+        fun onClick(v: View, position: Int)
     }
 
-    private var itemClickListener: OnItemClickListener?=null
+    private var itemClickListener: OnItemClickListener? = null
 
     fun setOnItemClickListener(listener: OnItemClickListener) {
         this.itemClickListener = listener
@@ -68,46 +68,47 @@ class RecyclerAdapter(private val postList: List<Obituaray>, val context: Contex
     }
 
 
-    inner class ViewHolder (itemView: View? ) : RecyclerView.ViewHolder(itemView!!){
+    inner class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
 
         val tx_date = itemView?.findViewById<TextView>(R.id.list_tx_date)
         val tx_top_name = itemView?.findViewById<TextView>(R.id.tx_top_name)
-        val tx_body_name  = itemView?.findViewById<TextView>(R.id.tx_body_name)
-        val tx_body_info =   itemView?.findViewById<TextView>(R.id.tx_body_info)
+        val tx_body_name = itemView?.findViewById<TextView>(R.id.tx_body_name)
+        val tx_body_info = itemView?.findViewById<TextView>(R.id.tx_body_info)
         val btn_show = itemView?.findViewById<Button>(R.id.btn_list_show)
         val btn_share = itemView?.findViewById<Button>(R.id.btn_list_send)
         val imgname = itemView?.findViewById<ImageView>(R.id.list_img)
 
         @SuppressLint("ResourceType")
-        fun bind(itemPhoto : Obituaray?, context: Context){
+        fun bind(itemPhoto: Obituaray?, context: Context) {
             tx_date?.text = itemPhoto?.eod.toString()
             tx_top_name?.text = itemPhoto?.deceased?.name.toString()
             tx_body_name?.text = itemPhoto?.resident?.name.toString()
-            tx_body_info?.text=itemPhoto?.place.toString()
+            tx_body_info?.text = itemPhoto?.place.toString()
             prefs.myListId = itemPhoto?.id
-            Log.d(TAG,"Recycler Img -> ${itemPhoto?.imgName.toString()}")
+            Log.d(TAG, "Recycler Img -> ${itemPhoto?.imgName.toString()}")
 
             btn_show?.setOnClickListener {
                 val intent = Intent(context, ListDetailActivity::class.java)
-                intent.putExtra(LLIST_ID,itemPhoto?.id.toString())
-                intent.putExtra(DECEASED_NAME,itemPhoto?.deceased?.name.toString())
-                intent.putExtra(LIST_IMG,itemPhoto?.imgName.toString())
-                intent.putExtra(EOD_DATE,itemPhoto?.eod.toString())
-                intent.putExtra(RESIDENT_NAME,itemPhoto?.resident?.name.toString())
-                intent.putExtra(PLACE_NAME,itemPhoto?.place.toString())
-                intent.putExtra(COFFIN_DATE,itemPhoto?.coffin.toString())
-                intent.putExtra(DOFP_DATE,itemPhoto?.dofp.toString())
-                intent.putExtra(BURIED,itemPhoto?.buried.toString())
+                intent.putExtra(LLIST_ID, itemPhoto?.id.toString())
+                intent.putExtra(DECEASED_NAME, itemPhoto?.deceased?.name.toString())
+                intent.putExtra(LIST_IMG, itemPhoto?.imgName.toString())
+                intent.putExtra(EOD_DATE, itemPhoto?.eod.toString())
+                intent.putExtra(RESIDENT_NAME, itemPhoto?.resident?.name.toString())
+                intent.putExtra(PLACE_NAME, itemPhoto?.place.toString())
+                intent.putExtra(COFFIN_DATE, itemPhoto?.coffin.toString())
+                intent.putExtra(DOFP_DATE, itemPhoto?.dofp.toString())
+                intent.putExtra(BURIED, itemPhoto?.buried.toString())
                 startActivity(itemView.context, intent, null)
             }
 
             btn_share?.setOnClickListener {
                 KakaoSdk.init(context, "fb6d89598fd7acc40272f792dfa0dc1e")
-                val myLayout = LayoutInflater.from(context).inflate(R.layout.two_button_dialog, null)
+                val myLayout =
+                    LayoutInflater.from(context).inflate(R.layout.two_button_dialog, null)
                 val build = AlertDialog.Builder(context).apply {
                     setView(myLayout)
                 }
-                val textView : TextView = myLayout.findViewById(R.id.popTv_second)
+                val textView: TextView = myLayout.findViewById(R.id.popTv_second)
                 textView.text = "부고 공유"
                 myLayout.finish_btn.text = "문자 메세지"
                 myLayout.update_btn.text = "카카오톡 공유"
@@ -141,8 +142,7 @@ class RecyclerAdapter(private val postList: List<Obituaray>, val context: Contex
         LinkClient.instance.defaultTemplate(context, defaultFeed) { linkResult, error ->
             if (error != null) {
                 LLog.e("카카오링크 보내기 실패")
-            }
-            else if (linkResult != null) {
+            } else if (linkResult != null) {
                 context.startActivity(linkResult.intent)
                 LLog.w("Warning Msg: ${linkResult.warningMsg}")
                 LLog.w("Argument Msg: ${linkResult.argumentMsg}")

@@ -17,7 +17,7 @@ import com.iamport.sdk.domain.core.Iamport
 
 class ShopFirstFragment : Fragment() {
 
-    private lateinit var mBinding : FragmentShopFirstBinding
+    private lateinit var mBinding: FragmentShopFirstBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +28,7 @@ class ShopFirstFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        mBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_shop_first,container,false)
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_shop_first, container, false)
         setClick()
         return mBinding.root
     }
@@ -38,7 +38,7 @@ class ShopFirstFragment : Fragment() {
 
         mBinding.btnActivityShopPurchase.setOnClickListener {
             val intent = Intent(activity, OrderActivity::class.java)
-            intent.putExtra(SHOP,mBinding.tvActivityShopTitle.text.toString())
+            intent.putExtra(SHOP, mBinding.tvActivityShopTitle.text.toString())
             intent.putExtra(SHOP_PAY, mBinding.tvActivityShopSalesPrice.text.toString())
             startActivity(intent)
         }

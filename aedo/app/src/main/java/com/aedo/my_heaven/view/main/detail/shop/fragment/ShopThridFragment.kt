@@ -15,13 +15,13 @@ import com.aedo.my_heaven.view.main.detail.shop.fragment.order.OrderActivity
 
 class ShopThridFragment : Fragment() {
 
-    private lateinit var mBinding : FragmentShopThridBinding
+    private lateinit var mBinding: FragmentShopThridBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        mBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_shop_thrid,container,false)
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_shop_thrid, container, false)
         setClick()
         return mBinding.root
     }

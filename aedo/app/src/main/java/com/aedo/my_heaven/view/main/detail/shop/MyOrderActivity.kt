@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aedo.my_heaven.R
 import com.aedo.my_heaven.adapter.MyOrderAdapter
-import com.aedo.my_heaven.adapter.RecyclerAdapter
 import com.aedo.my_heaven.api.APIService
 import com.aedo.my_heaven.api.ApiUtils
 import com.aedo.my_heaven.databinding.ActivityMyOrderBinding
@@ -18,7 +17,6 @@ import com.aedo.my_heaven.model.shop.MyOrder
 import com.aedo.my_heaven.model.shop.MyOrders
 import com.aedo.my_heaven.util.alert.LoadingDialog
 import com.aedo.my_heaven.util.base.BaseActivity
-import com.aedo.my_heaven.util.base.MyApplication
 import com.aedo.my_heaven.util.base.MyApplication.Companion.prefs
 import com.aedo.my_heaven.util.log.LLog
 import com.aedo.my_heaven.view.main.MainActivity
@@ -30,7 +28,7 @@ import retrofit2.Response
 class MyOrderActivity : BaseActivity() {
     private lateinit var mBinding: ActivityMyOrderBinding
     private lateinit var apiServices: APIService
-    private var readapter: MyOrderAdapter?=null
+    private var readapter: MyOrderAdapter? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,14 +49,14 @@ class MyOrderActivity : BaseActivity() {
             override fun onResponse(call: Call<MyOrder>, response: Response<MyOrder>) {
                 val result = response.body()
                 if (response.isSuccessful && result != null) {
-                    Log.d(LLog.TAG,"getMyOrder response SUCCESS -> $result")
+                    Log.d(LLog.TAG, "getMyOrder response SUCCESS -> $result")
                     setAdapter(result.order)
-                }
-                else {
-                    Log.d(LLog.TAG,"getMyOrder response ERROR -> $result")
+                } else {
+                    Log.d(LLog.TAG, "getMyOrder response ERROR -> $result")
                     otherAPI()
                 }
             }
+
             override fun onFailure(call: Call<MyOrder>, t: Throwable) {
                 Log.d(LLog.TAG, "getMyOrder fail -> $t")
             }
@@ -73,14 +71,14 @@ class MyOrderActivity : BaseActivity() {
 
                 val result = response.body()
                 if (response.isSuccessful && result != null) {
-                    Log.d(LLog.TAG,"getMyOrder second response SUCCESS -> $result")
+                    Log.d(LLog.TAG, "getMyOrder second response SUCCESS -> $result")
                     setAdapter(result.order)
 
-                }
-                else {
-                    Log.d(LLog.TAG,"getMyOrder second response ERROR -> $result")
+                } else {
+                    Log.d(LLog.TAG, "getMyOrder second response ERROR -> $result")
                 }
             }
+
             override fun onFailure(call: Call<MyOrder>, t: Throwable) {
                 Log.d(LLog.TAG, "getMyOrder second fail -> $t")
             }
@@ -89,12 +87,17 @@ class MyOrderActivity : BaseActivity() {
 
     private fun setAdapter(order: List<MyOrders>?) {
         val mAdapter = order?.let {
-            MyOrderAdapter(it,this)
+            MyOrderAdapter(it, this)
         }
         mBinding.recyclerViewOrder.adapter = mAdapter
         mBinding.recyclerViewOrder.layoutManager = LinearLayoutManager(this)
         mBinding.recyclerViewOrder.setHasFixedSize(true)
-        mBinding.recyclerViewOrder.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        mBinding.recyclerViewOrder.addItemDecoration(
+            DividerItemDecoration(
+                this,
+                DividerItemDecoration.VERTICAL
+            )
+        )
         return
     }
 

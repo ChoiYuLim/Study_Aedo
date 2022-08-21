@@ -23,7 +23,7 @@ class PermissionActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_permission)
-        binding.activity=this@PermissionActivity
+        binding.activity = this@PermissionActivity
         binding.lifecycleOwner = this
 
         inStatusBar()
@@ -49,12 +49,10 @@ class PermissionActivity : BaseActivity() {
             if (PermissionManager.getAllPermissionGranted(this)) {
                 prefs.setBool(Constant.PREF_PERMISSION_GRANTED, true)
                 moveActivity(b = true)
-            }
-            else {
+            } else {
                 if (getPermissionAllGranted()) {
                     alert!!.showDialog(getString(R.string.permission_error_all_agree)) { }
-                }
-                else {
+                } else {
                     val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
                     val uri = Uri.fromParts("package", packageName, null)
                     intent.data = uri

@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import com.aedo.my_heaven.R
 import com.aedo.my_heaven.api.APIService
 import com.aedo.my_heaven.api.ApiUtils
 import com.aedo.my_heaven.databinding.ActivitySearchDetailBinding
@@ -28,13 +29,12 @@ import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.*
 import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.util.FusedLocationSource
-import com.aedo.my_heaven.R
 
 class SearchDetailActivity : BaseActivity(), OnMapReadyCallback {
     private lateinit var mBinding: ActivitySearchDetailBinding
     private lateinit var apiServices: APIService
     private var locationSource: FusedLocationSource? = null
-    private var mMap: NaverMap?=null
+    private var mMap: NaverMap? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,7 +79,8 @@ class SearchDetailActivity : BaseActivity(), OnMapReadyCallback {
     private fun checkLocationServicesStatus(): Boolean {
         val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
         return (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
-            LocationManager.NETWORK_PROVIDER))
+            LocationManager.NETWORK_PROVIDER
+        ))
     }
 
     private fun showDialogForLocationServiceSetting() {
@@ -99,21 +100,25 @@ class SearchDetailActivity : BaseActivity(), OnMapReadyCallback {
 
     private fun checkRunTimePermission() {
         // 위치 퍼미션 체크
-        val hasFineLocationPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-        val hasCoarseLocationPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+        val hasFineLocationPermission =
+            ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+        val hasCoarseLocationPermission =
+            ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
         if (hasFineLocationPermission == PackageManager.PERMISSION_GRANTED && hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED) {
-        }
-        else {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+        } else {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    this,
                     Constant.PERMISSIONS[0]
-                )) {
-                ActivityCompat.requestPermissions(this,
+                )
+            ) {
+                ActivityCompat.requestPermissions(
+                    this,
                     Constant.PERMISSIONS,
                     Constant.PERMISSION_REQUEST_CODE
                 )
-            }
-            else {
-                ActivityCompat.requestPermissions(this,
+            } else {
+                ActivityCompat.requestPermissions(
+                    this,
                     Constant.PERMISSIONS,
                     Constant.PERMISSION_REQUEST_CODE
                 )
@@ -146,7 +151,11 @@ class SearchDetailActivity : BaseActivity(), OnMapReadyCallback {
         }
     }
 
-    override fun onRequestPermissionsResult(permsRequestCode: Int, permissions: Array<String>, grandResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        permsRequestCode: Int,
+        permissions: Array<String>,
+        grandResults: IntArray
+    ) {
         super.onRequestPermissionsResult(permsRequestCode, permissions, grandResults)
         if (permsRequestCode == Constant.PERMISSION_REQUEST_CODE && grandResults.size == Constant.PERMISSIONS.size) {
             var check_result = true
@@ -157,15 +166,28 @@ class SearchDetailActivity : BaseActivity(), OnMapReadyCallback {
                 }
             }
             if (check_result) {
-            }
-            else {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this, Constant.PERMISSIONS[0])
-                    || ActivityCompat.shouldShowRequestPermissionRationale(this, Constant.PERMISSIONS[1])) {
-                    Toast.makeText(this, "권한이 거부되었습니다. 앱을 다시 실행하여 위치 권한을 허용해주세요.", Toast.LENGTH_LONG).show()
+            } else {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(
+                        this,
+                        Constant.PERMISSIONS[0]
+                    )
+                    || ActivityCompat.shouldShowRequestPermissionRationale(
+                        this,
+                        Constant.PERMISSIONS[1]
+                    )
+                ) {
+                    Toast.makeText(
+                        this,
+                        "권한이 거부되었습니다. 앱을 다시 실행하여 위치 권한을 허용해주세요.",
+                        Toast.LENGTH_LONG
+                    ).show()
                     finish()
-                }
-                else {
-                    Toast.makeText(this, "권한이 거부되었습니다. 설정(앱 정보)에서 위치 권한을 허용해야 합니다. ", Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(
+                        this,
+                        "권한이 거부되었습니다. 설정(앱 정보)에서 위치 권한을 허용해야 합니다. ",
+                        Toast.LENGTH_LONG
+                    ).show()
                     finish()
                 }
             }
@@ -194,15 +216,24 @@ class SearchDetailActivity : BaseActivity(), OnMapReadyCallback {
     }
 
     private fun initmap(place: String?) {
-        val place_first = realm.where(Coordinates::class.java).equalTo("id","PLACE_FIRST").findFirst()
-        val place_second  = realm.where(Coordinates::class.java).equalTo("id","PLACE_Second").findFirst()
-        val place_third  = realm.where(Coordinates::class.java).equalTo("id","PLACE_Third").findFirst()
-        val place_four  = realm.where(Coordinates::class.java).equalTo("id","PLACE_Four").findFirst()
+        val place_first =
+            realm.where(Coordinates::class.java).equalTo("id", "PLACE_FIRST").findFirst()
+        val place_second =
+            realm.where(Coordinates::class.java).equalTo("id", "PLACE_Second").findFirst()
+        val place_third =
+            realm.where(Coordinates::class.java).equalTo("id", "PLACE_Third").findFirst()
+        val place_four =
+            realm.where(Coordinates::class.java).equalTo("id", "PLACE_Four").findFirst()
 
         when {
             place.equals(place_first?.name) -> {
                 mBinding.tvMapDetail.text = place_first?.address.toString()
-                val startPosition = CameraPosition(LatLng(place_first?.xvalue!!.toDouble(),place_first.yvalue!!.toDouble()), 17.2, 0.0, 0.0)
+                val startPosition = CameraPosition(
+                    LatLng(
+                        place_first?.xvalue!!.toDouble(),
+                        place_first.yvalue!!.toDouble()
+                    ), 17.2, 0.0, 0.0
+                )
                 val options = NaverMapOptions()
                     .camera(startPosition)
                     .mapType(NaverMap.MapType.Basic)
@@ -210,17 +241,24 @@ class SearchDetailActivity : BaseActivity(), OnMapReadyCallback {
                     .compassEnabled(true)
                     .scaleBarEnabled(true)
 
-                val mapFragment = supportFragmentManager.findFragmentById(R.id.search_naver_map) as MapFragment?
-                    ?: MapFragment.newInstance(options).also {
-                        supportFragmentManager.beginTransaction().add(R.id.search_naver_map, it).commit()
-                    }
+                val mapFragment =
+                    supportFragmentManager.findFragmentById(R.id.search_naver_map) as MapFragment?
+                        ?: MapFragment.newInstance(options).also {
+                            supportFragmentManager.beginTransaction().add(R.id.search_naver_map, it)
+                                .commit()
+                        }
                 mapFragment.getMapAsync(this)
 
             }
 
             place.equals(place_second?.name) -> {
                 mBinding.tvMapDetail.text = place_second?.address.toString()
-                val startPosition = CameraPosition(LatLng(place_second?.xvalue!!.toDouble(),place_second.yvalue!!.toDouble()), 17.2, 0.0, 0.0)
+                val startPosition = CameraPosition(
+                    LatLng(
+                        place_second?.xvalue!!.toDouble(),
+                        place_second.yvalue!!.toDouble()
+                    ), 17.2, 0.0, 0.0
+                )
                 val options = NaverMapOptions()
                     .camera(startPosition)
                     .mapType(NaverMap.MapType.Basic)
@@ -228,16 +266,23 @@ class SearchDetailActivity : BaseActivity(), OnMapReadyCallback {
                     .compassEnabled(true)
                     .scaleBarEnabled(true)
 
-                val mapFragment = supportFragmentManager.findFragmentById(R.id.search_naver_map) as MapFragment?
-                    ?: MapFragment.newInstance(options).also {
-                        supportFragmentManager.beginTransaction().add(R.id.search_naver_map, it).commit()
-                    }
+                val mapFragment =
+                    supportFragmentManager.findFragmentById(R.id.search_naver_map) as MapFragment?
+                        ?: MapFragment.newInstance(options).also {
+                            supportFragmentManager.beginTransaction().add(R.id.search_naver_map, it)
+                                .commit()
+                        }
                 mapFragment.getMapAsync(this)
             }
 
             place.equals(place_third?.name) -> {
                 mBinding.tvMapDetail.text = place_third?.address.toString()
-                val startPosition = CameraPosition(LatLng(place_third?.xvalue!!.toDouble(),place_third.yvalue!!.toDouble()), 17.2, 0.0, 0.0)
+                val startPosition = CameraPosition(
+                    LatLng(
+                        place_third?.xvalue!!.toDouble(),
+                        place_third.yvalue!!.toDouble()
+                    ), 17.2, 0.0, 0.0
+                )
                 val options = NaverMapOptions()
                     .camera(startPosition)
                     .mapType(NaverMap.MapType.Basic)
@@ -245,17 +290,24 @@ class SearchDetailActivity : BaseActivity(), OnMapReadyCallback {
                     .compassEnabled(true)
                     .scaleBarEnabled(true)
 
-                val mapFragment = supportFragmentManager.findFragmentById(R.id.search_naver_map) as MapFragment?
-                    ?: MapFragment.newInstance(options).also {
-                        supportFragmentManager.beginTransaction().add(R.id.search_naver_map, it).commit()
-                    }
+                val mapFragment =
+                    supportFragmentManager.findFragmentById(R.id.search_naver_map) as MapFragment?
+                        ?: MapFragment.newInstance(options).also {
+                            supportFragmentManager.beginTransaction().add(R.id.search_naver_map, it)
+                                .commit()
+                        }
                 mapFragment.getMapAsync(this)
 
             }
 
             place.equals(place_four?.name) -> {
                 mBinding.tvMapDetail.text = place_four?.address.toString()
-                val startPosition = CameraPosition(LatLng(place_four?.xvalue!!.toDouble(),place_four.yvalue!!.toDouble()), 17.2, 0.0, 0.0)
+                val startPosition = CameraPosition(
+                    LatLng(
+                        place_four?.xvalue!!.toDouble(),
+                        place_four.yvalue!!.toDouble()
+                    ), 17.2, 0.0, 0.0
+                )
                 val options = NaverMapOptions()
                     .camera(startPosition)
                     .mapType(NaverMap.MapType.Basic)
@@ -263,10 +315,12 @@ class SearchDetailActivity : BaseActivity(), OnMapReadyCallback {
                     .compassEnabled(true)
                     .scaleBarEnabled(true)
 
-                val mapFragment = supportFragmentManager.findFragmentById(R.id.search_naver_map) as MapFragment?
-                    ?: MapFragment.newInstance(options).also {
-                        supportFragmentManager.beginTransaction().add(R.id.search_naver_map, it).commit()
-                    }
+                val mapFragment =
+                    supportFragmentManager.findFragmentById(R.id.search_naver_map) as MapFragment?
+                        ?: MapFragment.newInstance(options).also {
+                            supportFragmentManager.beginTransaction().add(R.id.search_naver_map, it)
+                                .commit()
+                        }
                 mapFragment.getMapAsync(this)
             }
             else -> {
@@ -275,33 +329,37 @@ class SearchDetailActivity : BaseActivity(), OnMapReadyCallback {
     }
 
     override fun onMapReady(naverMap: NaverMap) {
-        val place_first = realm.where(Coordinates::class.java).equalTo("id","PLACE_FIRST").findFirst()
-        val place_second  = realm.where(Coordinates::class.java).equalTo("id","PLACE_Second").findFirst()
-        val place_third  = realm.where(Coordinates::class.java).equalTo("id","PLACE_Third").findFirst()
-        val place_four  = realm.where(Coordinates::class.java).equalTo("id","PLACE_Four").findFirst()
+        val place_first =
+            realm.where(Coordinates::class.java).equalTo("id", "PLACE_FIRST").findFirst()
+        val place_second =
+            realm.where(Coordinates::class.java).equalTo("id", "PLACE_Second").findFirst()
+        val place_third =
+            realm.where(Coordinates::class.java).equalTo("id", "PLACE_Third").findFirst()
+        val place_four =
+            realm.where(Coordinates::class.java).equalTo("id", "PLACE_Four").findFirst()
 
         Marker().apply {
-            position = LatLng(place_first?.xvalue!!.toDouble(),place_first.yvalue!!.toDouble())
+            position = LatLng(place_first?.xvalue!!.toDouble(), place_first.yvalue!!.toDouble())
             map = naverMap
         }
 
         Marker().apply {
-            position = LatLng(place_second?.xvalue!!.toDouble(),place_second.yvalue!!.toDouble())
+            position = LatLng(place_second?.xvalue!!.toDouble(), place_second.yvalue!!.toDouble())
             map = naverMap
         }
 
         Marker().apply {
-            position = LatLng(place_third?.xvalue!!.toDouble(),place_third.yvalue!!.toDouble())
+            position = LatLng(place_third?.xvalue!!.toDouble(), place_third.yvalue!!.toDouble())
             map = naverMap
         }
 
         Marker().apply {
-            position = LatLng(place_four?.xvalue!!.toDouble(),place_four.yvalue!!.toDouble())
+            position = LatLng(place_four?.xvalue!!.toDouble(), place_four.yvalue!!.toDouble())
             map = naverMap
         }
     }
 
-    fun onBackClick(v: View){
+    fun onBackClick(v: View) {
         moveMain()
     }
 

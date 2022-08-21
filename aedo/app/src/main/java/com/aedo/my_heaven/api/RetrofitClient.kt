@@ -11,20 +11,19 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
-    private var retrofit : Retrofit? = null
+    private var retrofit: Retrofit? = null
     private var okhttp: OkHttpClient? = null
-    var gson =GsonBuilder().setLenient().create()
+    var gson = GsonBuilder().setLenient().create()
 
     fun getClient(baseUrl: String): Retrofit {
         val interceptor = HttpLoggingInterceptor()
         if (BuildConfig.DEBUG) {
             interceptor.level = HttpLoggingInterceptor.Level.BODY
-        }
-        else {
+        } else {
             interceptor.level = HttpLoggingInterceptor.Level.NONE
         }
 
-        if (retrofit ==  null) {
+        if (retrofit == null) {
 
             val client = OkHttpClient.Builder()
                 .connectTimeout(10000, TimeUnit.MILLISECONDS)

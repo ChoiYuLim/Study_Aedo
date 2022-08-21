@@ -13,7 +13,6 @@ import com.aedo.my_heaven.model.restapi.base.Terms
 import com.aedo.my_heaven.model.restapi.base.TremModel
 import com.aedo.my_heaven.util.base.BaseActivity
 import com.aedo.my_heaven.util.log.LLog
-import com.aedo.my_heaven.view.main.MainActivity
 import com.aedo.my_heaven.view.side.setting.SettingActivity
 import retrofit2.Call
 import retrofit2.Callback
@@ -39,17 +38,16 @@ class TermActivity : BaseActivity() {
         apiServices.getTerms().enqueue(object : Callback<TremModel> {
             override fun onResponse(call: Call<TremModel>, response: Response<TremModel>) {
                 val result = response.body()
-                if(response.isSuccessful&& result!= null) {
-                    Log.d(LLog.TAG,"TremModel API SUCCESS -> $result")
+                if (response.isSuccessful && result != null) {
+                    Log.d(LLog.TAG, "TremModel API SUCCESS -> $result")
                     terms(result.terms)
-                }
-                else {
-                    Log.d(LLog.TAG,"TremModel API ERROR -> ${response.errorBody()}")
+                } else {
+                    Log.d(LLog.TAG, "TremModel API ERROR -> ${response.errorBody()}")
                 }
             }
 
             override fun onFailure(call: Call<TremModel>, t: Throwable) {
-                Log.d(LLog.TAG,"TremModel ERROR -> $t")
+                Log.d(LLog.TAG, "TremModel ERROR -> $t")
 
             }
         })

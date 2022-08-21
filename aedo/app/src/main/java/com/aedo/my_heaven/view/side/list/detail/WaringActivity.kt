@@ -11,7 +11,7 @@ import com.aedo.my_heaven.util.base.BaseActivity
 
 class WaringActivity : BaseActivity() {
 
-    private lateinit var mBinding : ActivityWaringBinding
+    private lateinit var mBinding: ActivityWaringBinding
     private lateinit var apiServices: APIService
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -28,7 +28,7 @@ import retrofit2.Response
 class SearchActivity : BaseActivity() {
     private lateinit var mBinding: ActivitySearchBinding
     private lateinit var apiServices: APIService
-    private var searchAdapter : SearchAdapter? = null
+    private var searchAdapter: SearchAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,19 +41,19 @@ class SearchActivity : BaseActivity() {
     private fun initSearchAPI() {
         LLog.e("검색_첫번째 API")
         val search = mBinding.etSearch.text.toString()
-        val vercall: Call<CreateName> = apiServices.getCreateName(search,prefs.myaccesstoken)
+        val vercall: Call<CreateName> = apiServices.getCreateName(search, prefs.myaccesstoken)
         vercall.enqueue(object : Callback<CreateName> {
             override fun onResponse(call: Call<CreateName>, response: Response<CreateName>) {
                 val result = response.body()
                 if (response.isSuccessful && result != null) {
-                    Log.d(LLog.TAG,"Search response SUCCESS -> $result")
+                    Log.d(LLog.TAG, "Search response SUCCESS -> $result")
                     setAdapter(result.result)
-                }
-                else {
-                    Log.d(LLog.TAG,"Search response ERROR -> $result")
+                } else {
+                    Log.d(LLog.TAG, "Search response ERROR -> $result")
                     otherAPI()
                 }
             }
+
             override fun onFailure(call: Call<CreateName>, t: Throwable) {
                 Log.d(LLog.TAG, "Search Fail -> $t")
             }
@@ -63,19 +63,19 @@ class SearchActivity : BaseActivity() {
     private fun otherAPI() {
         LLog.e("검색_두번째 API")
         val search = mBinding.etSearch.text.toString()
-        val vercall: Call<CreateName> = apiServices.getCreateName(search,prefs.newaccesstoken)
+        val vercall: Call<CreateName> = apiServices.getCreateName(search, prefs.newaccesstoken)
         vercall.enqueue(object : Callback<CreateName> {
             override fun onResponse(call: Call<CreateName>, response: Response<CreateName>) {
                 val result = response.body()
                 if (response.isSuccessful && result != null) {
-                    Log.d(LLog.TAG,"Search Second response SUCCESS -> $result")
+                    Log.d(LLog.TAG, "Search Second response SUCCESS -> $result")
                     setAdapter(result.result)
 
-                }
-                else {
-                    Log.d(LLog.TAG,"Search Second response ERROR -> $result")
+                } else {
+                    Log.d(LLog.TAG, "Search Second response ERROR -> $result")
                 }
             }
+
             override fun onFailure(call: Call<CreateName>, t: Throwable) {
                 Log.d(LLog.TAG, "Search Second Fail -> $t")
             }
@@ -84,7 +84,7 @@ class SearchActivity : BaseActivity() {
 
     private fun setAdapter(search: List<CreateSearch>?) {
         val adapter = search?.let {
-            SearchAdapter(it,this)
+            SearchAdapter(it, this)
         }
         val rv = findViewById<View>(R.id.search_recyclerView) as RecyclerView
         rv.adapter = adapter
@@ -93,7 +93,7 @@ class SearchActivity : BaseActivity() {
         rv.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
     }
 
-    fun onBackClick(v: View){
+    fun onBackClick(v: View) {
         moveMain()
     }
 
@@ -101,8 +101,7 @@ class SearchActivity : BaseActivity() {
         val search = mBinding.etSearch.text.toString()
         if (search.isEmpty()) {
             mBinding.etSearch.error = "미입력"
-        }
-        else {
+        } else {
             initSearchAPI()
         }
     }

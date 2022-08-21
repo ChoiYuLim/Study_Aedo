@@ -19,11 +19,11 @@ import com.aedo.my_heaven.util.`object`.Constant.PREF_SMS
 import com.aedo.my_heaven.util.`object`.Constant.PREF_TEST_URI
 import com.securepreferences.SecurePreferences
 
-class PreferenceManager (context: Context) : PreferenceAdapter() {
-    private val PREFS_FILENAME : String = "prefs"
+class PreferenceManager(context: Context) : PreferenceAdapter() {
+    private val PREFS_FILENAME: String = "prefs"
     private val prefs = context.getSharedPreferences(PREFS_FILENAME, 0)    // 0 = MODE_PRIVATE
-    private var share : SharedPreferences
-    private val shareEditor : SharedPreferences.Editor
+    private var share: SharedPreferences
+    private val shareEditor: SharedPreferences.Editor
     private var securePreferences: SecurePreferences? = null
     private var securePrefEditor: SecurePreferences.Editor? = null
 
@@ -34,8 +34,8 @@ class PreferenceManager (context: Context) : PreferenceAdapter() {
         super.setPreference(sharedPref)
     }
 
-    private fun getString(key: String) : String? {
-        return getString(key,"").apply {  }
+    private fun getString(key: String): String? {
+        return getString(key, "").apply { }
     }
 
     internal fun getStr(key: String?, s: String): String? {
@@ -87,60 +87,61 @@ class PreferenceManager (context: Context) : PreferenceAdapter() {
         return securePreferences!!.getString(Constant.PREF_KEY_ENC_IV, "")
     }
 
-    var myhashKey : String?
-        get() = prefs.getString(PREF_HASH_KEY,"")
+    var myhashKey: String?
+        get() = prefs.getString(PREF_HASH_KEY, "")
         set(value) = prefs.edit().putString(PREF_HASH_KEY, value).apply()
 
-    var myapptoken : String?
-        get() = prefs.getString(PREF_KEY_APP_TOKEN,"")
+    var myapptoken: String?
+        get() = prefs.getString(PREF_KEY_APP_TOKEN, "")
         set(value) = prefs.edit().putString(PREF_KEY_APP_TOKEN, value).apply()
 
-    var myeniv : String?
-        get() = prefs.getString(PREF_KEY_ENCTYPT_IV,"")
+    var myeniv: String?
+        get() = prefs.getString(PREF_KEY_ENCTYPT_IV, "")
         set(value) = prefs.edit().putString(PREF_KEY_ENCTYPT_IV, value).apply()
 
-    var myenkey : String?
-        get() = prefs.getString(PREF_KEY_ENCTYPT_KEY,"")
+    var myenkey: String?
+        get() = prefs.getString(PREF_KEY_ENCTYPT_KEY, "")
         set(value) = prefs.edit().putString(PREF_KEY_ENCTYPT_KEY, value).apply()
 
-    var myauthtoken : String?
-        get() = prefs.getString(PREF_KEY_AUTH_TOKEN,"")
+    var myauthtoken: String?
+        get() = prefs.getString(PREF_KEY_AUTH_TOKEN, "")
         set(value) = prefs.edit().putString(PREF_KEY_AUTH_TOKEN, value).apply()
 
-    var mylangcode : String?
-        get() = prefs.getString(PREF_KEY_LANG_CODE,"")
+    var mylangcode: String?
+        get() = prefs.getString(PREF_KEY_LANG_CODE, "")
         set(value) = prefs.edit().putString(PREF_KEY_LANG_CODE, value).apply()
 
-    var mytoken : String?
-        get() = prefs.getString(PREF_KEY_TOKEN,"")
+    var mytoken: String?
+        get() = prefs.getString(PREF_KEY_TOKEN, "")
         set(value) = prefs.edit().putString(PREF_KEY_TOKEN, value).apply()
 
-    var mysms : String?
-        get() = prefs.getString(PREF_SMS,"")
+    var mysms: String?
+        get() = prefs.getString(PREF_SMS, "")
         set(value) = prefs.edit().putString(PREF_SMS, value).apply()
 
-    var myaccesstoken : String?
-        get() = prefs.getString(PREF_ACCESS_TOKEN,"")
+    var myaccesstoken: String?
+        get() = prefs.getString(PREF_ACCESS_TOKEN, "")
         set(value) = prefs.edit().putString(PREF_ACCESS_TOKEN, value).apply()
 
-    var newaccesstoken : String?
-        get() = prefs.getString(PREF_NEW_ACCESS_TOKEN,"")
+    var newaccesstoken: String?
+        get() = prefs.getString(PREF_NEW_ACCESS_TOKEN, "")
         set(value) = prefs.edit().putString(PREF_NEW_ACCESS_TOKEN, value).apply()
 
-    var myListId : String?
-        get() = prefs.getString(PREF_LIST_ID,"")
+    var myListId: String?
+        get() = prefs.getString(PREF_LIST_ID, "")
         set(value) = prefs.edit().putString(PREF_LIST_ID, value).apply()
 
-    var imgurls : String?
-        get() = prefs.getString(PREF_IMG_URI,"")
+    var imgurls: String?
+        get() = prefs.getString(PREF_IMG_URI, "")
         set(value) = prefs.edit().putString(PREF_IMG_URI, value).apply()
 
-    var testurl : String?
-        get() = prefs.getString(PREF_TEST_URI,"")
+    var testurl: String?
+        get() = prefs.getString(PREF_TEST_URI, "")
         set(value) = prefs.edit().putString(PREF_TEST_URI, value).apply()
 
     companion object {
         private var instance: PreferenceManager? = null
+
         @JvmStatic
         fun getInstance(context: Context): PreferenceManager? {
             if (null == instance) {
@@ -153,6 +154,7 @@ class PreferenceManager (context: Context) : PreferenceAdapter() {
             return instance
         }
     }
+
     init {
         val sharedPref = androidx.preference.PreferenceManager.getDefaultSharedPreferences(context)
         share = SecurePreferences(context)

@@ -1,7 +1,6 @@
 package com.aedo.my_heaven.util.preference
 
 import android.content.SharedPreferences
-import java.lang.ClassCastException
 
 abstract class PreferenceAdapter {
     private var share: SharedPreferences? = null

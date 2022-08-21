@@ -11,12 +11,12 @@ class FirebaseRepository {
     private val fireStore = FirebaseFirestore.getInstance()
 
     // 아이템 업로드하기
-    fun uploadItem(itemDTO: ItemDTO){
+    fun uploadItem(itemDTO: ItemDTO) {
         fireStore.collection("list").document(itemDTO.timestamp.toString()).set(itemDTO)
     }
 
     // 아이템 삭제하기
-    fun deleteItem(itemDTO: ItemDTO){
+    fun deleteItem(itemDTO: ItemDTO) {
         fireStore.collection("list").document(itemDTO.timestamp.toString()).delete()
     }
 

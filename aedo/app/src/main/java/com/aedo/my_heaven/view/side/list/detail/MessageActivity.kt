@@ -29,9 +29,9 @@ import retrofit2.Response
 
 class MessageActivity : BaseActivity() {
 
-    private lateinit var mBinding : ActivityMessageBinding
+    private lateinit var mBinding: ActivityMessageBinding
     private lateinit var apiServices: APIService
-    private var messageRead: MessageRecyclerAdapter?=null
+    private var messageRead: MessageRecyclerAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,17 +52,17 @@ class MessageActivity : BaseActivity() {
             override fun onResponse(call: Call<Condole>, response: Response<Condole>) {
                 val result = response.body()
                 if (response.isSuccessful && result != null) {
-                    Log.d(TAG,"Condole response SUCCESS -> $result")
+                    Log.d(TAG, "Condole response SUCCESS -> $result")
                     setAdapter(result.condoleMessage!!)
-                }
-                else {
-                    Log.d(TAG,"Condole response ERROR -> $result")
+                } else {
+                    Log.d(TAG, "Condole response ERROR -> $result")
                     otherAPI()
                 }
             }
+
             override fun onFailure(call: Call<Condole>, t: Throwable) {
                 Log.d(TAG, "Condole FAIL -> $t")
-                Log.d(TAG,"parms ->${prefs.myListId}")
+                Log.d(TAG, "parms ->${prefs.myListId}")
             }
         })
     }
@@ -75,13 +75,13 @@ class MessageActivity : BaseActivity() {
             override fun onResponse(call: Call<Condole>, response: Response<Condole>) {
                 val result = response.body()
                 if (response.isSuccessful && result != null) {
-                    Log.d(TAG,"Condole second response SUCCESS -> $result")
+                    Log.d(TAG, "Condole second response SUCCESS -> $result")
                     setAdapter(result.condoleMessage!!)
-                }
-                else {
-                    Log.d(TAG,"Condole second response ERROR -> $result")
+                } else {
+                    Log.d(TAG, "Condole second response ERROR -> $result")
                 }
             }
+
             override fun onFailure(call: Call<Condole>, t: Throwable) {
                 Log.d(TAG, "Condole second FAIL -> $t")
             }
@@ -89,12 +89,12 @@ class MessageActivity : BaseActivity() {
     }
 
     private fun setAdapter(list: List<CondoleList>) {
-        val adapter = MessageRecyclerAdapter(list,this)
+        val adapter = MessageRecyclerAdapter(list, this)
         val rv = findViewById<View>(R.id.rc_message) as RecyclerView
         rv.adapter = adapter
         rv.layoutManager = LinearLayoutManager(this)
         rv.setHasFixedSize(true)
-        rv.addItemDecoration(DividerItemDecoration(this,DividerItemDecoration.VERTICAL))
+        rv.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
     }
 
 
@@ -114,7 +114,7 @@ class MessageActivity : BaseActivity() {
         val id = intent.getStringExtra(Constant.MESSAGE_LLIST_ID)
         val listid = id
         val intent = Intent(this, MessageUploadActivity::class.java)
-        intent.putExtra(Constant.MESSAGE_DETAIL_LLIST_ID,listid.toString())
+        intent.putExtra(Constant.MESSAGE_DETAIL_LLIST_ID, listid.toString())
         startActivity(intent)
 
     }

@@ -10,13 +10,13 @@ class AgreeViewModel @Inject constructor() : BaseViewModel() {
     private val _serviceAgree = MutableLiveData(false)
     private val _personalInfoAgree = MutableLiveData(false)
     private val _allAgree = MutableLiveData(false)
-    private val  _anotherAgree = MutableLiveData(false)
+    private val _anotherAgree = MutableLiveData(false)
     private val _goPhoneAuth = SingleLiveEvent<Boolean>()
 
     val serviceAgree: LiveData<Boolean> get() = _serviceAgree
     val personalInfoAgree: LiveData<Boolean> get() = _personalInfoAgree
     val allAgree: LiveData<Boolean> get() = _allAgree
-    val anotherAgree : LiveData<Boolean> get() = _anotherAgree
+    val anotherAgree: LiveData<Boolean> get() = _anotherAgree
     val goPhoneAuth: LiveData<Boolean> get() = _goPhoneAuth
 
     fun goPhoneAuth() {

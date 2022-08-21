@@ -10,7 +10,7 @@ import com.aedo.my_heaven.R
 import com.aedo.my_heaven.api.APIService
 import com.aedo.my_heaven.api.ApiUtils
 import com.aedo.my_heaven.databinding.ActivityMessageUploadBinding
-import com.aedo.my_heaven.model.restapi.base.*
+import com.aedo.my_heaven.model.restapi.base.CreateMessage
 import com.aedo.my_heaven.util.`object`.Constant
 import com.aedo.my_heaven.util.base.BaseActivity
 import com.aedo.my_heaven.util.base.MyApplication.Companion.prefs
@@ -23,7 +23,7 @@ import java.time.LocalDate
 
 class MessageUploadActivity : BaseActivity() {
 
-    private lateinit var mBinding : ActivityMessageUploadBinding
+    private lateinit var mBinding: ActivityMessageUploadBinding
     private lateinit var apiServices: APIService
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,20 +52,20 @@ class MessageUploadActivity : BaseActivity() {
         val data = CreateMessage(title, content, created, obId)
 
         LLog.e("조문메세지 작성_첫번째 API")
-        apiServices.getCondole(prefs.myaccesstoken,data).enqueue(object : Callback<CreateMessage> {
+        apiServices.getCondole(prefs.myaccesstoken, data).enqueue(object : Callback<CreateMessage> {
             override fun onResponse(call: Call<CreateMessage>, response: Response<CreateMessage>) {
                 val result = response.body()
-                if(response.isSuccessful&& result!= null) {
-                    Log.d(TAG,"CreateMessage SUCCESS -> $result")
+                if (response.isSuccessful && result != null) {
+                    Log.d(TAG, "CreateMessage SUCCESS -> $result")
                     moveMessage()
-                }
-                else {
-                    Log.d(TAG,"CreateMessage ERROR -> ${response.errorBody()}")
+                } else {
+                    Log.d(TAG, "CreateMessage ERROR -> ${response.errorBody()}")
                     otherAPI()
                 }
             }
+
             override fun onFailure(call: Call<CreateMessage>, t: Throwable) {
-                Log.d(TAG,"CreateMessage FAIL -> $t")
+                Log.d(TAG, "CreateMessage FAIL -> $t")
             }
         })
 
@@ -80,22 +80,26 @@ class MessageUploadActivity : BaseActivity() {
         val data = CreateMessage(title, content, created, obId)
 
         LLog.e("조문메세지 작성_두번째째 API")
-       apiServices.getCondole(prefs.newaccesstoken,data).enqueue(object : Callback<CreateMessage> {
-            override fun onResponse(call: Call<CreateMessage>, response: Response<CreateMessage>) {
-                val result = response.body()
-                if(response.isSuccessful&& result!= null) {
-                    Log.d(TAG,"CreateMessage id -> ${id.toString()}")
-                    Log.d(TAG,"CreateMessage Second SUCCESS -> $result")
-                    moveMessage()
+        apiServices.getCondole(prefs.newaccesstoken, data)
+            .enqueue(object : Callback<CreateMessage> {
+                override fun onResponse(
+                    call: Call<CreateMessage>,
+                    response: Response<CreateMessage>
+                ) {
+                    val result = response.body()
+                    if (response.isSuccessful && result != null) {
+                        Log.d(TAG, "CreateMessage id -> ${id.toString()}")
+                        Log.d(TAG, "CreateMessage Second SUCCESS -> $result")
+                        moveMessage()
+                    } else {
+                        Log.d(TAG, "CreateMessage Second ERROR -> ${response.errorBody()}")
+                    }
                 }
-                else {
-                    Log.d(TAG,"CreateMessage Second ERROR -> ${response.errorBody()}")
+
+                override fun onFailure(call: Call<CreateMessage>, t: Throwable) {
+                    Log.d(TAG, "CreateMessage Second API FAIL -> $t")
                 }
-            }
-            override fun onFailure(call: Call<CreateMessage>, t: Throwable) {
-                Log.d(TAG,"CreateMessage Second API FAIL -> $t")
-            }
-        })
+            })
     }
 
     fun onBackClick(v: View) {
@@ -112,11 +116,11 @@ class MessageUploadActivity : BaseActivity() {
         when {
             title.isEmpty() -> {
                 mBinding.messageTitle.error = "미입력"
-                Toast.makeText(this,"메세지를 입력해 주세요", Toast.LENGTH_SHORT).show().toString()
+                Toast.makeText(this, "메세지를 입력해 주세요", Toast.LENGTH_SHORT).show().toString()
             }
             obld.isEmpty() -> {
                 mBinding.messageDetailName.error = "미입력"
-                Toast.makeText(this,"성함을 입력해 주세요", Toast.LENGTH_SHORT).show().toString()
+                Toast.makeText(this, "성함을 입력해 주세요", Toast.LENGTH_SHORT).show().toString()
             }
             else -> {
                 condleAPI()

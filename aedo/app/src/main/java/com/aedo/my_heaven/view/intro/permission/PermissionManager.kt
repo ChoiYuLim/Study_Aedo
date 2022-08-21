@@ -1,10 +1,10 @@
 package com.aedo.my_heaven.view.intro.permission
 
 import android.app.Activity
-import androidx.core.content.ContextCompat
+import android.content.Context
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
-import android.content.Context
+import androidx.core.content.ContextCompat
 import com.aedo.my_heaven.util.`object`.Constant
 
 object PermissionManager {

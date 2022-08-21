@@ -18,8 +18,8 @@ import com.aedo.my_heaven.util.`object`.Constant.NOTICE_TITLE
 import com.aedo.my_heaven.view.notice.NoticeDetailActivity
 
 
-class NoticeAdapter(private val noticeList : List<Announcement>,private val context: Context)
-    : RecyclerView.Adapter<NoticeAdapter.ViewHolder>(){
+class NoticeAdapter(private val noticeList: List<Announcement>, private val context: Context) :
+    RecyclerView.Adapter<NoticeAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoticeAdapter.ViewHolder {
         val context = parent.context
@@ -29,7 +29,7 @@ class NoticeAdapter(private val noticeList : List<Announcement>,private val cont
     }
 
     override fun onBindViewHolder(holder: NoticeAdapter.ViewHolder, position: Int) {
-        holder.bind(noticeList[position],context)
+        holder.bind(noticeList[position], context)
 
     }
 
@@ -37,20 +37,20 @@ class NoticeAdapter(private val noticeList : List<Announcement>,private val cont
         return noticeList.count()
     }
 
-    inner class ViewHolder (itemView: View? ) : RecyclerView.ViewHolder(itemView!!){
+    inner class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
 
         val notice_title = itemView?.findViewById<TextView>(R.id.tv_notice_item_title)
         val notice_timestamp = itemView?.findViewById<TextView>(R.id.tv_notice_item_timestamp)
         val btn_go = itemView?.findViewById<ImageView>(R.id.notice_img_go)
         val cl_body = itemView?.findViewById<ConstraintLayout>(R.id.cl_notice)
 
-        fun bind(list: Announcement?,context: Context) {
+        fun bind(list: Announcement?, context: Context) {
             notice_title?.text = list?.title
             notice_timestamp?.text = list?.created
 
             cl_body?.setOnClickListener {
                 val intent = Intent(context, NoticeDetailActivity::class.java)
-                intent.putExtra(NOTICE_TITLE,list?.title.toString())
+                intent.putExtra(NOTICE_TITLE, list?.title.toString())
                 intent.putExtra(NOTICE_CONTENT, list?.content.toString())
                 intent.putExtra(NOTICE_CREATED, list?.created.toString())
                 ContextCompat.startActivity(itemView.context, intent, null)

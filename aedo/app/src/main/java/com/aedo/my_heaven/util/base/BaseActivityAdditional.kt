@@ -2,7 +2,7 @@ package com.aedo.my_heaven.util.base
 
 import android.graphics.drawable.Drawable
 import androidx.appcompat.content.res.AppCompatResources
-import java.util.HashMap
+import java.util.*
 
 abstract class BaseActivityAdditional : BaseActivity() {
     open fun onStationDeploymentClick(stationInfo: Map<String?, String?>?) {

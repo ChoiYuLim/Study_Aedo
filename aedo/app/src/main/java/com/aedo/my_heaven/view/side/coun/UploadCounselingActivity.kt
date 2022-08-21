@@ -22,7 +22,7 @@ import java.time.LocalDate
 class UploadCounselingActivity : BaseActivity() {
     private lateinit var mBinding: ActivityUploadCounselingBinding
     private lateinit var apiServices: APIService
-    private val mViewModel : AgreeViewModel? = null
+    private val mViewModel: AgreeViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,25 +79,24 @@ class UploadCounselingActivity : BaseActivity() {
         val title = mBinding.etConTitle.text.toString()
         val content = mBinding.etConDetail.text.toString()
         val time = mBinding.tvTime.text.toString()
-        val data = CounPost(name, title,content,time)
+        val data = CounPost(name, title, content, time)
 
         LLog.e("1:1문의 작성_첫번째 API")
-        apiServices.getCounPost(prefs.myaccesstoken,data).enqueue(object :
+        apiServices.getCounPost(prefs.myaccesstoken, data).enqueue(object :
             Callback<CounPost> {
             override fun onResponse(call: Call<CounPost>, response: Response<CounPost>) {
                 val result = response.body()
-                if(response.isSuccessful&& result!= null) {
-                    Log.d(LLog.TAG,"CounPost  API SUCCESS -> $result")
+                if (response.isSuccessful && result != null) {
+                    Log.d(LLog.TAG, "CounPost  API SUCCESS -> $result")
                     moveCounseling()
-                }
-                else {
-                    Log.d(LLog.TAG,"CounPost  API ERROR -> ${response.errorBody()}")
+                } else {
+                    Log.d(LLog.TAG, "CounPost  API ERROR -> ${response.errorBody()}")
                     otherAPI()
                 }
             }
 
             override fun onFailure(call: Call<CounPost>, t: Throwable) {
-                Log.d(LLog.TAG,"CounPost  Fail -> $t")
+                Log.d(LLog.TAG, "CounPost  Fail -> $t")
             }
         })
     }
@@ -107,24 +106,23 @@ class UploadCounselingActivity : BaseActivity() {
         val title = mBinding.etConTitle.text.toString()
         val content = mBinding.etConDetail.text.toString()
         val time = mBinding.tvTime.text.toString()
-        val data = CounPost(name, title,content,time)
+        val data = CounPost(name, title, content, time)
 
         LLog.e("1:1문의 작성_두번째 API")
-        apiServices.getCounPost(prefs.newaccesstoken,data).enqueue(object :
+        apiServices.getCounPost(prefs.newaccesstoken, data).enqueue(object :
             Callback<CounPost> {
             override fun onResponse(call: Call<CounPost>, response: Response<CounPost>) {
                 val result = response.body()
-                if(response.isSuccessful&& result!= null) {
-                    Log.d(LLog.TAG,"CounPost Second API SUCCESS -> $result")
+                if (response.isSuccessful && result != null) {
+                    Log.d(LLog.TAG, "CounPost Second API SUCCESS -> $result")
                     moveCounseling()
-                }
-                else {
-                    Log.d(LLog.TAG,"CounPost Second API ERROR -> ${response.errorBody()}")
+                } else {
+                    Log.d(LLog.TAG, "CounPost Second API ERROR -> ${response.errorBody()}")
                 }
             }
 
             override fun onFailure(call: Call<CounPost>, t: Throwable) {
-                Log.d(LLog.TAG,"CounPost Second Fail -> $t")
+                Log.d(LLog.TAG, "CounPost Second Fail -> $t")
             }
         })
     }

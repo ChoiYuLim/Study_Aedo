@@ -7,7 +7,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import com.aedo.my_heaven.R
 
-class LoadingDialog(context: Context) : Dialog(context){
+class LoadingDialog(context: Context) : Dialog(context) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

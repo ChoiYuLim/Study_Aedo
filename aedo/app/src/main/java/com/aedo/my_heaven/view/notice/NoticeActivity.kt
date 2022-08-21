@@ -19,7 +19,6 @@ import com.aedo.my_heaven.model.notice.NoticeModel
 import com.aedo.my_heaven.util.base.BaseActivity
 import com.aedo.my_heaven.util.base.MyApplication.Companion.prefs
 import com.aedo.my_heaven.util.log.LLog
-import com.aedo.my_heaven.view.main.MainActivity
 import com.aedo.my_heaven.view.main.detail.center.CenterActivity
 import retrofit2.Call
 import retrofit2.Callback
@@ -28,7 +27,7 @@ import retrofit2.Response
 class NoticeActivity : BaseActivity() {
     private lateinit var mBinding: ActivityNoticeBinding
     private lateinit var apiServices: APIService
-    private var noticeAdapter : NoticeAdapter?=null
+    private var noticeAdapter: NoticeAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,14 +46,14 @@ class NoticeActivity : BaseActivity() {
             override fun onResponse(call: Call<NoticeModel>, response: Response<NoticeModel>) {
                 val result = response.body()
                 if (response.isSuccessful && result != null) {
-                    Log.d(LLog.TAG,"NoticeModel response SUCCESS -> $result")
+                    Log.d(LLog.TAG, "NoticeModel response SUCCESS -> $result")
                     setAdapter(result.announcement!!)
-                }
-                else {
-                    Log.d(LLog.TAG,"NoticeModel response ERROR -> $result")
+                } else {
+                    Log.d(LLog.TAG, "NoticeModel response ERROR -> $result")
                     otherAPI()
                 }
             }
+
             override fun onFailure(call: Call<NoticeModel>, t: Throwable) {
                 Log.d(LLog.TAG, "NoticeModel Fail -> $t")
             }
@@ -68,13 +67,13 @@ class NoticeActivity : BaseActivity() {
             override fun onResponse(call: Call<NoticeModel>, response: Response<NoticeModel>) {
                 val result = response.body()
                 if (response.isSuccessful && result != null) {
-                    Log.d(LLog.TAG,"NoticeModel Second response SUCCESS -> $result")
+                    Log.d(LLog.TAG, "NoticeModel Second response SUCCESS -> $result")
                     setAdapter(result.announcement!!)
-                }
-                else {
-                    Log.d(LLog.TAG,"NoticeModel Second response ERROR -> $result")
+                } else {
+                    Log.d(LLog.TAG, "NoticeModel Second response ERROR -> $result")
                 }
             }
+
             override fun onFailure(call: Call<NoticeModel>, t: Throwable) {
                 Log.d(LLog.TAG, "NoticeModel Second Fail -> $t")
             }
@@ -82,12 +81,12 @@ class NoticeActivity : BaseActivity() {
     }
 
     private fun setAdapter(result: List<Announcement>) {
-        val adapter = NoticeAdapter(result,this)
+        val adapter = NoticeAdapter(result, this)
         val rv = findViewById<View>(R.id.medical_recyclerView) as RecyclerView
         rv.adapter = adapter
         rv.layoutManager = LinearLayoutManager(this)
         rv.setHasFixedSize(true)
-        rv.addItemDecoration(DividerItemDecoration(this,DividerItemDecoration.VERTICAL))
+        rv.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
     }
 
     fun onBackClick(v: View) {

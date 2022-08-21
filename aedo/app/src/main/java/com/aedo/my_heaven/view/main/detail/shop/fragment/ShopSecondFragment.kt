@@ -21,7 +21,8 @@ class ShopSecondFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        mBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_shop_second,container,false)
+        mBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_shop_second, container, false)
         setClick()
         return mBinding.root
     }

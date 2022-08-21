@@ -1,6 +1,6 @@
 package com.aedo.my_heaven.util.common
 
-class CommonData  {
+class CommonData {
     private fun CommonData() {
     }
 

@@ -14,7 +14,7 @@ import com.aedo.my_heaven.databinding.ViewPopupButtonNegativeBinding
 
 class CustomDialog(context: Activity) {
     private var context: Activity? = null
-    private var dialog: Dialog?=null
+    private var dialog: Dialog? = null
     private var binding: PopupDefaultBinding? = null
     private var negativeBtn: ViewPopupButtonNegativeBinding? = null
     private var positiveBtn: ViewPopupButtonBinding? = null

@@ -19,9 +19,7 @@ import com.aedo.my_heaven.model.coun.CounList
 import com.aedo.my_heaven.util.base.BaseActivity
 import com.aedo.my_heaven.util.base.MyApplication.Companion.prefs
 import com.aedo.my_heaven.util.log.LLog
-import com.aedo.my_heaven.view.main.SideMenuActivity
 import com.aedo.my_heaven.view.main.detail.center.CenterActivity
-import com.aedo.my_heaven.view.notice.NoticeActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,7 +27,7 @@ import retrofit2.Response
 class CounselingActivity : BaseActivity() {
     private lateinit var mBinding: ActivityCounselingBinding
     private lateinit var apiServices: APIService
-    private var counAdapter : CounSelingAdapter?=null
+    private var counAdapter: CounSelingAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,14 +46,14 @@ class CounselingActivity : BaseActivity() {
             override fun onResponse(call: Call<CounGet>, response: Response<CounGet>) {
                 val result = response.body()
                 if (response.isSuccessful && result != null) {
-                    Log.d(LLog.TAG,"CounGet response SUCCESS -> $result")
+                    Log.d(LLog.TAG, "CounGet response SUCCESS -> $result")
                     setAdapter(result.userRequest!!)
-                }
-                else {
-                    Log.d(LLog.TAG,"CounGet response ERROR -> $result")
+                } else {
+                    Log.d(LLog.TAG, "CounGet response ERROR -> $result")
                     otherAPI()
                 }
             }
+
             override fun onFailure(call: Call<CounGet>, t: Throwable) {
                 Log.d(LLog.TAG, "CounGet Fail -> $t")
             }
@@ -69,13 +67,13 @@ class CounselingActivity : BaseActivity() {
             override fun onResponse(call: Call<CounGet>, response: Response<CounGet>) {
                 val result = response.body()
                 if (response.isSuccessful && result != null) {
-                    Log.d(LLog.TAG,"CounGet Second response SUCCESS -> $result")
+                    Log.d(LLog.TAG, "CounGet Second response SUCCESS -> $result")
                     setAdapter(result.userRequest!!)
-                }
-                else {
-                    Log.d(LLog.TAG,"CounGet Second response ERROR -> $result")
+                } else {
+                    Log.d(LLog.TAG, "CounGet Second response ERROR -> $result")
                 }
             }
+
             override fun onFailure(call: Call<CounGet>, t: Throwable) {
                 Log.d(LLog.TAG, "CounGet Second Fail -> $t")
             }
@@ -83,7 +81,7 @@ class CounselingActivity : BaseActivity() {
     }
 
     private fun setAdapter(userRequest: List<CounList>) {
-        val adapter = CounSelingAdapter(userRequest,this)
+        val adapter = CounSelingAdapter(userRequest, this)
         val rv = findViewById<View>(R.id.counSeling_recyclerView) as RecyclerView
         rv.adapter = adapter
         rv.layoutManager = LinearLayoutManager(this)

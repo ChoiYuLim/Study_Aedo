@@ -9,7 +9,6 @@ import com.aedo.my_heaven.api.APIService
 import com.aedo.my_heaven.api.ApiUtils
 import com.aedo.my_heaven.databinding.ActivityInforMationBinding
 import com.aedo.my_heaven.util.base.BaseActivity
-import com.aedo.my_heaven.view.main.MainActivity
 import com.aedo.my_heaven.view.main.SideMenuActivity
 
 class InforMationActivity : BaseActivity() {
@@ -18,7 +17,7 @@ class InforMationActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = DataBindingUtil.setContentView(this,R.layout.activity_infor_mation)
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_infor_mation)
         mBinding.activity = this
         apiServices = ApiUtils.apiService
         mBinding.lifecycleOwner = this
@@ -26,9 +25,9 @@ class InforMationActivity : BaseActivity() {
         inStatusBar()
     }
 
-     fun onBackClick(v: View) {
-         moveSide()
-     }
+    fun onBackClick(v: View) {
+        moveSide()
+    }
 
     override fun onBackPressed() {
         startActivity(Intent(this, SideMenuActivity::class.java))

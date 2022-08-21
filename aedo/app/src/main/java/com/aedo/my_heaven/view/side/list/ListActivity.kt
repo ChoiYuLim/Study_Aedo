@@ -29,12 +29,12 @@ import retrofit2.Response
 class ListActivity : BaseActivity() {
     private lateinit var mBinding: ActivityListBinding
     private lateinit var apiServices: APIService
-    private var readapter: RecyclerAdapter?=null
+    private var readapter: RecyclerAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_list)
-        mBinding.activity=this@ListActivity
+        mBinding.activity = this@ListActivity
         apiServices = ApiUtils.apiService
         mBinding.lifecycleOwner = this
 
@@ -52,14 +52,14 @@ class ListActivity : BaseActivity() {
             override fun onResponse(call: Call<RecyclerList>, response: Response<RecyclerList>) {
                 val result = response.body()
                 if (response.isSuccessful && result != null) {
-                    Log.d(TAG,"List response SUCCESS -> $result")
+                    Log.d(TAG, "List response SUCCESS -> $result")
                     setAdapter(result.obituary)
-                }
-                else {
-                    Log.d(TAG,"List response ERROR -> $result")
+                } else {
+                    Log.d(TAG, "List response ERROR -> $result")
                     otherAPI()
                 }
             }
+
             override fun onFailure(call: Call<RecyclerList>, t: Throwable) {
                 Log.d(TAG, "List error -> $t")
             }
@@ -73,13 +73,13 @@ class ListActivity : BaseActivity() {
             override fun onResponse(call: Call<RecyclerList>, response: Response<RecyclerList>) {
                 val result = response.body()
                 if (response.isSuccessful && result != null) {
-                    Log.d(TAG,"List Second response SUCCESS -> $result")
+                    Log.d(TAG, "List Second response SUCCESS -> $result")
                     setAdapter(result.obituary)
-                }
-                else {
-                    Log.d(TAG,"List Second esponse ERROR -> $result")
+                } else {
+                    Log.d(TAG, "List Second esponse ERROR -> $result")
                 }
             }
+
             override fun onFailure(call: Call<RecyclerList>, t: Throwable) {
                 Log.d(TAG, "List Second Fail -> $t")
             }
@@ -88,12 +88,17 @@ class ListActivity : BaseActivity() {
 
     private fun setAdapter(obituary: List<Obituaray>?) {
         val mAdapter = obituary?.let {
-            RecyclerAdapter(it,this)
+            RecyclerAdapter(it, this)
         }
         mBinding.recyclerView.adapter = mAdapter
         mBinding.recyclerView.layoutManager = LinearLayoutManager(this)
         mBinding.recyclerView.setHasFixedSize(true)
-        mBinding.recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        mBinding.recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                this,
+                DividerItemDecoration.VERTICAL
+            )
+        )
         return
     }
 

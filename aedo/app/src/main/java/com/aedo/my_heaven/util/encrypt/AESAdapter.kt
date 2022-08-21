@@ -45,18 +45,12 @@ object AESAdapter {
             )
             val encrypted = c.doFinal(text.toByteArray(StandardCharsets.UTF_8))
             encStr = String(Base64.encode(encrypted, Base64.DEFAULT))
-        }
-        catch (e: NoSuchAlgorithmException) {
-        }
-        catch (e: NoSuchPaddingException) {
-        }
-        catch (e: InvalidKeyException) {
-        }
-        catch (e: InvalidAlgorithmParameterException) {
-        }
-        catch (e: IllegalBlockSizeException) {
-        }
-        catch (e: BadPaddingException) {
+        } catch (e: NoSuchAlgorithmException) {
+        } catch (e: NoSuchPaddingException) {
+        } catch (e: InvalidKeyException) {
+        } catch (e: InvalidAlgorithmParameterException) {
+        } catch (e: IllegalBlockSizeException) {
+        } catch (e: BadPaddingException) {
         }
         if (encStr.endsWith("\n")) {
             encStr = encStr.replace("\n", "")
@@ -80,18 +74,12 @@ object AESAdapter {
             )
             val byteStr = Base64.decode(encStr.toByteArray(StandardCharsets.UTF_8), Base64.DEFAULT)
             decStr = String(c.doFinal(byteStr), StandardCharsets.UTF_8)
-        }
-        catch (e: NoSuchAlgorithmException) {
-        }
-        catch (e: NoSuchPaddingException) {
-        }
-        catch (e: InvalidKeyException) {
-        }
-        catch (e: InvalidAlgorithmParameterException) {
-        }
-        catch (e: IllegalBlockSizeException) {
-        }
-        catch (e: BadPaddingException) {
+        } catch (e: NoSuchAlgorithmException) {
+        } catch (e: NoSuchPaddingException) {
+        } catch (e: InvalidKeyException) {
+        } catch (e: InvalidAlgorithmParameterException) {
+        } catch (e: IllegalBlockSizeException) {
+        } catch (e: BadPaddingException) {
         }
         return decStr
     }

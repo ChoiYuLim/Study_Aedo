@@ -13,10 +13,12 @@ object Local {
         persistLanguage(context, language)
         updateResources(context, language)
     }
+
     private fun persistLanguage(context: Context, language: String) {
         val pref = PreferenceManager.getDefaultSharedPreferences(context)
         pref.edit().putString(LANGUAGE_KEY, language).apply()
     }
+
     private fun updateResources(context: Context, language: String?): Context {
         var context = context
         val locale = Locale(language)
@@ -26,4 +28,5 @@ object Local {
         config.setLocale(locale)
         context = context.createConfigurationContext(config)
         return context
-    }}
+    }
+}

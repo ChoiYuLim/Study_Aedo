@@ -21,8 +21,8 @@ import com.aedo.my_heaven.util.`object`.Constant.SEARCH_RELATION_NAME
 import com.aedo.my_heaven.view.main.detail.search.SearchDetailActivity
 
 
-class SearchAdapter (private val searchlist : List<CreateSearch>, private val context: Context)
-    : RecyclerView.Adapter<SearchAdapter.ViewHolder>(){
+class SearchAdapter(private val searchlist: List<CreateSearch>, private val context: Context) :
+    RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchAdapter.ViewHolder {
         val context = parent.context
@@ -32,7 +32,7 @@ class SearchAdapter (private val searchlist : List<CreateSearch>, private val co
     }
 
     override fun onBindViewHolder(holder: SearchAdapter.ViewHolder, position: Int) {
-        holder.bind(searchlist[position],context)
+        holder.bind(searchlist[position], context)
 
     }
 
@@ -40,7 +40,7 @@ class SearchAdapter (private val searchlist : List<CreateSearch>, private val co
         return searchlist.count()
     }
 
-    inner class ViewHolder (itemView: View? ) : RecyclerView.ViewHolder(itemView!!){
+    inner class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
 
         val search_place = itemView?.findViewById<TextView>(R.id.tv_search_place)
         val search_re_name = itemView?.findViewById<TextView>(R.id.tv_search_resident_name)
@@ -54,13 +54,13 @@ class SearchAdapter (private val searchlist : List<CreateSearch>, private val co
 
             cl_search?.setOnClickListener {
                 val intent = Intent(context, SearchDetailActivity::class.java)
-                intent.putExtra(SEARCH_RELATION_NAME,list?.resident?.name)
-                intent.putExtra(SEARCH_EOD_DATA,list?.eod)
-                intent.putExtra(SEARCH_DECEASED_NAME,list?.deceased?.name)
-                intent.putExtra(SEARCH_COFFIN_DATA,list?.coffin)
-                intent.putExtra(SEARCH_DOFP_DATA,list?.dofp)
-                intent.putExtra(SEARCH_BURIED,list?.buried)
-                intent.putExtra(SEARCH_PLACE,list?.place)
+                intent.putExtra(SEARCH_RELATION_NAME, list?.resident?.name)
+                intent.putExtra(SEARCH_EOD_DATA, list?.eod)
+                intent.putExtra(SEARCH_DECEASED_NAME, list?.deceased?.name)
+                intent.putExtra(SEARCH_COFFIN_DATA, list?.coffin)
+                intent.putExtra(SEARCH_DOFP_DATA, list?.dofp)
+                intent.putExtra(SEARCH_BURIED, list?.buried)
+                intent.putExtra(SEARCH_PLACE, list?.place)
                 ContextCompat.startActivity(itemView.context, intent, null)
             }
         }

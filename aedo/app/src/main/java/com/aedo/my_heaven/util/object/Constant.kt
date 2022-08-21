@@ -1,30 +1,16 @@
 package com.aedo.my_heaven.util.`object`
 
 import android.Manifest
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.os.Handler
-import android.os.Looper
-import com.aedo.my_heaven.api.APIService
-import com.naver.maps.geometry.LatLng
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.MultipartBody
-import okhttp3.RequestBody.Companion.asRequestBody
-import okhttp3.logging.HttpLoggingInterceptor
-import java.io.File
-import java.io.IOException
-import java.net.MalformedURLException
-import java.net.URL
-import java.util.ArrayList
+import java.util.*
 
-object  Constant {
+object Constant {
     const val TAG = "My_Heaven"
-    const val BASE_URL="https://www.aedo.co.kr/"
-    const val BASE_URL_TEST="http://118.67.128.124:8080/"
+    const val BASE_URL = "https://www.aedo.co.kr/"
+    const val BASE_URL_TEST = "http://118.67.128.124:8080/"
     const val PREF_KEY_APP_TOKEN = "myAppToken"
     const val PREF_KEY_ENCTYPT_IV = "myEncryptIv"
     const val PREF_KEY_ENCTYPT_KEY = "myEncryptKey"
-    const val PREF_KEY_AUTH_TOKEN ="myAuthToken"
+    const val PREF_KEY_AUTH_TOKEN = "myAuthToken"
     const val PREF_KEY_LANG = "myLang"
     const val PREF_KEY_LANG_CODE = "myLangCode"
     const val PREF_KEY_TOKEN = "myTOKEN"
@@ -122,7 +108,6 @@ object  Constant {
     const val MY_ORDER_CREATED = "MY_ORDER_CREATED"
 
 
-
     // Splash
     const val SPLASH_WAIT = 2500
     val MUTILE_PERMISSION: ArrayList<String?> = object : ArrayList<String?>() {
@@ -135,8 +120,7 @@ object  Constant {
     }
 
     val PERMISSIONS = arrayOf(
-        Manifest.permission.ACCESS_FINE_LOCATION
-        , Manifest.permission.ACCESS_COARSE_LOCATION
+        Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION
     )
 
 }

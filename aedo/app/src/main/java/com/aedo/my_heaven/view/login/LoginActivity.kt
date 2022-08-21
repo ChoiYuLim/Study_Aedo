@@ -99,7 +99,11 @@ class LoginActivity : BaseActivity() {
             // 암호화
             val resultText: String? = when {
                 encResult.contains("==") -> {
-                    AESAdapter.decAES(prefs.getEncIv()!!, prefs.getEncKey()!!, comm!!.defaultPhoneNumber)
+                    AESAdapter.decAES(
+                        prefs.getEncIv()!!,
+                        prefs.getEncKey()!!,
+                        comm!!.defaultPhoneNumber
+                    )
                 } // Base64
                 encResult.contains("=") -> {
                     Base64Util.decode(comm!!.defaultPhoneNumber)
@@ -121,12 +125,23 @@ class LoginActivity : BaseActivity() {
             override fun updateDrawState(ds: TextPaint) {
                 ds.isUnderlineText = false
             }
+
             override fun onClick(widget: View) {
                 phoneFirst(true)
             }
         }
-        phoneAgainSpan.setSpan(phoneClickableSpan, start, end, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
-        phoneAgainSpan.setSpan(ForegroundColorSpan(getColor(R.color.gray2)), start, end, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
+        phoneAgainSpan.setSpan(
+            phoneClickableSpan,
+            start,
+            end,
+            SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        phoneAgainSpan.setSpan(
+            ForegroundColorSpan(getColor(R.color.gray2)),
+            start,
+            end,
+            SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
         start = 0
         end = mBinding.tvAuthnumRequestAgain.length()
         mBinding.tvPhonenumInputAgain.text = phoneAgainSpan
@@ -155,8 +170,8 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun phoneSecond() {
-        if(mBinding.clAuthNumParent.visibility==View.GONE) {
-            mBinding.clAuthNumParent.visibility=View.VISIBLE
+        if (mBinding.clAuthNumParent.visibility == View.GONE) {
+            mBinding.clAuthNumParent.visibility = View.VISIBLE
             mBinding.tvPhonenumAuth.text = mBinding.etPhonenum.text.toString()
         }
         mBinding.tvTitle.text = getString(R.string.login_desc2)
@@ -164,7 +179,7 @@ class LoginActivity : BaseActivity() {
         if (mBinding.tvTitleSub.visibility == View.GONE) {
             mBinding.tvTitleSub.visibility = View.VISIBLE
         }
-        if(mBinding.btnOk2.visibility == View.GONE) {
+        if (mBinding.btnOk2.visibility == View.GONE) {
             mBinding.btnOk2.visibility = View.GONE
         }
         mBinding.btnOk.text = getString(R.string.ok)
@@ -180,11 +195,11 @@ class LoginActivity : BaseActivity() {
         if (mBinding.tvTitleSub.visibility == View.GONE) {
             mBinding.tvTitleSub.visibility = View.VISIBLE
         }
-        if(mBinding.clCheck.visibility == View.GONE) {
+        if (mBinding.clCheck.visibility == View.GONE) {
             mBinding.clCheck.visibility = View.VISIBLE
         }
-        if(mBinding.clJoinParent.visibility==View.GONE) {
-            mBinding.clJoinParent.visibility=View.VISIBLE
+        if (mBinding.clJoinParent.visibility == View.GONE) {
+            mBinding.clJoinParent.visibility = View.VISIBLE
             mBinding.tvPhonenumJoin.text = mBinding.etPhonenum.text.toString()
         }
         if (mBinding.clOk2.visibility == View.GONE) {
@@ -194,7 +209,7 @@ class LoginActivity : BaseActivity() {
             mBinding.btnOk2.visibility = View.VISIBLE
         }
 
-        if(mBinding.clAuthNumParent.visibility == View.VISIBLE) {
+        if (mBinding.clAuthNumParent.visibility == View.VISIBLE) {
             mBinding.clAuthNumParent.visibility = View.GONE
             mBinding.tvPhonenumAuth.text = mBinding.etPhonenum.text.toString()
         }
@@ -212,7 +227,11 @@ class LoginActivity : BaseActivity() {
                 val btn = Rect()
                 v.getGlobalVisibleRect(side)
                 mBinding.btnOk.getGlobalVisibleRect(btn)
-                if (!side.contains(ev.rawX.toInt(), ev.rawY.toInt()) && !btn.contains(ev.rawX.toInt(), ev.rawY.toInt())) {
+                if (!side.contains(
+                        ev.rawX.toInt(),
+                        ev.rawY.toInt()
+                    ) && !btn.contains(ev.rawX.toInt(), ev.rawY.toInt())
+                ) {
                     v.clearFocus()
                 }
             }
@@ -227,24 +246,24 @@ class LoginActivity : BaseActivity() {
         val name = mBinding.etName.text.toString()
         val terms = termsVersion
         val smsnumber = mBinding.etAuthnum.text.toString()
-        val signdata = LoginResult(phone = phone, birth=birth, name=name, terms=terms,smsnumber)
+        val signdata =
+            LoginResult(phone = phone, birth = birth, name = name, terms = terms, smsnumber)
 
-        apiServices.getSignUp(signdata).enqueue(object : Callback<LoginResult>{
+        apiServices.getSignUp(signdata).enqueue(object : Callback<LoginResult> {
             override fun onResponse(call: Call<LoginResult>, response: Response<LoginResult>) {
                 val result = response.body()
-                if(response.isSuccessful&& result!= null) {
-                    Log.d(TAG,"signrequest API SUCCESS -> $result")
+                if (response.isSuccessful && result != null) {
+                    Log.d(TAG, "signrequest API SUCCESS -> $result")
                     prefs.myaccesstoken = result.accesstoken.toString()
-                    Toast.makeText(this@LoginActivity,"회원가입이 완료되었습니다.",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LoginActivity, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show()
                     moveMain()
-                }
-                else {
-                    Log.d(TAG,"signrequest API ERROR -> ${response.errorBody()}")
+                } else {
+                    Log.d(TAG, "signrequest API ERROR -> ${response.errorBody()}")
                 }
             }
 
             override fun onFailure(call: Call<LoginResult>, t: Throwable) {
-                Log.d(TAG,"signrequest ERROR -> $t")
+                Log.d(TAG, "signrequest ERROR -> $t")
             }
 
         })
@@ -259,15 +278,15 @@ class LoginActivity : BaseActivity() {
         apiServices.getSMS(data).enqueue(object : Callback<LoginSMS> {
             override fun onResponse(call: Call<LoginSMS>, response: Response<LoginSMS>) {
                 val result = response.body()
-                if(response.isSuccessful&& result!= null) {
-                    Log.d(TAG,"로그인 테스트 -> $result")
-                }
-                else {
-                    Log.d(TAG,"sendsms API ERROR -> ${response.errorBody()}")
+                if (response.isSuccessful && result != null) {
+                    Log.d(TAG, "로그인 테스트 -> $result")
+                } else {
+                    Log.d(TAG, "sendsms API ERROR -> ${response.errorBody()}")
                 }
             }
+
             override fun onFailure(call: Call<LoginSMS>, t: Throwable) {
-                Log.d(TAG,"sendsms ERROR -> $t")
+                Log.d(TAG, "sendsms ERROR -> $t")
             }
         })
     }
@@ -276,25 +295,25 @@ class LoginActivity : BaseActivity() {
         LLog.e("로그인_로그인 API")
         val phone = mBinding.etPhonenum.text.toString()
         val smsnumber = mBinding.etAuthnum.text.toString()
-        val data = LoginSend(phone, smsnumber )
+        val data = LoginSend(phone, smsnumber)
         apiServices.getLogin(data).enqueue(object : Callback<LoginSend> {
             override fun onResponse(call: Call<LoginSend>, response: Response<LoginSend>) {
                 val result = response.body()
-                if(response.isSuccessful&&result!=null) {
+                if (response.isSuccessful && result != null) {
                     prefs.myaccesstoken = result.accesstoken.toString()
-                    Log.d(TAG,"로그인 성공 ->$result")
+                    Log.d(TAG, "로그인 성공 ->$result")
                     moveMain()
-                }
-                else {
+                } else {
                     if (response.code() == 403) {
                         phoneThrid()
                         prefs.myaccesstoken = result?.accesstoken.toString()
-                        Log.d(TAG,"로그인 실패 ->${response.errorBody()}")
+                        Log.d(TAG, "로그인 실패 ->${response.errorBody()}")
                     }
                 }
             }
+
             override fun onFailure(call: Call<LoginSend>, t: Throwable) {
-                Log.d(TAG,"4566 ERROR -> $t")
+                Log.d(TAG, "4566 ERROR -> $t")
             }
         })
     }
@@ -320,15 +339,15 @@ class LoginActivity : BaseActivity() {
         val et_birth = mBinding.etBitrhday.text.toString()
         val et_name = mBinding.etName.text.toString()
         when {
-            et_birth.length<6 -> {
-                Toast.makeText(this,"생년월일 6자리를 입력해 주세요",Toast.LENGTH_LONG).show()
+            et_birth.length < 6 -> {
+                Toast.makeText(this, "생년월일 6자리를 입력해 주세요", Toast.LENGTH_LONG).show()
                 return
             }
             et_name.isEmpty() -> {
-                Toast.makeText(this,"이름을 입력해 주세요",Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "이름을 입력해 주세요", Toast.LENGTH_LONG).show()
                 return
             }
-            else ->{
+            else -> {
                 realm.executeTransaction { realm ->
                     var termsVersion = "N"
                     for (rPolicy in realm.where(Policy::class.java)
@@ -336,7 +355,7 @@ class LoginActivity : BaseActivity() {
                         termsVersion = rPolicy.value.toString()
                     }
                     if (termsVersion == "Y") {
-                        Toast.makeText(this,"약관 버전이 유효하지 않습니다.",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "약관 버전이 유효하지 않습니다.", Toast.LENGTH_SHORT).show()
                         return@executeTransaction
                     }
                     signrequest(termsVersion)
@@ -346,12 +365,11 @@ class LoginActivity : BaseActivity() {
         }
     }
 
-    fun onSendClick(v:View?){
+    fun onSendClick(v: View?) {
         val et_phone = mBinding.etPhonenum.text.toString()
-        if (et_phone.length<10) {
+        if (et_phone.length < 10) {
             phonecheck()
-        }
-        else {
+        } else {
             phoneSecond()
             sendsms()
         }

@@ -1,7 +1,6 @@
 package com.aedo.my_heaven.view.side.setting
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -12,13 +11,11 @@ import com.aedo.my_heaven.R
 import com.aedo.my_heaven.api.APIService
 import com.aedo.my_heaven.api.ApiUtils
 import com.aedo.my_heaven.databinding.ActivitySettingBinding
-import com.aedo.my_heaven.model.restapi.base.Policy
 import com.aedo.my_heaven.model.restapi.login.LogOut
 import com.aedo.my_heaven.util.base.BaseActivity
 import com.aedo.my_heaven.util.base.MyApplication
 import com.aedo.my_heaven.util.log.LLog
 import com.aedo.my_heaven.view.main.MainActivity
-import com.aedo.my_heaven.view.main.SideMenuActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,7 +26,7 @@ class SettingActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding=DataBindingUtil.setContentView(this, R.layout.activity_setting)
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_setting)
         mBinding.activity = this@SettingActivity
         apiServices = ApiUtils.apiService
         mBinding.lifecycleOwner = this
@@ -55,17 +52,17 @@ class SettingActivity : BaseActivity() {
             Callback<LogOut> {
             override fun onResponse(call: Call<LogOut>, response: Response<LogOut>) {
                 val result = response.body()
-                if(response.isSuccessful&& result!= null) {
-                    Log.d(LLog.TAG,"GetUser API SUCCESS -> $result")
+                if (response.isSuccessful && result != null) {
+                    Log.d(LLog.TAG, "GetUser API SUCCESS -> $result")
                     moveLogins()
-                }
-                else {
-                    Log.d(LLog.TAG,"GetUser API ERROR -> ${response.errorBody()}")
+                } else {
+                    Log.d(LLog.TAG, "GetUser API ERROR -> ${response.errorBody()}")
                     otherAPI()
                 }
             }
+
             override fun onFailure(call: Call<LogOut>, t: Throwable) {
-                Log.d(LLog.TAG,"GetUser ERROR -> $t")
+                Log.d(LLog.TAG, "GetUser ERROR -> $t")
 
             }
         })
@@ -77,16 +74,16 @@ class SettingActivity : BaseActivity() {
             Callback<LogOut> {
             override fun onResponse(call: Call<LogOut>, response: Response<LogOut>) {
                 val result = response.body()
-                if(response.isSuccessful&& result!= null) {
-                    Log.d(LLog.TAG,"GetUser API SUCCESS -> $result")
+                if (response.isSuccessful && result != null) {
+                    Log.d(LLog.TAG, "GetUser API SUCCESS -> $result")
                     moveLogins()
-                }
-                else {
-                    Log.d(LLog.TAG,"GetUser API ERROR -> ${response.errorBody()}")
+                } else {
+                    Log.d(LLog.TAG, "GetUser API ERROR -> ${response.errorBody()}")
                 }
             }
+
             override fun onFailure(call: Call<LogOut>, t: Throwable) {
-                Log.d(LLog.TAG,"GetUser ERROR -> $t")
+                Log.d(LLog.TAG, "GetUser ERROR -> $t")
 
             }
         })

@@ -10,7 +10,8 @@ import com.aedo.my_heaven.view.main.detail.shop.fragment.ShopThridFragment
 
 private const val NUM_TABS = 3
 
-class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager, lifecycle) {
+class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
+    FragmentStateAdapter(fragmentManager, lifecycle) {
 
     override fun getItemCount(): Int {
         return NUM_TABS
