@@ -104,29 +104,8 @@ object  Constant {
     const val SEARCH_PLACE = "SEARCH_PLACE"
 
     //Shop
-    const val SHOP_FIRST = "SHOP_FIRST"
-    const val SHOP_SECOND = "SHOP_SECOND"
-    const val SHOP_THIRD = "SHOP_THIRD"
-    const val SHOP_FOUR = "SHOP_FOUR"
-
-    const val SHOP_FIVE = "SHOP_FIVE"
-    const val SHOP_SIX = "SHOP_SIX"
-    const val SHOP_SEVEN = "SHOP_SEVEN"
-
-    const val SHOP_EIGHT = "SHOP_EIGHT"
-    const val SHOP_NINE = "SHOPT_NIE"
-
-    const val SHOP_FIRST_PAY = "SHOP_FIRST_PAY"
-    const val SHOP_SECOND_PAY = "SHOP_SECOND_PAY"
-    const val SHOP_THIRD_PAY = "SHOP_THIRD_PAY"
-    const val SHOP_FOUR_PAY = "SHOP_FOUR_PAY"
-
-    const val SHOP_FIVE_PAY= "SHOP_FIVE_PAY"
-    const val SHOP_SIX_PAY = "SHOP_SIX_PAY"
-    const val SHOP_SEVEN_PAY = "SHOP_SEVEN_PAY"
-
-    const val SHOP_EIGHT_PAY = "SHOP_EIGHT_PAY"
-    const val SHOP_NINE_PAY = "SHOPT_NIE_PAY"
+    const val SHOP = "SHOP"
+    const val SHOP_PAY = "SHOP_PAY"
 
     //My Order
     const val MY_ORDER_PLACE_NAME = "MY_ORDER_PLACE_NAME"

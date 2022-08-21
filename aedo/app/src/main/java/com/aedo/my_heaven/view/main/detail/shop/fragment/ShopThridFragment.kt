@@ -2,22 +2,16 @@ package com.aedo.my_heaven.view.main.detail.shop.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.aedo.my_heaven.R
 import com.aedo.my_heaven.databinding.FragmentShopThridBinding
-import com.aedo.my_heaven.util.`object`.Constant
-import com.aedo.my_heaven.util.`object`.Constant.SHOP_EIGHT
-import com.aedo.my_heaven.util.`object`.Constant.SHOP_EIGHT_PAY
-import com.aedo.my_heaven.util.`object`.Constant.SHOP_NINE
-import com.aedo.my_heaven.util.`object`.Constant.SHOP_NINE_PAY
-import com.aedo.my_heaven.view.main.detail.shop.fragment.order.EightOrderActivity
-import com.aedo.my_heaven.view.main.detail.shop.fragment.order.NineOrderActivity
-import com.aedo.my_heaven.view.main.detail.shop.fragment.order.OneOrderActivity
-import com.aedo.my_heaven.view.main.detail.shop.fragment.order.TwoOrderActivity
+import com.aedo.my_heaven.util.`object`.Constant.SHOP
+import com.aedo.my_heaven.util.`object`.Constant.SHOP_PAY
+import com.aedo.my_heaven.view.main.detail.shop.fragment.order.OrderActivity
 
 class ShopThridFragment : Fragment() {
 
@@ -34,16 +28,16 @@ class ShopThridFragment : Fragment() {
 
     private fun setClick() {
         mBinding.btnActivityShopPurchase.setOnClickListener {
-            val intent = Intent(activity, EightOrderActivity::class.java)
-            intent.putExtra(SHOP_EIGHT,mBinding.tvActivityShopTitle.text.toString())
-            intent.putExtra(SHOP_EIGHT_PAY, mBinding.tvActivityShopSalesPrice.text.toString())
+            val intent = Intent(activity, OrderActivity::class.java)
+            intent.putExtra(SHOP, mBinding.tvActivityShopTitle.text.toString())
+            intent.putExtra(SHOP_PAY, mBinding.tvActivityShopSalesPrice.text.toString())
             startActivity(intent)
         }
 
         mBinding.btnSecond.setOnClickListener {
-            val intent = Intent(activity, NineOrderActivity::class.java)
-            intent.putExtra(SHOP_NINE,mBinding.tvNameSecond.text.toString())
-            intent.putExtra(SHOP_NINE_PAY, mBinding.tvMoneySecond.text.toString())
+            val intent = Intent(activity, OrderActivity::class.java)
+            intent.putExtra(SHOP, mBinding.tvNameSecond.text.toString())
+            intent.putExtra(SHOP_PAY, mBinding.tvMoneySecond.text.toString())
             startActivity(intent)
 
         }

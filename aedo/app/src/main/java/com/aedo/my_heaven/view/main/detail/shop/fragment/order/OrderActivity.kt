@@ -1,20 +1,17 @@
 package com.aedo.my_heaven.view.main.detail.shop.fragment.order
 
 import android.annotation.SuppressLint
-import android.app.AlertDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import com.aedo.my_heaven.R
 import com.aedo.my_heaven.api.APIService
 import com.aedo.my_heaven.api.ApiUtils
-import com.aedo.my_heaven.databinding.ActivityOneOrderBinding
+import com.aedo.my_heaven.databinding.ActivityOrderBinding
 import com.aedo.my_heaven.model.shop.*
 import com.aedo.my_heaven.util.`object`.Constant
 import com.aedo.my_heaven.util.base.BaseActivity
@@ -32,13 +29,13 @@ import retrofit2.Response
 import java.time.LocalDate
 import java.util.*
 
-class OneOrderActivity : BaseActivity() {
-    private lateinit var mBinding: ActivityOneOrderBinding
+class OrderActivity : BaseActivity() {
+    private lateinit var mBinding: ActivityOrderBinding
     private lateinit var apiServices: APIService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = DataBindingUtil.setContentView(this,R.layout.activity_one_order)
+        mBinding = DataBindingUtil.setContentView(this,R.layout.activity_order)
         Iamport.init(this)
         mBinding.activity = this
         apiServices = ApiUtils.apiService

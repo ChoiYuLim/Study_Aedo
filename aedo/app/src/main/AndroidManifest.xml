@@ -43,31 +43,7 @@
             android:name=".view.main.detail.shop.MyOrderActivity"
             android:exported="false" />
         <activity
-            android:name=".view.main.detail.shop.fragment.order.NineOrderActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.main.detail.shop.fragment.order.EightOrderActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.main.detail.shop.fragment.order.SevenOrderActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.main.detail.shop.fragment.order.SixOrderActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.main.detail.shop.fragment.order.FiveOrderActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.main.detail.shop.fragment.order.FourOrderActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.main.detail.shop.fragment.order.ThreeOrderActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.main.detail.shop.fragment.order.TwoOrderActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.main.detail.shop.fragment.order.OneOrderActivity"
+            android:name=".view.main.detail.shop.fragment.order.OrderActivity"
             android:exported="false" />
         <activity
             android:name=".view.side.guide.GuideActivity"
