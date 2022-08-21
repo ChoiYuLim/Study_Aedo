@@ -13,7 +13,8 @@ import com.aedo.my_heaven.api.APIService
 import com.aedo.my_heaven.api.ApiUtils
 import com.aedo.my_heaven.databinding.ActivityOrderBinding
 import com.aedo.my_heaven.model.shop.*
-import com.aedo.my_heaven.util.`object`.Constant
+import com.aedo.my_heaven.util.`object`.Constant.SHOP
+import com.aedo.my_heaven.util.`object`.Constant.SHOP_PAY
 import com.aedo.my_heaven.util.base.BaseActivity
 import com.aedo.my_heaven.util.base.MyApplication
 import com.aedo.my_heaven.util.log.LLog
@@ -49,8 +50,8 @@ class OrderActivity : BaseActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun initView() {
-        val name = intent.getStringExtra(Constant.SHOP_FIRST).toString()
-        val pay = intent.getStringExtra(Constant.SHOP_FIRST_PAY)
+        val name = intent.getStringExtra(SHOP).toString()
+        val pay = intent.getStringExtra(SHOP_PAY)
 
         mBinding.tvFlowerNameDetail.text = name
         mBinding.tvFlowerPayDetail.text = "${pay}원"
