@@ -1,6 +1,5 @@
 package com.aedo.my_heaven.model.firebase
 
-import android.os.Parcel
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
@@ -20,12 +19,4 @@ data class ItemDTO(
     var dofp_time: String? = null,
     var buried: String? = null,
     var timestamp: Long? = null
-) : Parcelable {
-    override fun describeContents(): Int {
-        TODO("Not yet implemented")
-    }
-
-    override fun writeToParcel(p0: Parcel?, p1: Int) {
-        TODO("Not yet implemented")
-    }
-}
+) : Parcelable
