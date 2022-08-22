@@ -18,6 +18,20 @@
         android:layout_height="match_parent"
         android:background="@color/white">
 
+        <ProgressBar
+            android:id="@+id/progress"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminateDuration="1000"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TooManyViews" />
+
         <ScrollView
             android:id="@+id/scrollView2"
             android:layout_width="match_parent"
@@ -389,7 +403,7 @@
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/pick_album_white"/>
+                                app:srcCompat="@drawable/pick_album_white" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </LinearLayout>
 
@@ -446,7 +460,7 @@
                             android:gravity="center"
                             android:paddingLeft="8dp"
                             android:paddingRight="8dp"
-                            android:text="2022-01-01"
+                            android:text="2022년 1월 1일"
                             android:textColor="@color/black"
                             android:textSize="12sp" />
                     </LinearLayout>
@@ -537,7 +551,7 @@
                             android:gravity="center"
                             android:paddingLeft="8dp"
                             android:paddingRight="8dp"
-                            android:text="2022-01-01"
+                            android:text="2022년 1월 1일"
                             android:textColor="@color/black"
                             android:textSize="12sp" />
                     </LinearLayout>
@@ -628,7 +642,7 @@
                             android:gravity="center"
                             android:paddingLeft="8dp"
                             android:paddingRight="8dp"
-                            android:text="2022-01-01"
+                            android:text="2022년 1월 1일"
                             android:textColor="@color/black"
                             android:textSize="12sp" />
                     </LinearLayout>
@@ -800,15 +814,6 @@
                         </androidx.cardview.widget.CardView>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
-
-                <ProgressBar
-                    android:id="@+id/progress"
-                    style="?android:attr/progressBarStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:indeterminateDuration="1000"
-                    android:visibility="gone"
-                    tools:ignore="TooManyViews" />
 
             </LinearLayout>
 

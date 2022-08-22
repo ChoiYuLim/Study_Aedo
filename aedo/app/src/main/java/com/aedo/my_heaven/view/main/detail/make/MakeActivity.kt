@@ -42,6 +42,7 @@ import retrofit2.Response
 import java.io.File
 import java.time.LocalDate
 import java.util.*
+import kotlin.concurrent.thread
 
 
 class MakeActivity : BaseActivity() {
@@ -74,6 +75,7 @@ class MakeActivity : BaseActivity() {
         MyApplication.setIsMainNoticeViewed(false)
     }
 
+    // spinner 선택한 경우 text 변경
     private fun setupSpinnerHandler() {
         mBinding.makeTxSpinner.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
@@ -108,6 +110,7 @@ class MakeActivity : BaseActivity() {
             }
     }
 
+    // spinner setting
     private fun makeTop() {
         val person = resources.getStringArray(R.array.spinner_relationship)
         val place = resources.getStringArray(R.array.spinner_place)
@@ -118,6 +121,11 @@ class MakeActivity : BaseActivity() {
         mBinding.makeTxSpinner.adapter = perAdapter
         mBinding.makeTxSpinnerInfor.adapter = placeAdapter
 
+    }
+
+    fun showProgress(isShow: Boolean) {
+        if (isShow) mBinding.progress.visibility = View.VISIBLE
+        else mBinding.progress.visibility = View.GONE
     }
 
     fun onOkClick(v: View) {
@@ -141,7 +149,7 @@ class MakeActivity : BaseActivity() {
                 mBinding.spinnerText.error = "미입력"
             }
             make_person.isEmpty() -> {
-                mBinding.makeTxName.error = "대미입력"
+                mBinding.makeTxName.error = "미입력"
             }
             make_phone.isEmpty() -> {
                 mBinding.makeTxPhone.error = "미입력"
@@ -173,12 +181,25 @@ class MakeActivity : BaseActivity() {
             dofp_time.isEmpty() -> {
                 mBinding.dofpTextTime.error = "미입력"
             }
+            buried.isEmpty() -> {
+                mBinding.makeTxPlace.error = "미입력"
+            }
             word.isEmpty() -> {
                 mBinding.makeTxTex.error = "미입력"
             }
             else -> {
                 dialog?.show()
+                showProgress(true)
+                thread(start = true) {
+                    Thread.sleep(2000)
+
+                    runOnUiThread {
+                        showProgress(false)
+                        moveList()
+                    }
+                }
                 testAPI()
+
             }
         }
     }
@@ -246,6 +267,7 @@ class MakeActivity : BaseActivity() {
             })
     }
 
+    // prefs.newaccesstoken 로 다시 한번 서버 통신
     private fun testOtherAPI() {
         val img: MutableList<MultipartBody.Part?> = ArrayList()
         for (uri: Uri in files4) {
@@ -460,6 +482,7 @@ class MakeActivity : BaseActivity() {
             ONE_PERMISSION_REQUEST_CODE -> if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 getAlbum()
             } else {
+                // 저장소 권한이 없는 경우
                 Toast.makeText(this, "사진권한 동의를 해주세요.", Toast.LENGTH_SHORT).show()
             }
             else -> super.onRequestPermissionsResult(requestCode, permissions, grantResults)

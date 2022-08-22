@@ -115,6 +115,7 @@ class RecyclerAdapter(private val postList: List<Obituaray>, val context: Contex
                 val dialog = build.create()
                 dialog.show()
 
+                // 문자 메세지는 구현 X
                 myLayout.finish_btn.setOnClickListener {
                     dialog.dismiss()
                 }
