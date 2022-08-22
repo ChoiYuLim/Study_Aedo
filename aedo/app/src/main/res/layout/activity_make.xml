@@ -448,7 +448,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_nocolor_left_rounded"
-                            android:onClick='@{activity::onEodDataClick}'
+                            android:clickable="true"
                             android:padding="10dp"
                             app:srcCompat="@drawable/ic_kalender" />
 
@@ -482,7 +482,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_nocolor_left_rounded"
-                            android:onClick='@{activity::onEodTimeClick}'
+                            android:clickable="true"
                             android:padding="10dp"
                             app:srcCompat="@drawable/clock" />
 
@@ -539,7 +539,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_nocolor_left_rounded"
-                            android:onClick='@{activity::onCoffinDataClick}'
+                            android:clickable="true"
                             android:padding="10dp"
                             app:srcCompat="@drawable/ic_kalender" />
 
@@ -573,7 +573,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_nocolor_left_rounded"
-                            android:onClick='@{activity::onCoffinTimeClick}'
+                            android:clickable="true"
                             android:padding="10dp"
                             app:srcCompat="@drawable/clock" />
 
@@ -630,7 +630,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_nocolor_left_rounded"
-                            android:onClick='@{activity::onDofpDataClick}'
+                            android:clickable="true"
                             android:padding="10dp"
                             app:srcCompat="@drawable/ic_kalender" />
 
@@ -664,7 +664,7 @@
                             android:layout_width="40dp"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_nocolor_left_rounded"
-                            android:onClick='@{activity::onDofpTimeClick}'
+                            android:clickable="true"
                             android:padding="10dp"
                             app:srcCompat="@drawable/clock" />
 

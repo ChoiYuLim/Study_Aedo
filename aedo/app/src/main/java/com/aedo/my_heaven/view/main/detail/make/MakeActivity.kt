@@ -64,7 +64,7 @@ class MakeActivity : BaseActivity() {
         mBinding.imgPake.clipToOutline = true
 
         inStatusBar()
-
+        initClickListener()
 
         makeTop()
         setupSpinnerHandler()
@@ -121,6 +121,29 @@ class MakeActivity : BaseActivity() {
         mBinding.makeTxSpinner.adapter = perAdapter
         mBinding.makeTxSpinnerInfor.adapter = placeAdapter
 
+    }
+
+    fun initClickListener() {
+        mBinding.apply {
+            eodImage.setOnClickListener {
+                onDataClick("eod")
+            }
+            eodImageTime.setOnClickListener {
+                onTimeClick("eod")
+            }
+            coffinImage.setOnClickListener {
+                onDataClick("coffin")
+            }
+            coffinImageTime.setOnClickListener {
+                onTimeClick("coffin")
+            }
+            dofpImage.setOnClickListener {
+                onDataClick("dofp")
+            }
+            dofpImageTime.setOnClickListener {
+                onTimeClick("dofp")
+            }
+        }
     }
 
     fun showProgress(isShow: Boolean) {
@@ -189,6 +212,7 @@ class MakeActivity : BaseActivity() {
             }
             else -> {
                 dialog?.show()
+                testAPI()
                 showProgress(true)
                 thread(start = true) {
                     Thread.sleep(2000)
@@ -198,8 +222,6 @@ class MakeActivity : BaseActivity() {
                         moveList()
                     }
                 }
-                testAPI()
-
             }
         }
     }
@@ -343,12 +365,16 @@ class MakeActivity : BaseActivity() {
     }
 
     @SuppressLint("SetTextI18n")
-    fun onEodDataClick(v: View) {
+    fun onDataClick(text: String) {
         var dateString = ""
         val cal = Calendar.getInstance() //캘린더 뷰
         val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
             dateString = "${year}년 ${month + 1}월 ${dayOfMonth}일"
-            mBinding.eodText.text = "$dateString "
+            when (text) {
+                "eod" -> mBinding.eodText.text = dateString
+                "coffin" -> mBinding.coffinText.text = dateString
+                "dofp" -> mBinding.dofpText.text = dateString
+            }
         }
         DatePickerDialog(
             this,
@@ -359,85 +385,22 @@ class MakeActivity : BaseActivity() {
         ).show()
     }
 
-    fun onEodTimeClick(v: View) {
+    fun onTimeClick(textView: String) {
         var timeString = ""
         val cal = Calendar.getInstance()
         val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
             cal.set(Calendar.HOUR_OF_DAY, hour)
             cal.set(Calendar.MINUTE, minute)
-            timeString = "${hour}:${minute}"
-            mBinding.eodTextTime.text = timeString
-        }
-        TimePickerDialog(
-            this,
-            timeSetListener,
-            cal.get(Calendar.HOUR_OF_DAY),
-            cal.get(Calendar.MINUTE),
-            true
-        ).show()
-    }
-
-    @SuppressLint("SetTextI18n")
-    fun onCoffinDataClick(v: View) {
-        var dateString = ""
-        val cal = Calendar.getInstance() //캘린더 뷰
-        val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-            dateString = "${year}년 ${month + 1}월 ${dayOfMonth}일"
-            mBinding.coffinText.text = "$dateString "
-        }
-        DatePickerDialog(
-            this,
-            dateSetListener,
-            cal.get(Calendar.YEAR),
-            cal.get(Calendar.MONTH),
-            cal.get(Calendar.DAY_OF_MONTH)
-        ).show()
-    }
-
-    fun onCoffinTimeClick(v: View) {
-        var timeString = ""
-        val cal = Calendar.getInstance()
-        val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
-            cal.set(Calendar.HOUR_OF_DAY, hour)
-            cal.set(Calendar.MINUTE, minute)
-            timeString = "${hour}:${minute}"
-            mBinding.coffinTextTime.text = timeString
-        }
-        TimePickerDialog(
-            this,
-            timeSetListener,
-            cal.get(Calendar.HOUR_OF_DAY),
-            cal.get(Calendar.MINUTE),
-            true
-        ).show()
-    }
-
-    @SuppressLint("SetTextI18n")
-    fun onDofpDataClick(v: View) {
-        var dateString = ""
-
-        val cal = Calendar.getInstance()
-        val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-            dateString = "${year}년 ${month + 1}월 ${dayOfMonth}일"
-            mBinding.dofpText.text = "$dateString "
-        }
-        DatePickerDialog(
-            this,
-            dateSetListener,
-            cal.get(Calendar.YEAR),
-            cal.get(Calendar.MONTH),
-            cal.get(Calendar.DAY_OF_MONTH)
-        ).show()
-    }
-
-    fun onDofpTimeClick(v: View) {
-        var timeString = ""
-        val cal = Calendar.getInstance()
-        val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
-            cal.set(Calendar.HOUR_OF_DAY, hour)
-            cal.set(Calendar.MINUTE, minute)
-            timeString = "${hour}:${minute}"
-            mBinding.dofpTextTime.text = timeString
+            var hourString = "${hour}"
+            var minuteString = "${minute}"
+            if (hour < 10) hourString = "0${hour}"
+            if (minute < 10) minuteString = "0${minute}"
+            timeString = hourString + ":" + minuteString
+            when (textView) {
+                "eod" -> mBinding.eodTextTime.text = timeString
+                "coffin" -> mBinding.coffinTextTime.text = timeString
+                "dofp" -> mBinding.dofpTextTime.text = timeString
+            }
         }
         TimePickerDialog(
             this,
