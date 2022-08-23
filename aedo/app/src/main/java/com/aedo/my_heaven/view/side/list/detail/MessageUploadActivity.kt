@@ -1,6 +1,5 @@
 package com.aedo.my_heaven.view.side.list.detail
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View

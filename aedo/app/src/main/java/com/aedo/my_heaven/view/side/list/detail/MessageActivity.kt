@@ -25,7 +25,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-// TODO: 글 남기기 누르면 갱신되게
 class MessageActivity : BaseActivity() {
 
     private lateinit var mBinding: ActivityMessageBinding
@@ -121,6 +120,6 @@ class MessageActivity : BaseActivity() {
     @SuppressLint("NotifyDataSetChanged")
     override fun onResume() {
         super.onResume()
-        messageRead?.notifyDataSetChanged()
+        inRecycler()
     }
 }
