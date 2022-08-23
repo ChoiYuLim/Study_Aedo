@@ -214,15 +214,6 @@ class MakeActivity : BaseActivity() {
             else -> {
                 dialog?.show()
                 testAPI()
-                showProgress(true)
-                thread(start = true) {
-                    Thread.sleep(2000)
-
-                    runOnUiThread {
-                        showProgress(false)
-                        moveList()
-                    }
-                }
             }
         }
     }
@@ -276,7 +267,15 @@ class MakeActivity : BaseActivity() {
                     val result = response.body()
                     if (response.isSuccessful && result != null) {
                         Log.d(TAG, "testAPI  API SUCCESS -> $result")
-                        moveList()
+                        showProgress(true)
+                        thread(start = true) {
+                            Thread.sleep(2000)
+
+                            runOnUiThread {
+                                showProgress(false)
+                                moveList()
+                            }
+                        }
                     } else {
                         Log.d(TAG, "testAPI  API ERROR -> ${response.errorBody()}")
                         testOtherAPI()
@@ -340,7 +339,15 @@ class MakeActivity : BaseActivity() {
                     val result = response.body()
                     if (response.isSuccessful && result != null) {
                         Log.d(TAG, "testAPI Second API SUCCESS -> $result")
-                        moveList()
+                        showProgress(true)
+                        thread(start = true) {
+                            Thread.sleep(2000)
+
+                            runOnUiThread {
+                                showProgress(false)
+                                moveList()
+                            }
+                        }
                     } else {
                         Log.d(TAG, "testAPI Second API ERROR -> ${response.errorBody()}")
                     }
