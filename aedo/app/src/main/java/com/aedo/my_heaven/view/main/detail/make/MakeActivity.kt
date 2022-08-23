@@ -15,6 +15,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.aedo.my_heaven.R
@@ -426,7 +427,7 @@ class MakeActivity : BaseActivity() {
             }
 
             shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)
-            -> {
+            -> { // 저장소 권한이 없는 경우
                 Toast.makeText(this, "사진 접근 권한 동의를 해주세요", Toast.LENGTH_SHORT).show()
             }
 
@@ -436,46 +437,27 @@ class MakeActivity : BaseActivity() {
         }
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String?>,
-        grantResults: IntArray
-    ) {
-        when (requestCode) {
-            ONE_PERMISSION_REQUEST_CODE -> if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                getAlbum()
-            } else {
-                // 저장소 권한이 없는 경우
-                Toast.makeText(this, "사진권한 동의를 해주세요.", Toast.LENGTH_SHORT).show()
-            }
-            else -> super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        }
-    }
-
     private fun getAlbum() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         intent.type = "image/*"
-        startActivityForResult(intent, ALBUM_REQUEST_CODE)
+        startForResult.launch(intent)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == ALBUM_REQUEST_CODE) {
-                try {
-                    val img = data?.data
-                    mBinding.imgPake.setImageURI(img)
-                    val imgPath = img.let {
-                        fileUtil.getPath(this, it!!)
-                    }
-
-                    files4.add(Uri.parse(imgPath))
-                    if (imgPath != null) {
-                        Log.e("image", imgPath)
-                    }
-                } catch (e: Exception) {
-                    e.printStackTrace()
+    val startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result->
+        if (result.resultCode == Activity.RESULT_OK) {
+            try {
+                val img = result.data?.data
+                mBinding.imgPake.setImageURI(img)
+                val imgPath = img.let {
+                    fileUtil.getPath(this, it!!)
                 }
+
+                files4.add(Uri.parse(imgPath))
+                if (imgPath != null) {
+                    Log.e("image", imgPath)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
     }
