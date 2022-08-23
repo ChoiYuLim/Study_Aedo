@@ -98,8 +98,7 @@ class CounselingActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this, CenterActivity::class.java))
-        finish()
+        moveCenter()
     }
 
     @SuppressLint("NotifyDataSetChanged")

@@ -57,7 +57,7 @@ class MessageUploadActivity : BaseActivity() {
                 val result = response.body()
                 if (response.isSuccessful && result != null) {
                     Log.d(TAG, "CreateMessage SUCCESS -> $result")
-                    moveMessage()
+                    finish()
                 } else {
                     Log.d(TAG, "CreateMessage ERROR -> ${response.errorBody()}")
                     otherAPI()
@@ -90,7 +90,7 @@ class MessageUploadActivity : BaseActivity() {
                     if (response.isSuccessful && result != null) {
                         Log.d(TAG, "CreateMessage id -> ${id.toString()}")
                         Log.d(TAG, "CreateMessage Second SUCCESS -> $result")
-                        moveMessage()
+                        finish()
                     } else {
                         Log.d(TAG, "CreateMessage Second ERROR -> ${response.errorBody()}")
                     }
@@ -129,8 +129,4 @@ class MessageUploadActivity : BaseActivity() {
         }
     }
 
-    override fun onBackPressed() {
-        startActivity(Intent(this, MessageActivity::class.java))
-        finish()
-    }
 }

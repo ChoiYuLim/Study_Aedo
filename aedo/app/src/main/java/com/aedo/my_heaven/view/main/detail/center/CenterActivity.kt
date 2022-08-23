@@ -42,7 +42,6 @@ class CenterActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this, MainActivity::class.java))
-        finish()
+        moveMain()
     }
 }

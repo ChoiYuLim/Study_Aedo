@@ -21,12 +21,11 @@ import com.aedo.my_heaven.util.base.BaseActivity
 import com.aedo.my_heaven.util.base.MyApplication.Companion.prefs
 import com.aedo.my_heaven.util.log.LLog
 import com.aedo.my_heaven.util.log.LLog.TAG
-import com.aedo.my_heaven.view.side.list.ListActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
+// TODO: 글 남기기 누르면 갱신되게
 class MessageActivity : BaseActivity() {
 
     private lateinit var mBinding: ActivityMessageBinding
@@ -117,12 +116,6 @@ class MessageActivity : BaseActivity() {
         intent.putExtra(Constant.MESSAGE_DETAIL_LLIST_ID, listid.toString())
         startActivity(intent)
 
-    }
-
-
-    override fun onBackPressed() {
-        startActivity(Intent(this, ListActivity::class.java))
-        finish()
     }
 
     @SuppressLint("NotifyDataSetChanged")

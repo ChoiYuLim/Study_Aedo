@@ -93,11 +93,6 @@ class NoticeActivity : BaseActivity() {
         moveMain()
     }
 
-    override fun onBackPressed() {
-        startActivity(Intent(this, CenterActivity::class.java))
-        finish()
-    }
-
     @SuppressLint("NotifyDataSetChanged")
     override fun onResume() {
         super.onResume()

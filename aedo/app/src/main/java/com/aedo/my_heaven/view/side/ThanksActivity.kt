@@ -68,9 +68,4 @@ class ThanksActivity : BaseActivity() {
             mBinding.clThanksFive.visibility = View.GONE
         }
     }
-
-    override fun onBackPressed() {
-        startActivity(Intent(this, MainActivity::class.java))
-        finish()
-    }
 }

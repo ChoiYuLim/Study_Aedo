@@ -255,8 +255,7 @@ class OrderActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this, ShopActivity::class.java))
-        finish()
+        moveShop()
     }
 
 }

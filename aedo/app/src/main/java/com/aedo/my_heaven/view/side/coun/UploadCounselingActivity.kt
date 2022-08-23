@@ -128,7 +128,6 @@ class UploadCounselingActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this, CounselingActivity::class.java))
-        finish()
+        moveCounseling()
     }
 }

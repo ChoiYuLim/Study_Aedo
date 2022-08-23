@@ -30,7 +30,6 @@ class InforMationActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this, SideMenuActivity::class.java))
-        finish()
+        moveSide()
     }
 }

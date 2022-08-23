@@ -40,9 +40,4 @@ class NoticeDetailActivity : BaseActivity() {
     fun onBackPressed(v: View) {
         moveMain()
     }
-
-    override fun onBackPressed() {
-        startActivity(Intent(this, NoticeActivity::class.java))
-        finish()
-    }
 }

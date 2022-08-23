@@ -379,7 +379,6 @@ open class BaseActivity : AppCompatActivity() {
         startActivity(intent)
         overridePendingTransition(0, 0)
         dialog?.dismiss()
-        finish()
     }
 
     internal fun moveLogins() {
@@ -456,7 +455,6 @@ open class BaseActivity : AppCompatActivity() {
         val intent = Intent(this, NoticeActivity::class.java)
         startActivity(intent)
         overridePendingTransition(0, 0)
-        finish()
     }
 
     internal fun moveNoticeDetail() {
@@ -470,14 +468,12 @@ open class BaseActivity : AppCompatActivity() {
         val intent = Intent(this, ThanksActivity::class.java)
         startActivity(intent)
         overridePendingTransition(0, 0)
-        finish()
     }
 
     internal fun moveFAQ() {
         val intent = Intent(this, FAQActivity::class.java)
         startActivity(intent)
         overridePendingTransition(0, 0)
-        finish()
     }
 
     internal fun moveTerms() {
@@ -505,7 +501,6 @@ open class BaseActivity : AppCompatActivity() {
         val intent = Intent(this, MyOrderActivity::class.java)
         startActivity(intent)
         overridePendingTransition(0, 0)
-        finish()
     }
 
 

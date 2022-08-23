@@ -78,7 +78,6 @@ class MyOrderDetailActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this, MyOrderActivity::class.java))
-        finish()
+        moveMyOrder()
     }
 }

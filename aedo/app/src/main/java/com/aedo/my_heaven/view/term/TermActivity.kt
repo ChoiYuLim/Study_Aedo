@@ -68,7 +68,6 @@ class TermActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this, SettingActivity::class.java))
-        finish()
+        moveSetting()
     }
 }

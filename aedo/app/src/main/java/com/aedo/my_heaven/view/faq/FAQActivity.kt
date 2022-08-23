@@ -1,6 +1,5 @@
 package com.aedo.my_heaven.view.faq
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
@@ -10,7 +9,6 @@ import com.aedo.my_heaven.api.ApiUtils
 import com.aedo.my_heaven.databinding.ActivityFaqactivityBinding
 import com.aedo.my_heaven.util.alert.LoadingDialog
 import com.aedo.my_heaven.util.base.BaseActivity
-import com.aedo.my_heaven.view.main.MainActivity
 
 class FAQActivity : BaseActivity() {
     private lateinit var mBinding: ActivityFaqactivityBinding
@@ -69,10 +67,5 @@ class FAQActivity : BaseActivity() {
         } else {
             mBinding.clThanksFive.visibility = View.GONE
         }
-    }
-
-    override fun onBackPressed() {
-        startActivity(Intent(this, MainActivity::class.java))
-        finish()
     }
 }

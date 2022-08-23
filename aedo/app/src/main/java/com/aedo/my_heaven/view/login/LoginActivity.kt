@@ -70,7 +70,6 @@ class LoginActivity : BaseActivity() {
 
     private fun initView() {
         startbtn()
-        callresult()
         if (PermissionManager.getPermissionGranted(this, Manifest.permission.READ_PHONE_STATE)) {
             val manager = getSystemService(TELEPHONY_SERVICE) as TelephonyManager
             if (ActivityCompat.checkSelfPermission(
@@ -86,7 +85,9 @@ class LoginActivity : BaseActivity() {
             ) {
                 return
             }
-            @SuppressLint("HardwareIds") var telNo = manager.line1Number
+            @SuppressLint("HardwareIds")
+            // phone 번호 가져오기
+            var telNo = manager.line1Number
             if (telNo != null) {
                 telNo = telNo.replace("+82", "0")
                 mViewModel!!.setPhoneNum(telNo)
@@ -116,7 +117,9 @@ class LoginActivity : BaseActivity() {
         }
     }
 
+    // 휴대전화 번호 재입력
     private fun startbtn() {
+        LLog.e("startbtn")
         val phoneAgainSpan = SpannableString(mBinding.tvPhonenumInputAgain.text)
         var start = 0
         var end = mBinding.tvPhonenumInputAgain.length()
@@ -142,20 +145,13 @@ class LoginActivity : BaseActivity() {
             end,
             SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
         )
-        start = 0
-        end = mBinding.tvAuthnumRequestAgain.length()
         mBinding.tvPhonenumInputAgain.text = phoneAgainSpan
         mBinding.tvPhonenumInputAgain.isClickable = true
         mBinding.tvPhonenumInputAgain.movementMethod = LinkMovementMethod.getInstance()
     }
 
-    private fun callresult() {
-        ResultView =
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult? ->
-            }
-    }
-
     private fun phoneFirst(resetPhoneNum: Boolean) {
+        LLog.e("phoneFirst")
         mViewModel?.loginProcess = PROCESS_PHONENUM
         mViewModel!!.authNum = ""
         if (resetPhoneNum) {
@@ -170,6 +166,7 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun phoneSecond() {
+        LLog.e("phoneSecond")
         if (mBinding.clAuthNumParent.visibility == View.GONE) {
             mBinding.clAuthNumParent.visibility = View.VISIBLE
             mBinding.tvPhonenumAuth.text = mBinding.etPhonenum.text.toString()
@@ -179,9 +176,6 @@ class LoginActivity : BaseActivity() {
         if (mBinding.tvTitleSub.visibility == View.GONE) {
             mBinding.tvTitleSub.visibility = View.VISIBLE
         }
-        if (mBinding.btnOk2.visibility == View.GONE) {
-            mBinding.btnOk2.visibility = View.GONE
-        }
         mBinding.btnOk.text = getString(R.string.ok)
         mBinding.etAuthnum.requestFocus()
         val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
@@ -190,6 +184,7 @@ class LoginActivity : BaseActivity() {
 
 
     private fun phoneThrid() {
+        LLog.e("phoneThrid")
         mBinding.tvTitle.text = Html.fromHtml(getString(R.string.login_desc3))
         mBinding.tvTitleSub.text = getText(R.string.login_subtitle3)
         if (mBinding.tvTitleSub.visibility == View.GONE) {
@@ -202,18 +197,9 @@ class LoginActivity : BaseActivity() {
             mBinding.clJoinParent.visibility = View.VISIBLE
             mBinding.tvPhonenumJoin.text = mBinding.etPhonenum.text.toString()
         }
-        if (mBinding.clOk2.visibility == View.GONE) {
-            mBinding.clOk2.visibility = View.VISIBLE
-        }
-        if (mBinding.btnOk2.visibility == View.GONE) {
-            mBinding.btnOk2.visibility = View.VISIBLE
-        }
-
         if (mBinding.clAuthNumParent.visibility == View.VISIBLE) {
             mBinding.clAuthNumParent.visibility = View.GONE
-            mBinding.tvPhonenumAuth.text = mBinding.etPhonenum.text.toString()
         }
-        mBinding.btnOk.text = getString(R.string.ok)
         mBinding.clOk.visibility = View.GONE
         mBinding.clOk2.visibility = View.VISIBLE
 
@@ -291,6 +277,7 @@ class LoginActivity : BaseActivity() {
         })
     }
 
+    // 인증번호 입력 후 확인 버튼 누를 경우
     private fun authrequest() {
         LLog.e("로그인_로그인 API")
         val phone = mBinding.etPhonenum.text.toString()
@@ -335,6 +322,7 @@ class LoginActivity : BaseActivity() {
         authrequest()
     }
 
+    // 회원가입 확인 버튼 누른 경우
     fun onOkClick(v: View?) {
         val et_birth = mBinding.etBitrhday.text.toString()
         val et_name = mBinding.etName.text.toString()
