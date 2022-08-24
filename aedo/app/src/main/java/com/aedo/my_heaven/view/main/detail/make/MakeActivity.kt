@@ -9,7 +9,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
@@ -145,11 +144,6 @@ class MakeActivity : BaseActivity() {
         }
     }
 
-    fun showProgress(isShow: Boolean) {
-        if (isShow) mBinding.progress.visibility = View.VISIBLE
-        else mBinding.progress.visibility = View.GONE
-    }
-
     fun onOkClick(v: View) {
         val spinner_text = mBinding.spinnerText.text.toString()
         val make_person = mBinding.makeTxName.text.toString()
@@ -265,12 +259,12 @@ class MakeActivity : BaseActivity() {
                     val result = response.body()
                     if (response.isSuccessful && result != null) {
                         Log.d(TAG, "testAPI  API SUCCESS -> $result")
-                        showProgress(true)
+                        showProgress(mBinding.progress, true)
                         thread(start = true) {
                             Thread.sleep(2000)
 
                             runOnUiThread {
-                                showProgress(false)
+                                showProgress(mBinding.progress, false)
                                 moveList()
                             }
                         }
@@ -337,12 +331,12 @@ class MakeActivity : BaseActivity() {
                     val result = response.body()
                     if (response.isSuccessful && result != null) {
                         Log.d(TAG, "testAPI Second API SUCCESS -> $result")
-                        showProgress(true)
+                        showProgress(mBinding.progress, true)
                         thread(start = true) {
                             Thread.sleep(2000)
 
                             runOnUiThread {
-                                showProgress(false)
+                                showProgress(mBinding.progress, false)
                                 moveList()
                             }
                         }
@@ -447,24 +441,25 @@ class MakeActivity : BaseActivity() {
         startForResult.launch(intent)
     }
 
-    val startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result->
-        if (result.resultCode == Activity.RESULT_OK) {
-            try {
-                val img = result.data?.data
-                mBinding.imgPake.setImageURI(img)
-                val imgPath = img.let {
-                    fileUtil.getPath(this, it!!)
-                }
+    val startForResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                try {
+                    val img = result.data?.data
+                    mBinding.imgPake.setImageURI(img)
+                    val imgPath = img.let {
+                        fileUtil.getPath(this, it!!)
+                    }
 
-                files4.add(Uri.parse(imgPath))
-                if (imgPath != null) {
-                    Log.e("image", imgPath)
+                    files4.add(Uri.parse(imgPath))
+                    if (imgPath != null) {
+                        Log.e("image", imgPath)
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
                 }
-            } catch (e: Exception) {
-                e.printStackTrace()
             }
         }
-    }
 
     override fun onBackPressed() {
         moveMain()

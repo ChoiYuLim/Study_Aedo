@@ -27,6 +27,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.time.LocalDate
 import java.util.*
+import kotlin.concurrent.thread
 
 class OrderActivity : BaseActivity() {
     private lateinit var mBinding: ActivityOrderBinding
@@ -185,7 +186,16 @@ class OrderActivity : BaseActivity() {
                 val result = response.body()
                 if (response.isSuccessful && result != null) {
                     Log.d(LLog.TAG, "ShopModel  API SUCCESS -> $result")
-                    getImport(v)
+                    showProgress(mBinding.progressBar2, true)
+                    thread(start = true) {
+                        Thread.sleep(2000)
+
+                        runOnUiThread {
+                            showProgress(mBinding.progressBar2, false)
+
+                            getImport(v)
+                        }
+                    }
                 } else {
                     Log.d(LLog.TAG, "ShopModel  API ERROR -> ${response.errorBody()}")
                     otherAPI(v)
@@ -226,7 +236,16 @@ class OrderActivity : BaseActivity() {
                 val result = response.body()
                 if (response.isSuccessful && result != null) {
                     Log.d(LLog.TAG, "ShopModel Second API SUCCESS -> $result")
-                    getImport(v)
+                    showProgress(mBinding.progressBar2, true)
+                    thread(start = true) {
+                        Thread.sleep(2000)
+
+                        runOnUiThread {
+                            showProgress(mBinding.progressBar2, false)
+
+                            getImport(v)
+                        }
+                    }
                 } else {
                     Log.d(LLog.TAG, "ShopModel Second API ERROR -> ${response.errorBody()}")
                 }

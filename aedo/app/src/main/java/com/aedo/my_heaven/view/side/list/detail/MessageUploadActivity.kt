@@ -19,6 +19,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.time.LocalDate
+import kotlin.concurrent.thread
 
 class MessageUploadActivity : BaseActivity() {
 
@@ -56,7 +57,15 @@ class MessageUploadActivity : BaseActivity() {
                 val result = response.body()
                 if (response.isSuccessful && result != null) {
                     Log.d(TAG, "CreateMessage SUCCESS -> $result")
-                    finish()
+                    showProgress(mBinding.progressBar3, true)
+                    thread(start = true) {
+                        Thread.sleep(2000)
+
+                        runOnUiThread {
+                            showProgress(mBinding.progressBar3, false)
+                            finish()
+                        }
+                    }
                 } else {
                     Log.d(TAG, "CreateMessage ERROR -> ${response.errorBody()}")
                     otherAPI()
@@ -78,7 +87,7 @@ class MessageUploadActivity : BaseActivity() {
         val obId = id.toString()
         val data = CreateMessage(title, content, created, obId)
 
-        LLog.e("조문메세지 작성_두번째째 API")
+        LLog.e("조문메세지 작성_두번째 API")
         apiServices.getCondole(prefs.newaccesstoken, data)
             .enqueue(object : Callback<CreateMessage> {
                 override fun onResponse(
@@ -89,7 +98,15 @@ class MessageUploadActivity : BaseActivity() {
                     if (response.isSuccessful && result != null) {
                         Log.d(TAG, "CreateMessage id -> ${id.toString()}")
                         Log.d(TAG, "CreateMessage Second SUCCESS -> $result")
-                        finish()
+                        showProgress(mBinding.progressBar3, true)
+                        thread(start = true) {
+                            Thread.sleep(2000)
+
+                            runOnUiThread {
+                                showProgress(mBinding.progressBar3, false)
+                                finish()
+                            }
+                        }
                     } else {
                         Log.d(TAG, "CreateMessage Second ERROR -> ${response.errorBody()}")
                     }

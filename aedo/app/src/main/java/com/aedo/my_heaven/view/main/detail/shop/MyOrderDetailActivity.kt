@@ -28,7 +28,6 @@ import com.aedo.my_heaven.util.base.BaseActivity
 class MyOrderDetailActivity : BaseActivity() {
     private lateinit var mBinding: ActivityMyOrderDetailBinding
     private lateinit var apiServices: APIService
-    private var readapter: MyOrderAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
