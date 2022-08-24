@@ -1,6 +1,5 @@
 package com.aedo.my_heaven.view.main.detail.shop
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
@@ -10,7 +9,6 @@ import com.aedo.my_heaven.api.APIService
 import com.aedo.my_heaven.api.ApiUtils
 import com.aedo.my_heaven.databinding.ActivityShopBinding
 import com.aedo.my_heaven.util.base.BaseActivity
-import com.aedo.my_heaven.view.main.MainActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 

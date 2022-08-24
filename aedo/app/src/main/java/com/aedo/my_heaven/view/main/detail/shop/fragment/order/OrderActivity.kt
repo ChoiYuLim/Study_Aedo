@@ -1,7 +1,6 @@
 package com.aedo.my_heaven.view.main.detail.shop.fragment.order
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -18,7 +17,6 @@ import com.aedo.my_heaven.util.`object`.Constant.SHOP_PAY
 import com.aedo.my_heaven.util.base.BaseActivity
 import com.aedo.my_heaven.util.base.MyApplication
 import com.aedo.my_heaven.util.log.LLog
-import com.aedo.my_heaven.view.main.detail.shop.ShopActivity
 import com.google.android.material.snackbar.Snackbar
 import com.iamport.sdk.data.sdk.IamPortRequest
 import com.iamport.sdk.data.sdk.PG
@@ -57,6 +55,7 @@ class OrderActivity : BaseActivity() {
         mBinding.tvFlowerPayDetail.text = "${pay}원"
     }
 
+    // spinner 클릭 시 listener
     private fun setupSpinnerHandler() {
         mBinding.makeTxSpinnerInfor.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
@@ -91,6 +90,7 @@ class OrderActivity : BaseActivity() {
             }
     }
 
+    // spinner setting
     private fun makeTop() {
         val place = resources.getStringArray(R.array.spinner_place)
         val placeAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, place)
@@ -114,14 +114,20 @@ class OrderActivity : BaseActivity() {
     }
 
     fun onOkClick(v: View) {
+        val place = mBinding.spinnerInfoTextTt.text
         val place_number = mBinding.makeTxPhone.text.toString()
         val receiver_name = mBinding.orderSetPerson.text.toString()
         val receiver_phone = mBinding.orderSetPhone.text.toString()
         val send_name = mBinding.orderSendPerson.text.toString()
         val send_phone = mBinding.orderSendPhone.text.toString()
         val flower_name = mBinding.orderSeondFlower.text.toString()
+        val flower_text = mBinding.orderTvSendPickText.text
 
         when {
+            place.equals("장례식장 선택") -> {
+                mBinding.spinnerInfoTextTt.isFocusableInTouchMode = true
+                mBinding.spinnerInfoTextTt.requestFocus()
+            }
             place_number.isEmpty() -> {
                 mBinding.makeTxPhone.error = "미입력"
             }
@@ -135,10 +141,14 @@ class OrderActivity : BaseActivity() {
                 mBinding.orderSendPerson.error = "미입력"
             }
             send_phone.isEmpty() -> {
-                mBinding.orderSendPhone.error = "미입력력"
+                mBinding.orderSendPhone.error = "미입력"
             }
             flower_name.isEmpty() -> {
                 mBinding.orderSeondFlower.error = "미입력"
+            }
+            flower_text.equals("리본 문구를 입력해 주세요") -> {
+                mBinding.orderTvSendPickText.isFocusableInTouchMode = true
+                mBinding.orderTvSendPickText.requestFocus()
             }
             else -> {
                 dialog?.show()
@@ -252,10 +262,6 @@ class OrderActivity : BaseActivity() {
 
     fun onShopTermClick(v: View) {
         moveShopTerm()
-    }
-
-    override fun onBackPressed() {
-        moveShop()
     }
 
 }
