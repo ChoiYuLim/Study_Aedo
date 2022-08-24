@@ -23,7 +23,6 @@ import com.aedo.my_heaven.api.APIService
 import com.aedo.my_heaven.api.ApiUtils
 import com.aedo.my_heaven.databinding.ActivityMakeBinding
 import com.aedo.my_heaven.model.restapi.base.*
-import com.aedo.my_heaven.util.`object`.Constant.ALBUM_REQUEST_CODE
 import com.aedo.my_heaven.util.`object`.Constant.ONE_PERMISSION_REQUEST_CODE
 import com.aedo.my_heaven.util.base.BaseActivity
 import com.aedo.my_heaven.util.base.MyApplication
@@ -31,7 +30,6 @@ import com.aedo.my_heaven.util.base.MyApplication.Companion.prefs
 import com.aedo.my_heaven.util.file.FileUtil
 import com.aedo.my_heaven.util.log.LLog
 import com.aedo.my_heaven.util.log.LLog.TAG
-import com.aedo.my_heaven.view.main.MainActivity
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -425,19 +423,18 @@ class MakeActivity : BaseActivity() {
 
     private fun requestPermission() {
         when {
+            // 파일 읽기 권한이 있는 경우
             ContextCompat.checkSelfPermission(
                 this,
                 Manifest.permission.READ_EXTERNAL_STORAGE
             ) == PackageManager.PERMISSION_GRANTED
-            -> {
-                getAlbum()
-            }
+            -> getAlbum()
 
+            // 권한 요청을 명시적으로 거부한 경우
             shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)
-            -> { // 저장소 권한이 없는 경우
-                Toast.makeText(this, "사진 접근 권한 동의를 해주세요", Toast.LENGTH_SHORT).show()
-            }
+            -> Toast.makeText(this, "사진 접근 권한 동의를 해주세요", Toast.LENGTH_SHORT).show()
 
+            // 권한 요청을 처음 보거나, 다시 묻지 않음을 선택한 경우 대화상자로 명시적으로 권한 요청
             else -> requestPermissions(
                 arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), ONE_PERMISSION_REQUEST_CODE
             )
@@ -445,7 +442,7 @@ class MakeActivity : BaseActivity() {
     }
 
     private fun getAlbum() {
-        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
         startForResult.launch(intent)
     }
