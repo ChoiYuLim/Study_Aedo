@@ -77,7 +77,4 @@ class MyOrderDetailActivity : BaseActivity() {
         moveMain()
     }
 
-    override fun onBackPressed() {
-        moveMyOrder()
-    }
 }
