@@ -239,12 +239,17 @@ class OrderActivity : BaseActivity() {
     }
 
     private fun getImport(v: View) {
+        val pay = mBinding.tvFlowerPayDetail.text.toString()
+        val payLen = pay.length
         val request = IamPortRequest(
             pg = PG.nice.makePgRawName(""),         // PG사
             pay_method = PayMethod.card.name,                    // 결제수단
             name = mBinding.tvFlowerNameDetail.text.toString(),                      // 주문명
             merchant_uid = "sample_aos_${Date().time}",     // 주문번호
-            amount = "77000",                                // 결제금액
+            amount = pay.substring(0, payLen - 5) + pay.substring(
+                payLen - 4,
+                payLen - 1
+            ),                                // 결제금액
             buyer_name = mBinding.orderSendPerson.text.toString()                             // 주문자 이름
         )
 
