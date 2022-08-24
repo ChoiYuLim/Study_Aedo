@@ -90,6 +90,9 @@ class SearchActivity : BaseActivity() {
         rv.adapter = adapter
         rv.layoutManager = LinearLayoutManager(this)
         rv.setHasFixedSize(true)
+        if(rv.itemDecorationCount!=0){
+            rv.removeItemDecorationAt(0)
+        }
         rv.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
     }
 
