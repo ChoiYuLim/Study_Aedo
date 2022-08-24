@@ -48,19 +48,6 @@ class RecyclerAdapter(private val postList: List<Obituaray>, val context: Contex
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(postList[position], context)
-        holder.itemView.setOnClickListener {
-            itemClickListener?.onClick(it, position)
-        }
-    }
-
-    interface OnItemClickListener {
-        fun onClick(v: View, position: Int)
-    }
-
-    private var itemClickListener: OnItemClickListener? = null
-
-    fun setOnItemClickListener(listener: OnItemClickListener) {
-        this.itemClickListener = listener
     }
 
     override fun getItemCount(): Int {
@@ -76,7 +63,6 @@ class RecyclerAdapter(private val postList: List<Obituaray>, val context: Contex
         val tx_body_info = itemView?.findViewById<TextView>(R.id.tx_body_info)
         val btn_show = itemView?.findViewById<Button>(R.id.btn_list_show)
         val btn_share = itemView?.findViewById<Button>(R.id.btn_list_send)
-        val imgname = itemView?.findViewById<ImageView>(R.id.list_img)
 
         @SuppressLint("ResourceType")
         fun bind(itemPhoto: Obituaray?, context: Context) {

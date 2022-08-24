@@ -37,19 +37,6 @@ class MyOrderAdapter(private val postList: List<MyOrders>, val context: Context)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(postList[position], context)
-        holder.itemView.setOnClickListener {
-            itemClickListener?.onClick(it, position)
-        }
-    }
-
-    interface OnItemClickListener {
-        fun onClick(v: View, position: Int)
-    }
-
-    private var itemClickListener: OnItemClickListener? = null
-
-    fun setOnItemClickListener(listener: OnItemClickListener) {
-        this.itemClickListener = listener
     }
 
     override fun getItemCount(): Int {
@@ -61,7 +48,6 @@ class MyOrderAdapter(private val postList: List<MyOrders>, val context: Context)
         val order_flower = itemView?.findViewById<TextView>(R.id.tv_flower_pay)
         val myorder_receiver_name = itemView?.findViewById<TextView>(R.id.tv_receiver_name_detail)
         val myorder_send_name = itemView?.findViewById<TextView>(R.id.tv_send_name_detail)
-        val order_timestamp = itemView?.findViewById<TextView>(R.id.tv_order_timestamp)
         val cl_order = itemView?.findViewById<ConstraintLayout>(R.id.cl_order)
 
         @SuppressLint("ResourceType", "SetTextI18n")
