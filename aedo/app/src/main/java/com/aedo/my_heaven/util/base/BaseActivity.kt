@@ -14,6 +14,7 @@ import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.appcompat.app.AppCompatActivity
@@ -503,5 +504,9 @@ open class BaseActivity : AppCompatActivity() {
         overridePendingTransition(0, 0)
     }
 
+    internal fun showProgress(progress: ProgressBar, isShow: Boolean) {
+        if (isShow) progress.visibility = View.VISIBLE
+        else progress.visibility = View.GONE
+    }
 
 }
