@@ -261,8 +261,16 @@ class MakeActivity : BaseActivity() {
                         Log.d(TAG, "testAPI  API SUCCESS -> $result")
                         showProgress(mBinding.progress, true)
                         thread(start = true) {
-                            Thread.sleep(2000)
-
+                            Thread.sleep(500)
+                            mBinding.progress.progress = 50
+                            showProgress(mBinding.progress, true)
+                            Thread.sleep(500)
+                            mBinding.progress.progress = 75
+                            showProgress(mBinding.progress, true)
+                            Thread.sleep(500)
+                            mBinding.progress.progress = 100
+                            showProgress(mBinding.progress, true)
+                            Thread.sleep(500)
                             runOnUiThread {
                                 showProgress(mBinding.progress, false)
                                 moveList()
@@ -333,8 +341,16 @@ class MakeActivity : BaseActivity() {
                         Log.d(TAG, "testAPI Second API SUCCESS -> $result")
                         showProgress(mBinding.progress, true)
                         thread(start = true) {
-                            Thread.sleep(2000)
-
+                            Thread.sleep(500)
+                            mBinding.progress.progress = 50
+                            showProgress(mBinding.progress, true)
+                            Thread.sleep(500)
+                            mBinding.progress.progress = 75
+                            showProgress(mBinding.progress, true)
+                            Thread.sleep(500)
+                            mBinding.progress.progress = 100
+                            showProgress(mBinding.progress, true)
+                            Thread.sleep(500)
                             runOnUiThread {
                                 showProgress(mBinding.progress, false)
                                 moveList()

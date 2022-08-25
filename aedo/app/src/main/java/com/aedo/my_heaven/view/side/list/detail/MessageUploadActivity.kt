@@ -59,8 +59,16 @@ class MessageUploadActivity : BaseActivity() {
                     Log.d(TAG, "CreateMessage SUCCESS -> $result")
                     showProgress(mBinding.progressBar3, true)
                     thread(start = true) {
-                        Thread.sleep(2000)
-
+                        Thread.sleep(500)
+                        mBinding.progressBar3.progress = 50
+                        showProgress(mBinding.progressBar3, true)
+                        Thread.sleep(500)
+                        mBinding.progressBar3.progress = 75
+                        showProgress(mBinding.progressBar3, true)
+                        Thread.sleep(500)
+                        mBinding.progressBar3.progress = 100
+                        showProgress(mBinding.progressBar3, true)
+                        Thread.sleep(500)
                         runOnUiThread {
                             showProgress(mBinding.progressBar3, false)
                             finish()
@@ -100,8 +108,16 @@ class MessageUploadActivity : BaseActivity() {
                         Log.d(TAG, "CreateMessage Second SUCCESS -> $result")
                         showProgress(mBinding.progressBar3, true)
                         thread(start = true) {
-                            Thread.sleep(2000)
-
+                            Thread.sleep(500)
+                            mBinding.progressBar3.progress = 50
+                            showProgress(mBinding.progressBar3, true)
+                            Thread.sleep(500)
+                            mBinding.progressBar3.progress = 75
+                            showProgress(mBinding.progressBar3, true)
+                            Thread.sleep(500)
+                            mBinding.progressBar3.progress = 100
+                            showProgress(mBinding.progressBar3, true)
+                            Thread.sleep(500)
                             runOnUiThread {
                                 showProgress(mBinding.progressBar3, false)
                                 finish()

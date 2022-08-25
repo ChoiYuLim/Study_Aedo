@@ -188,8 +188,16 @@ class OrderActivity : BaseActivity() {
                     Log.d(LLog.TAG, "ShopModel  API SUCCESS -> $result")
                     showProgress(mBinding.progressBar2, true)
                     thread(start = true) {
-                        Thread.sleep(2000)
-
+                        Thread.sleep(500)
+                        mBinding.progressBar2.progress = 50
+                        showProgress(mBinding.progressBar2, true)
+                        Thread.sleep(500)
+                        mBinding.progressBar2.progress = 75
+                        showProgress(mBinding.progressBar2, true)
+                        Thread.sleep(500)
+                        mBinding.progressBar2.progress = 100
+                        showProgress(mBinding.progressBar2, true)
+                        Thread.sleep(500)
                         runOnUiThread {
                             showProgress(mBinding.progressBar2, false)
 
@@ -238,8 +246,16 @@ class OrderActivity : BaseActivity() {
                     Log.d(LLog.TAG, "ShopModel Second API SUCCESS -> $result")
                     showProgress(mBinding.progressBar2, true)
                     thread(start = true) {
-                        Thread.sleep(2000)
-
+                        Thread.sleep(500)
+                        mBinding.progressBar2.progress = 50
+                        showProgress(mBinding.progressBar2, true)
+                        Thread.sleep(500)
+                        mBinding.progressBar2.progress = 75
+                        showProgress(mBinding.progressBar2, true)
+                        Thread.sleep(500)
+                        mBinding.progressBar2.progress = 100
+                        showProgress(mBinding.progressBar2, true)
+                        Thread.sleep(500)
                         runOnUiThread {
                             showProgress(mBinding.progressBar2, false)
 
