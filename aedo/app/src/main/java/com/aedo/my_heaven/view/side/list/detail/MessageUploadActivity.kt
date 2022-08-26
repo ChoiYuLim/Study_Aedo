@@ -130,7 +130,8 @@ class MessageUploadActivity : BaseActivity() {
     }
 
     fun onBackClick(v: View) {
-        moveMessage()
+        finish()
+        overridePendingTransition(0, 0)
     }
 
     fun onMainClick(v: View) {

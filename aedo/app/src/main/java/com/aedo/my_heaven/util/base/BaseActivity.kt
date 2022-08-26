@@ -380,6 +380,7 @@ open class BaseActivity : AppCompatActivity() {
         startActivity(intent)
         overridePendingTransition(0, 0)
         dialog?.dismiss()
+        finish()
     }
 
     internal fun moveLogins() {

@@ -117,7 +117,7 @@ class MessageActivity : BaseActivity() {
         val intent = Intent(this, MessageUploadActivity::class.java)
         intent.putExtra(Constant.MESSAGE_DETAIL_LLIST_ID, listid.toString())
         startActivity(intent)
-
+        overridePendingTransition(0, 0)
     }
 
     @SuppressLint("NotifyDataSetChanged")

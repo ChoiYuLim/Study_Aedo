@@ -116,5 +116,7 @@ class ListActivity : BaseActivity() {
         readapter?.notifyDataSetChanged()
     }
 
-
+    override fun onBackPressed() {
+        moveMain()
+    }
 }
