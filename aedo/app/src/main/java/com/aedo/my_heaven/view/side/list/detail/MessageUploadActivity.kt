@@ -1,6 +1,8 @@
 package com.aedo.my_heaven.view.side.list.detail
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -25,6 +27,7 @@ class MessageUploadActivity : BaseActivity() {
 
     private lateinit var mBinding: ActivityMessageUploadBinding
     private lateinit var apiServices: APIService
+    var handler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,19 +60,15 @@ class MessageUploadActivity : BaseActivity() {
                 val result = response.body()
                 if (response.isSuccessful && result != null) {
                     Log.d(TAG, "CreateMessage SUCCESS -> $result")
-                    showProgress(mBinding.progressBar3, true)
                     thread(start = true) {
-                        Thread.sleep(500)
-                        mBinding.progressBar3.progress = 50
-                        showProgress(mBinding.progressBar3, true)
-                        Thread.sleep(500)
-                        mBinding.progressBar3.progress = 75
-                        showProgress(mBinding.progressBar3, true)
-                        Thread.sleep(500)
-                        mBinding.progressBar3.progress = 100
-                        showProgress(mBinding.progressBar3, true)
-                        Thread.sleep(500)
-                        runOnUiThread {
+                        for (i in 1..4) {
+                            mBinding.progressBar3.progress = 25 * i
+                            handler.post {
+                                showProgress(mBinding.progressBar3, true)
+                            }
+                            Thread.sleep(500)
+                        }
+                        handler.post {
                             showProgress(mBinding.progressBar3, false)
                             finish()
                         }
@@ -106,19 +105,15 @@ class MessageUploadActivity : BaseActivity() {
                     if (response.isSuccessful && result != null) {
                         Log.d(TAG, "CreateMessage id -> ${id.toString()}")
                         Log.d(TAG, "CreateMessage Second SUCCESS -> $result")
-                        showProgress(mBinding.progressBar3, true)
                         thread(start = true) {
-                            Thread.sleep(500)
-                            mBinding.progressBar3.progress = 50
-                            showProgress(mBinding.progressBar3, true)
-                            Thread.sleep(500)
-                            mBinding.progressBar3.progress = 75
-                            showProgress(mBinding.progressBar3, true)
-                            Thread.sleep(500)
-                            mBinding.progressBar3.progress = 100
-                            showProgress(mBinding.progressBar3, true)
-                            Thread.sleep(500)
-                            runOnUiThread {
+                            for (i in 1..4) {
+                                mBinding.progressBar3.progress = 25 * i
+                                handler.post {
+                                    showProgress(mBinding.progressBar3, true)
+                                }
+                                Thread.sleep(500)
+                            }
+                            handler.post {
                                 showProgress(mBinding.progressBar3, false)
                                 finish()
                             }

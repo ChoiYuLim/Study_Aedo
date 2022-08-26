@@ -2,6 +2,8 @@ package com.aedo.my_heaven.view.main.detail.shop.fragment.order
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
@@ -32,6 +34,7 @@ import kotlin.concurrent.thread
 class OrderActivity : BaseActivity() {
     private lateinit var mBinding: ActivityOrderBinding
     private lateinit var apiServices: APIService
+    var handler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -186,19 +189,15 @@ class OrderActivity : BaseActivity() {
                 val result = response.body()
                 if (response.isSuccessful && result != null) {
                     Log.d(LLog.TAG, "ShopModel  API SUCCESS -> $result")
-                    showProgress(mBinding.progressBar2, true)
                     thread(start = true) {
-                        Thread.sleep(500)
-                        mBinding.progressBar2.progress = 50
-                        showProgress(mBinding.progressBar2, true)
-                        Thread.sleep(500)
-                        mBinding.progressBar2.progress = 75
-                        showProgress(mBinding.progressBar2, true)
-                        Thread.sleep(500)
-                        mBinding.progressBar2.progress = 100
-                        showProgress(mBinding.progressBar2, true)
-                        Thread.sleep(500)
-                        runOnUiThread {
+                        for (i in 1..4) {
+                            mBinding.progressBar2.progress = 25 * i
+                            handler.post {
+                                showProgress(mBinding.progressBar2, true)
+                            }
+                            Thread.sleep(500)
+                        }
+                        handler.post {
                             showProgress(mBinding.progressBar2, false)
 
                             getImport(v)
@@ -244,19 +243,16 @@ class OrderActivity : BaseActivity() {
                 val result = response.body()
                 if (response.isSuccessful && result != null) {
                     Log.d(LLog.TAG, "ShopModel Second API SUCCESS -> $result")
-                    showProgress(mBinding.progressBar2, true)
+                    var handler = Handler(Looper.getMainLooper())
                     thread(start = true) {
-                        Thread.sleep(500)
-                        mBinding.progressBar2.progress = 50
-                        showProgress(mBinding.progressBar2, true)
-                        Thread.sleep(500)
-                        mBinding.progressBar2.progress = 75
-                        showProgress(mBinding.progressBar2, true)
-                        Thread.sleep(500)
-                        mBinding.progressBar2.progress = 100
-                        showProgress(mBinding.progressBar2, true)
-                        Thread.sleep(500)
-                        runOnUiThread {
+                        for (i in 1..4) {
+                            mBinding.progressBar2.progress = 25 * i
+                            handler.post {
+                                showProgress(mBinding.progressBar2, true)
+                            }
+                            Thread.sleep(500)
+                        }
+                        handler.post {
                             showProgress(mBinding.progressBar2, false)
 
                             getImport(v)

@@ -9,6 +9,8 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
@@ -49,6 +51,7 @@ class MakeActivity : BaseActivity() {
     private var mViewModel: MakeViewModel? = null
     private val fileUtil = FileUtil()
     private var files4: MutableList<Uri> = ArrayList()
+    var handler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -259,19 +262,15 @@ class MakeActivity : BaseActivity() {
                     val result = response.body()
                     if (response.isSuccessful && result != null) {
                         Log.d(TAG, "testAPI  API SUCCESS -> $result")
-                        showProgress(mBinding.progress, true)
                         thread(start = true) {
-                            Thread.sleep(500)
-                            mBinding.progress.progress = 50
-                            showProgress(mBinding.progress, true)
-                            Thread.sleep(500)
-                            mBinding.progress.progress = 75
-                            showProgress(mBinding.progress, true)
-                            Thread.sleep(500)
-                            mBinding.progress.progress = 100
-                            showProgress(mBinding.progress, true)
-                            Thread.sleep(500)
-                            runOnUiThread {
+                            for (i in 1..4) {
+                                mBinding.progress.progress = 25 * i
+                                handler.post {
+                                    showProgress(mBinding.progress, true)
+                                }
+                                Thread.sleep(500)
+                            }
+                            handler.post {
                                 showProgress(mBinding.progress, false)
                                 moveList()
                             }
@@ -339,19 +338,15 @@ class MakeActivity : BaseActivity() {
                     val result = response.body()
                     if (response.isSuccessful && result != null) {
                         Log.d(TAG, "testAPI Second API SUCCESS -> $result")
-                        showProgress(mBinding.progress, true)
                         thread(start = true) {
-                            Thread.sleep(500)
-                            mBinding.progress.progress = 50
-                            showProgress(mBinding.progress, true)
-                            Thread.sleep(500)
-                            mBinding.progress.progress = 75
-                            showProgress(mBinding.progress, true)
-                            Thread.sleep(500)
-                            mBinding.progress.progress = 100
-                            showProgress(mBinding.progress, true)
-                            Thread.sleep(500)
-                            runOnUiThread {
+                            for (i in 1..4) {
+                                mBinding.progress.progress = 25 * i
+                                handler.post {
+                                    showProgress(mBinding.progress, true)
+                                }
+                                Thread.sleep(500)
+                            }
+                            handler.post {
                                 showProgress(mBinding.progress, false)
                                 moveList()
                             }
