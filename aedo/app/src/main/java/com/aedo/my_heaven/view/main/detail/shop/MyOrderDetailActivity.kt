@@ -1,12 +1,10 @@
 package com.aedo.my_heaven.view.main.detail.shop
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.aedo.my_heaven.R
-import com.aedo.my_heaven.adapter.MyOrderAdapter
 import com.aedo.my_heaven.api.APIService
 import com.aedo.my_heaven.api.ApiUtils
 import com.aedo.my_heaven.databinding.ActivityMyOrderDetailBinding

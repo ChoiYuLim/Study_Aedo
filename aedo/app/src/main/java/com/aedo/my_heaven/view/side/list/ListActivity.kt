@@ -1,7 +1,6 @@
 package com.aedo.my_heaven.view.side.list
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -20,7 +19,6 @@ import com.aedo.my_heaven.util.base.BaseActivity
 import com.aedo.my_heaven.util.base.MyApplication.Companion.prefs
 import com.aedo.my_heaven.util.log.LLog
 import com.aedo.my_heaven.util.log.LLog.TAG
-import com.aedo.my_heaven.view.main.MainActivity
 import com.kakao.sdk.common.KakaoSdk
 import retrofit2.Call
 import retrofit2.Callback
@@ -87,10 +85,14 @@ class ListActivity : BaseActivity() {
     }
 
     private fun setAdapter(obituary: List<Obituaray>?) {
-        val mAdapter = obituary?.let {
+//        val mAdapter = obituary?.let {
+//            RecyclerAdapter(it, this)
+//        }
+//        mBinding.recyclerView.adapter = mAdapter
+        readapter = obituary?.let {
             RecyclerAdapter(it, this)
         }
-        mBinding.recyclerView.adapter = mAdapter
+        mBinding.recyclerView.adapter = readapter
         mBinding.recyclerView.layoutManager = LinearLayoutManager(this)
         mBinding.recyclerView.setHasFixedSize(true)
         mBinding.recyclerView.addItemDecoration(

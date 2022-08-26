@@ -1,7 +1,6 @@
 package com.aedo.my_heaven.view.main.detail.search
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -20,7 +19,6 @@ import com.aedo.my_heaven.model.restapi.base.CreateSearch
 import com.aedo.my_heaven.util.base.BaseActivity
 import com.aedo.my_heaven.util.base.MyApplication.Companion.prefs
 import com.aedo.my_heaven.util.log.LLog
-import com.aedo.my_heaven.view.main.MainActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -83,11 +81,15 @@ class SearchActivity : BaseActivity() {
     }
 
     private fun setAdapter(search: List<CreateSearch>?) {
-        val adapter = search?.let {
+//        val adapter = search?.let {
+//            SearchAdapter(it, this)
+//        }
+        val rv = findViewById<View>(R.id.search_recyclerView) as RecyclerView
+//        rv.adapter = adapter
+        searchAdapter = search?.let{
             SearchAdapter(it, this)
         }
-        val rv = findViewById<View>(R.id.search_recyclerView) as RecyclerView
-        rv.adapter = adapter
+        rv.adapter = searchAdapter
         rv.layoutManager = LinearLayoutManager(this)
         rv.setHasFixedSize(true)
         if(rv.itemDecorationCount!=0){

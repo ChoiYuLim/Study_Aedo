@@ -87,9 +87,11 @@ class MessageActivity : BaseActivity() {
     }
 
     private fun setAdapter(list: List<CondoleList>) {
-        val adapter = MessageRecyclerAdapter(list, this)
+        //val adapter = MessageRecyclerAdapter(list, this)
+        messageRead = MessageRecyclerAdapter(list, this)
         val rv = findViewById<View>(R.id.rc_message) as RecyclerView
-        rv.adapter = adapter
+        //rv.adapter = adapter
+        rv.adapter = messageRead
         rv.layoutManager = LinearLayoutManager(this)
         rv.setHasFixedSize(true)
         if (rv.itemDecorationCount != 0) {
@@ -123,6 +125,7 @@ class MessageActivity : BaseActivity() {
     @SuppressLint("NotifyDataSetChanged")
     override fun onResume() {
         super.onResume()
+        messageRead?.notifyDataSetChanged()
         inRecycler()
     }
 }

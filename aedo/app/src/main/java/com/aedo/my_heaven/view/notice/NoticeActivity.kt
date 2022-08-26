@@ -1,7 +1,6 @@
 package com.aedo.my_heaven.view.notice
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -19,7 +18,6 @@ import com.aedo.my_heaven.model.notice.NoticeModel
 import com.aedo.my_heaven.util.base.BaseActivity
 import com.aedo.my_heaven.util.base.MyApplication.Companion.prefs
 import com.aedo.my_heaven.util.log.LLog
-import com.aedo.my_heaven.view.main.detail.center.CenterActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -81,9 +79,11 @@ class NoticeActivity : BaseActivity() {
     }
 
     private fun setAdapter(result: List<Announcement>) {
-        val adapter = NoticeAdapter(result, this)
+        //val adapter = NoticeAdapter(result, this)
+        noticeAdapter = NoticeAdapter(result, this)
         val rv = findViewById<View>(R.id.medical_recyclerView) as RecyclerView
-        rv.adapter = adapter
+        //rv.adapter = adapter
+        rv.adapter = noticeAdapter
         rv.layoutManager = LinearLayoutManager(this)
         rv.setHasFixedSize(true)
         rv.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))

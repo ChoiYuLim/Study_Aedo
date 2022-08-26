@@ -1,7 +1,6 @@
 package com.aedo.my_heaven.view.main.detail.shop
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -19,7 +18,6 @@ import com.aedo.my_heaven.util.alert.LoadingDialog
 import com.aedo.my_heaven.util.base.BaseActivity
 import com.aedo.my_heaven.util.base.MyApplication.Companion.prefs
 import com.aedo.my_heaven.util.log.LLog
-import com.aedo.my_heaven.view.main.MainActivity
 import com.kakao.sdk.common.KakaoSdk
 import retrofit2.Call
 import retrofit2.Callback
@@ -86,10 +84,14 @@ class MyOrderActivity : BaseActivity() {
     }
 
     private fun setAdapter(order: List<MyOrders>?) {
-        val mAdapter = order?.let {
+//        val mAdapter = order?.let {
+//            MyOrderAdapter(it, this)
+//        }
+//        mBinding.recyclerViewOrder.adapter = mAdapter
+        readapter = order?.let {
             MyOrderAdapter(it, this)
         }
-        mBinding.recyclerViewOrder.adapter = mAdapter
+        mBinding.recyclerViewOrder.adapter = readapter
         mBinding.recyclerViewOrder.layoutManager = LinearLayoutManager(this)
         mBinding.recyclerViewOrder.setHasFixedSize(true)
         mBinding.recyclerViewOrder.addItemDecoration(
